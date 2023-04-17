@@ -1,0 +1,22 @@
+uuid: 79fb35ac-04bf-400b-9db5-6a4e80b178b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: click_content
+label: 'Click content'
+type: 'canonical_entities:node'
+pattern: '/click/[node:title]'
+selection_criteria:
+  c86f61a3-1b55-4c27-920c-a1e73eb374cd:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c86f61a3-1b55-4c27-920c-a1e73eb374cd
+    context_mapping:
+      node: node
+    bundles:
+      apsclick_event: apsclick_event
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,30 @@
+uuid: 669f040b-94ae-4038-bbf5-01c4ab14fe4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - node
+id: node.field_event_image
+field_name: field_event_image
+entity_type: node
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  default_image:
+    uuid: 82dfbe7d-e067-493a-8d9f-10da93a6426d
+    alt: 'Event Banner'
+    title: 'Event Banner'
+    width: 540
+    height: 300
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+uuid: 5f8d53be-5720-49d9-bf20-52d92ab7262a
+langcode: en
+status: true
+dependencies: {  }
+id: video_theoplayer
+label: THEOplayer
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

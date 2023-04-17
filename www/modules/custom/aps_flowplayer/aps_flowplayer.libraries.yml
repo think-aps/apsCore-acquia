@@ -1,0 +1,6 @@
+aps_flowplayer:
+  version: VERSION
+  header: true
+  css:
+    theme:
+      css/style.css: {}

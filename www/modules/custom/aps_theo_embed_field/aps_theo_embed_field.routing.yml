@@ -1,0 +1,7 @@
+aps_theo_embed_field.settings_form:
+  path: '/admin/config/system/theoplayer-settings'
+  defaults:
+    _title: 'THEOplayer embed field settings'
+    _form: 'Drupal\aps_theo_embed_field\Form\SettingsForm'
+  requirements:
+    _permission: 'administer theoplayer configuration'

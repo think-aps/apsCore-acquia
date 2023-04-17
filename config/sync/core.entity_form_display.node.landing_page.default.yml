@@ -1,0 +1,150 @@
+uuid: 84cf63b4-c359-4654-8963-09f51fe64e83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.landing_page.field_content_access
+    - field.field.node.landing_page.field_paragraph_content
+    - field.field.node.landing_page.field_popup
+    - node.type.landing_page
+  module:
+    - field_group
+    - inline_entity_form
+    - path
+third_party_settings:
+  field_group:
+    group_content_group:
+      children:
+        - group_content
+        - group_popup
+        - group_access
+      label: 'Content Group'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_content:
+      children:
+        - title
+        - field_paragraph_content
+      label: Content
+      region: content
+      parent_name: group_content_group
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_access:
+      children:
+        - field_content_access
+        - status
+      label: Config
+      region: content
+      parent_name: group_content_group
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_popup:
+      children:
+        - field_popup
+      label: Popup
+      region: content
+      parent_name: group_content_group
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: false
+id: node.landing_page.default
+targetEntityType: node
+bundle: landing_page
+mode: default
+content:
+  field_content_access:
+    type: options_buttons
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_paragraph_content:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Content
+      label_plural: Content
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_popup:
+    type: inline_entity_form_complex
+    weight: 26
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Item
+      label_plural: Items
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  promote: true
+  sticky: true
+  uid: true
+  url_redirects: true

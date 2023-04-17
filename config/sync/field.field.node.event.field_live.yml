@@ -1,0 +1,23 @@
+uuid: ddb8e474-6481-4f77-a323-4e782079d8cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_live
+    - node.type.event
+id: node.event.field_live
+field_name: field_live
+entity_type: node
+bundle: event
+label: Live
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

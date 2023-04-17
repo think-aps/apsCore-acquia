@@ -1,0 +1,9 @@
+status: 0
+pattern: ''
+escape: false
+preserve_titles: false
+dependencies:
+  config:
+    - node.type.tab
+save: 1
+chunk: '50'

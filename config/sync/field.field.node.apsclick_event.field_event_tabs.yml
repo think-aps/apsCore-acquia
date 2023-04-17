@@ -1,0 +1,29 @@
+uuid: d0e9091e-c937-4eb6-919f-479677d80f63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_tabs
+    - node.type.apsclick_event
+    - node.type.tab
+id: node.apsclick_event.field_event_tabs
+field_name: field_event_tabs
+entity_type: node
+bundle: apsclick_event
+label: Tabs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      tab: tab
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: tab
+field_type: entity_reference

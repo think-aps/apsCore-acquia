@@ -1,0 +1,157 @@
+uuid: 3fd27827-1633-4085-b11b-710c5ffe5903
+langcode: en
+status: true
+dependencies: {  }
+id: webcast
+admin_label: Webcast
+category: ''
+frontend: true
+weight: 0
+sections:
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Event Overview'
+      context_mapping: {  }
+      custom_classes: dashboard-events
+    components:
+      308fcaea-987b-4228-9111-7eb4cb494006:
+        uuid: 308fcaea-987b-4228-9111-7eb4cb494006
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Embed a view'
+          label_display: '0'
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_content:event_info_next'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'User Overview'
+      context_mapping: {  }
+      custom_classes: dashboard-users
+    components:
+      3e7c2a2a-0d7b-4dd5-a778-3a4dca2c9e41:
+        uuid: 3e7c2a2a-0d7b-4dd5-a778-3a4dca2c9e41
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'User Management'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_users:new_users'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Event Content'
+      context_mapping: {  }
+      custom_classes: dashboard-management
+    components:
+      bccca988-1820-4abc-bd85-b50adaae5c48:
+        uuid: bccca988-1820-4abc-bd85-b50adaae5c48
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'System Management'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_content:event_management'
+        weight: 1
+        additional: {  }
+      e8599da7-9d2b-4e80-8e76-599baebde407:
+        uuid: e8599da7-9d2b-4e80-8e76-599baebde407
+        region: content
+        configuration:
+          id: 'system_menu_block:manage-webcast'
+          label: 'Webcast Menu'
+          label_display: '0'
+          provider: system
+          context_mapping: {  }
+          level: 1
+          depth: 0
+          expand_all_items: false
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Evaluation Forms'
+      context_mapping: {  }
+      custom_classes: dashboard-evaluation
+    components:
+      1449b9d1-4237-4679-82ad-36a838c378b5:
+        uuid: 1449b9d1-4237-4679-82ad-36a838c378b5
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Evaluation Forms'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_webform:evaluation'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: 'Social Forms'
+      context_mapping: {  }
+      column_widths: 50-50
+      custom_classes: dashboard-social-forms
+    components:
+      1d9f6c19-af65-419c-acbe-8bb5efb0c0fd:
+        uuid: 1d9f6c19-af65-419c-acbe-8bb5efb0c0fd
+        region: first
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Social Walls'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_webform:social_wall'
+        weight: 0
+        additional: {  }
+      606e44fb-5179-485c-bb23-86f4ac601060:
+        uuid: 606e44fb-5179-485c-bb23-86f4ac601060
+        region: second
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Word Clouds'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_webform:word_cloud'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: Webforms
+      context_mapping: {  }
+      custom_classes: dashboard-forms
+    components:
+      1de4f0ef-5440-47bc-89bb-ec130b71b7d8:
+        uuid: 1de4f0ef-5440-47bc-89bb-ec130b71b7d8
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'General Webforms'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'dashboard_webform:general'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }

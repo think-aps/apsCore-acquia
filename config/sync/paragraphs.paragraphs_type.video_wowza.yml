@@ -1,0 +1,10 @@
+uuid: 5b8f4be7-ac01-4488-9316-b0900e5954d9
+langcode: en
+status: true
+dependencies: {  }
+id: video_wowza
+label: Wowza
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

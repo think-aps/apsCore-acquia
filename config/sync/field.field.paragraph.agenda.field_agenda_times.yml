@@ -1,0 +1,21 @@
+uuid: 6345635e-64af-4b81-899c-3ad3dfd90d67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_agenda_times
+    - paragraphs.paragraphs_type.agenda
+  module:
+    - datetime_range
+id: paragraph.agenda.field_agenda_times
+field_name: field_agenda_times
+entity_type: paragraph
+bundle: agenda
+label: Times
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

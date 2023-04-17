@@ -1,0 +1,31 @@
+uuid: 80d56c9d-16c2-4e0e-96c4-4b44aa73f4a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_iframe
+    - paragraphs.paragraphs_type.video_iframe
+  module:
+    - iframe
+id: paragraph.video_iframe.field_video_iframe
+field_name: field_video_iframe
+entity_type: paragraph
+bundle: video_iframe
+label: iFrame
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: null
+  headerlevel: '3'
+  class: ''
+  frameborder: '0'
+  scrolling: 'no'
+  transparency: '1'
+  allowfullscreen: '1'
+  tokensupport: '0'
+  width: null
+  height: null
+field_type: iframe

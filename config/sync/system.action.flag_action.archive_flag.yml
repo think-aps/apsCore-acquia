@@ -1,0 +1,15 @@
+uuid: b716df77-51b9-4e6d-bc65-0f294e36b762
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.archive
+  module:
+    - flag
+id: flag_action.archive_flag
+label: 'Archive Question'
+type: webform_submission
+plugin: 'flag_action:archive_flag'
+configuration:
+  flag_id: archive
+  flag_action: flag

@@ -1,0 +1,15 @@
+uuid: 9f637702-bca1-4b62-b2cc-4607c0a6e61b
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.like
+  module:
+    - flag
+id: flag_action.like_unflag
+label: 'Remove Like'
+type: webform_submission
+plugin: 'flag_action:like_unflag'
+configuration:
+  flag_id: like
+  flag_action: unflag

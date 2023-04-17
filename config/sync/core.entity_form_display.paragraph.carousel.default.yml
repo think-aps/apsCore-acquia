@@ -1,0 +1,43 @@
+uuid: 8439fb4f-7cd2-4ccf-b60e-77ba554d18cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.carousel.field_entity_list
+    - field.field.paragraph.carousel.field_title
+    - paragraphs.paragraphs_type.carousel
+  module:
+    - inline_entity_form
+id: paragraph.carousel.default
+targetEntityType: paragraph
+bundle: carousel
+mode: default
+content:
+  field_entity_list:
+    type: inline_entity_form_complex
+    weight: 1
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Item
+      label_plural: Items
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

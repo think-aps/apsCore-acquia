@@ -1,0 +1,35 @@
+uuid: 5b6bbe94-9493-4321-baf2-8a2764b74d7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tile_video.field_tile_button_label
+    - field.field.paragraph.tile_video.field_tile_video
+    - paragraphs.paragraphs_type.tile_video
+  module:
+    - video_embed_field
+id: paragraph.tile_video.default
+targetEntityType: paragraph
+bundle: tile_video
+mode: default
+content:
+  field_tile_button_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_tile_video:
+    type: video_embed_field_video
+    label: hidden
+    settings:
+      autoplay: true
+      responsive: true
+      width: 854
+      height: 480
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+uuid: c15640cd-fa7e-4342-aa6b-5c420fd7fff1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tile_button_label
+    - paragraphs.paragraphs_type.tile_file
+id: paragraph.tile_file.field_tile_button_label
+field_name: field_tile_button_label
+entity_type: paragraph
+bundle: tile_file
+label: 'Button Label'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Download
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: 076dd95e-cef3-4d70-9dca-c96c2a9ab8f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.approve
+  module:
+    - flag
+id: flag_action.approve_flag
+label: 'Make visible to chair'
+type: webform_submission
+plugin: 'flag_action:approve_flag'
+configuration:
+  flag_id: approve
+  flag_action: flag

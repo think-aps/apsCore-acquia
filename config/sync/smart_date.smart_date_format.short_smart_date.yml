@@ -1,0 +1,15 @@
+uuid: 63ea102e-73de-4f68-8055-437ecf63358d
+langcode: en
+status: true
+dependencies: {  }
+id: short_smart_date
+label: 'Short Smart Date'
+date_format: 'M j Y'
+time_format: ''
+time_hour_format: ''
+allday_label: 'All day'
+separator: ' - '
+join: ', '
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'

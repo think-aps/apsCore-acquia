@@ -1,0 +1,41 @@
+<?php
+
+  /**
+   * @file
+   * Test to ensure theme compatibility with managed files.
+   */
+
+  use Drupal\Core\Form\FormStateInterface;
+
+  /**
+   * Implements hook_preprocess().
+   */
+  function aps_email_preprocess_swiftmailer(&$variables) {
+    $variables['email_header_logo_url'] = theme_get_setting('email_header_logo_url');
+    $variables['email_footer_logo_url'] = theme_get_setting('email_footer_logo_url');
+
+  }
+
+  /**
+   * Implements hook_form_system_theme_settings_alter().
+   */
+  function aps_email_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+
+    $form['email_setting'] = [
+      '#type' => 'fieldset',
+      '#title' => t('Email Settings'),
+      '#description' => t('You can either upload the email images directly or add an existing image URL.'),
+    ];
+
+    $form['email_setting']['email_header_logo_url'] = [
+      '#type' => 'textfield',
+      '#title' => t('Header Banner URL'),
+      '#default_value' => theme_get_setting('email_header_logo_url'),
+    ];
+
+    $form['email_setting']['email_footer_logo_url'] = [
+      '#type' => 'textfield',
+      '#title' => t('Footer Banner URL'),
+      '#default_value' => theme_get_setting('email_footer_logo_url'),
+    ];
+  }

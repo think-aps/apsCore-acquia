@@ -1,0 +1,15 @@
+uuid: a79907fe-5768-42f4-a449-a1c9b5aeb335
+langcode: en
+status: true
+dependencies: {  }
+name: social_wall_post
+label: 'Social Wall (Scale 800)'
+effects:
+  6dccea42-f157-4077-9aa5-c636b6a5eb7e:
+    uuid: 6dccea42-f157-4077-9aa5-c636b6a5eb7e
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      upscale: false

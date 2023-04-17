@@ -1,0 +1,26 @@
+uuid: 1319d6f8-caf9-4f1e-b04b-52b842c7aac6
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.welcome_page.field_content_access
+    - field.field.node.welcome_page.field_paragraph_content
+    - field.field.node.welcome_page.field_popup
+    - node.type.welcome_page
+  module:
+    - user
+id: node.welcome_page.teaser
+targetEntityType: node
+bundle: welcome_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_access: true
+  field_paragraph_content: true
+  field_popup: true

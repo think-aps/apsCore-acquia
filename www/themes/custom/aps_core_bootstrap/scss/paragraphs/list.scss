@@ -1,0 +1,18 @@
+/**
+/* List Paragraphs
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--list {
+  @extend .pt-4;
+
+  .field--type-entity-reference {
+    &.field__items {
+      @extend .row;
+
+      > .node {
+        @extend .mb-3;
+        @extend .col-md-6;
+        @extend .col-lg-4;
+      }
+    }
+  }
+}

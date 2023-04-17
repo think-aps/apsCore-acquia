@@ -1,0 +1,15 @@
+uuid: d1fd3b28-21d3-4fba-8793-325ef748c9bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_tab
+  module:
+    - flag
+id: flag_action.ably_tab_flag
+label: Activate
+type: node
+plugin: 'flag_action:ably_tab_flag'
+configuration:
+  flag_id: ably_tab
+  flag_action: flag

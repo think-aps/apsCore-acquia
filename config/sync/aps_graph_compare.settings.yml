@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: l2VwP2S_PwoGZvUZ0-q07h5Yl5SW7KVeSCb6OCwUb3Y
+comparison_keys:
+  -
+    primary: ask_a_question
+    secondary: request_materials
+  -
+    primary: event_evaluation
+    secondary: contact_us
+  -
+    primary: event_evaluation
+    secondary: contact_us
+  -
+    primary: event_evaluation
+    secondary: contact_us
+  -
+    primary: tech_support
+    secondary: ask_a_question

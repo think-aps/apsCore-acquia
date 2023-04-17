@@ -1,0 +1,15 @@
+uuid: 5b5175aa-1f38-4416-979f-9a70f4b3acce
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_poll
+  module:
+    - flag
+id: flag_action.ably_poll_unflag
+label: 'Unflag this item'
+type: poll
+plugin: 'flag_action:ably_poll_unflag'
+configuration:
+  flag_id: ably_poll
+  flag_action: unflag

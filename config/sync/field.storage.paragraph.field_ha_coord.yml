@@ -1,0 +1,19 @@
+uuid: 677b9f16-0048-4cc1-9623-a614887237bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_ha_coord
+field_name: field_ha_coord
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

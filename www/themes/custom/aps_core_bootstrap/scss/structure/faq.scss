@@ -1,0 +1,31 @@
+/**
+/* FAQ
+/* ----------------------------------------------------------------------------- */
+.view {
+  &.view-aps-faq {
+    .view-content {
+      > div {
+        @extend .mb-3;
+
+        a {
+          color: $secondary-shade;
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: $secondary-dark;
+          }
+        }
+
+        strong {
+          font-size: $font-size-lg;
+          color: $secondary-shade;
+          display: block;
+
+          @extend .font-weight-bold;
+          @extend .mb-1;
+        }
+      }
+    }
+  }
+}

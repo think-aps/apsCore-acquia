@@ -1,0 +1,15 @@
+uuid: ed309cc6-a2b3-4c3f-a268-88e34d812a86
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_highlight
+  module:
+    - flag
+id: flag_action.ably_highlight_unflag
+label: Highlight
+type: node
+plugin: 'flag_action:ably_highlight_unflag'
+configuration:
+  flag_id: ably_highlight
+  flag_action: unflag

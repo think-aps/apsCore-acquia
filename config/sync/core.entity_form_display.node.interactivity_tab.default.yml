@@ -1,0 +1,130 @@
+uuid: 2c425015-ae95-4eca-85ee-4cd9cccb43b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.icon_browser
+    - field.field.node.interactivity_tab.field_content_access
+    - field.field.node.interactivity_tab.field_media_icon
+    - field.field.node.interactivity_tab.field_paragraph_content
+    - node.type.interactivity_tab
+  module:
+    - entity_browser
+    - field_group
+    - inline_entity_form
+third_party_settings:
+  field_group:
+    group_content:
+      children:
+        - group_basic_info
+        - group_access
+      label: Content
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_access:
+      children:
+        - field_content_access
+        - status
+      label: Access
+      region: content
+      parent_name: group_content
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_basic_info:
+      children:
+        - title
+        - field_icon
+        - field_media_icon
+        - field_paragraph_content
+      label: 'Basic Info'
+      region: content
+      parent_name: group_content
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.interactivity_tab.default
+targetEntityType: node
+bundle: interactivity_tab
+mode: default
+content:
+  field_content_access:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media_icon:
+    type: entity_browser_entity_reference
+    weight: 4
+    region: content
+    settings:
+      entity_browser: icon_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: true
+      open: true
+      field_widget_display_settings:
+        view_mode: icon
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_paragraph_content:
+    type: inline_entity_form_complex
+    weight: 5
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Item
+      label_plural: Items
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true
+  url_redirects: true

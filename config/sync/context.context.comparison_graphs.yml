@@ -1,0 +1,56 @@
+uuid: a931422f-0252-4318-9d3f-dbe0e27a717a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+label: 'Comparison Graphs'
+name: comparison_graphs
+group: Graph
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  request_path:
+    id: request_path
+    negate: false
+    uuid: 23214adc-4a17-4fa6-96b7-0d47ebb725de
+    context_mapping: {  }
+    pages: '/aps-graph-comparison/*'
+reactions:
+  body_class:
+    id: body_class
+    body_class: comparison-graph
+    saved: false
+  regions:
+    id: regions
+    uuid: 240c2284-aec7-4f8d-81ad-dab1581fdd86
+    regions:
+      seven: {  }
+      adminimal_theme: {  }
+      bootstrap_barrio: {  }
+      aps_click_bootstrap: {  }
+      aps_core_bootstrap:
+        - background_image
+        - top_header
+        - header
+        - primary_menu
+        - secondary_menu
+        - page_top
+        - page_bottom
+        - live
+        - featured_top
+        - highlighted
+        - breadcrumb
+        - sidebar_first
+        - sidebar_second
+        - featured_bottom_first
+        - featured_bottom_second
+        - footer_logo
+        - footer_first
+        - footer_second
+        - footer_third
+        - footer_fourth
+      aps_email: {  }
+    saved: false
+weight: 0

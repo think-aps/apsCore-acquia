@@ -1,0 +1,177 @@
+uuid: 1b6f35aa-00c0-4b72-90cc-8901b943fca2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.apsclick_event.field_content_access
+    - field.field.node.apsclick_event.field_event_date
+    - field.field.node.apsclick_event.field_event_overview
+    - field.field.node.apsclick_event.field_event_tabs
+    - field.field.node.apsclick_event.field_grid
+    - field.field.node.apsclick_event.field_grid_offset
+    - field.field.node.apsclick_event.field_media_icon
+    - field.field.node.apsclick_event.field_popup
+    - node.type.apsclick_event
+  module:
+    - dashboards
+    - datetime_range
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Edit Button'
+          context_mapping: {  }
+          custom_classes: edit-button
+        components:
+          9a007886-6f07-4a70-91fd-6ea724848352:
+            uuid: 9a007886-6f07-4a70-91fd-6ea724848352
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Edit Button'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'edit_button:embed'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Webinar Tabs'
+          context_mapping: {  }
+          custom_classes: webinar-tabs
+        components:
+          68406306-8328-4461-bf95-8e9058be3517:
+            uuid: 68406306-8328-4461-bf95-8e9058be3517
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Click Tabs'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'aps_click_tabs:webinar'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Popup
+          context_mapping: {  }
+          custom_id: ''
+          custom_classes: ''
+          custom_class_choose: {  }
+          custom_styles: ''
+          custom_data_attributes: ''
+          regions:
+            content:
+              region_id: ''
+              region_class_choose: {  }
+              region_classes: ''
+              region_styles: ''
+              region_data: ''
+        components:
+          7ee5ad9b-e7df-499c-8fee-66a806797dc5:
+            uuid: 7ee5ad9b-e7df-499c-8fee-66a806797dc5
+            region: content
+            configuration:
+              id: 'field_block:node:apsclick_event:field_popup'
+              label: Popup
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.apsclick_event.default
+targetEntityType: node
+bundle: apsclick_event
+mode: default
+content:
+  field_content_access:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_event_date:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      separator: '-'
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_event_overview:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_event_tabs:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_grid:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_grid_offset:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_media_icon:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_popup:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  links: true

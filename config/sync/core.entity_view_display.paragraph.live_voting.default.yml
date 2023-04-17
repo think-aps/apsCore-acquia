@@ -1,0 +1,32 @@
+uuid: 002ac79f-0fd6-434d-9284-d33f47bdf3db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.live_voting.field_voting_iframe_url
+    - paragraphs.paragraphs_type.live_voting
+  module:
+    - iframe
+id: paragraph.live_voting.default
+targetEntityType: paragraph
+bundle: live_voting
+mode: default
+content:
+  field_voting_iframe_url:
+    type: iframe_only
+    label: hidden
+    settings:
+      url: ''
+      title: ''
+      class: ''
+      frameborder: '0'
+      scrolling: ''
+      transparency: '0'
+      allowfullscreen: '0'
+      tokensupport: '0'
+      width: ''
+      height: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,90 @@
+global-styling:
+  version: VERSION
+  js:
+    js/custom.js: {}
+  css:
+    component:
+      css/style.css: { weight: 99 }
+  dependencies:
+    - core/jquery
+    - core/drupal
+
+gsap:
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js:
+      { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js:
+      { type: external, minified: true }
+    https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js:
+      { type: external, minified: true }
+
+magnific-popup:
+  version: 1.x
+  css:
+    theme:
+      css/magnific-popup.css: {}
+  js:
+    js/jquery.magnific-popup.js: {}
+    js/mfp.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+social-wall:
+  version: 1.x
+  js:
+    js/social-wall.js: {}
+  dependencies:
+    - core/jquery
+    - masonry/masonry.layout
+
+aps-click:
+  version: 1.x
+  js:
+    js/click.js: {}
+  dependencies:
+    - core/jquery
+
+word-cloud:
+  version: 1.2.5
+  js:
+    https://d3js.org/d3.v4.js: {}
+    https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js: {}
+    js/word-cloud.js: { preprocess: false, attributes: { type: module } }
+  dependencies:
+    - core/drupal
+    - core/jquery
+
+carousel:
+  version: 1.1.6
+  js:
+    js/lightslider/dist/js/lightslider.min.js: {}
+    js/carousel.js: {}
+  css:
+    component:
+      js/lightslider/dist/css/lightslider.min.css: {}
+  dependencies:
+    - core/jquery
+
+countdown:
+  version: 1.x
+  js:
+    js/countdown.js: {}
+  dependencies:
+    - core/jquery
+
+polling:
+  version: 1.x
+  js:
+    js/polling.js: { preprocess: false, attributes: { type: module } }
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - aps_core_bootstrap/word-cloud
+
+    # Fonts
+monserrat_full:
+  version: VERSION
+  css:
+    component:
+      fonts/monserrat_full.css: {}

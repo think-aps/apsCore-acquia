@@ -1,0 +1,25 @@
+uuid: 42d22351-66e4-42c8-8875-e46597a7066e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_on_demand
+    - paragraphs.paragraphs_type.video_on_demand
+  module:
+    - video_embed_field
+id: paragraph.video_on_demand.field_video_on_demand
+field_name: field_video_on_demand
+entity_type: paragraph
+bundle: video_on_demand
+label: 'Embedded Video'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

@@ -1,0 +1,68 @@
+/**
+/* Colours
+/* ----------------------------------------------------------------------------- */
+$primary-shade: #EB1185;
+$primary-light: lighten($primary-shade, 40%);
+$primary-dark: darken($primary-shade, 15%);
+$secondary-shade: #0A276B;
+$secondary-light: lighten($secondary-shade, 40%);
+$secondary-dark: darken($secondary-shade, 15%);
+$accent-shade: #FFFFFF;
+$accent-light: lighten($accent-shade, 40%);
+$accent-dark: darken($accent-shade, 15%);
+$dark-shade: #484848;
+
+/**
+/* System
+/* ----------------------------------------------------------------------------- */
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #28a745;
+$cyan: #17a2b8;
+$white: #fff;
+$gray-100: #F7F7F7;
+$gray-500: #ECF0F3;
+$gray-600: #808080;
+$gray-800: #343a40;
+$theme-colors: (
+  primary: $primary-shade,
+  secondary: $secondary-shade,
+  success: $green,
+  info: $cyan,
+  warning: $yellow,
+  danger: $red,
+  light: $gray-100,
+  dark: $gray-800,
+);
+
+/**
+/* Body
+/* ----------------------------------------------------------------------------- */
+$body-bg: $white;
+$body-color: $theme-colors(dark);
+$inverse-bg: $theme-colors(primary);
+$inverse-color: $white;
+
+/**
+/* Comment space
+/* ----------------------------------------------------------------------------- */
+$comment-spacer-x: 1.25em;
+$comment-spacer-y: 1.25em;
+
+/**
+/* Font
+/* ----------------------------------------------------------------------------- */
+$enable-responsive-font-sizes: true;
+$enable-shadows: false;
+$enable-gradients: false;
+
+/**
+/* Opaque
+/* ----------------------------------------------------------------------------- */
+$opaque-light: rgba(255, 255, 255, 0.7);
+$opaque-dark: rgba(0, 0, 0, 0.7);
+
+/**
+/* Rounded edges
+/* ----------------------------------------------------------------------------- */
+$rounded-edges: 14px;

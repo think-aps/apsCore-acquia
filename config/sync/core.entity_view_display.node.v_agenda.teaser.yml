@@ -1,0 +1,32 @@
+uuid: 2865909e-d633-4670-88e3-0513af722842
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.v_agenda.body
+    - field.field.node.v_agenda.field_va_agenda
+    - node.type.v_agenda
+  module:
+    - text
+    - user
+id: node.v_agenda.teaser
+targetEntityType: node
+bundle: v_agenda
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_va_agenda: true

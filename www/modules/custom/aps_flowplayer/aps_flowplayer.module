@@ -1,0 +1,23 @@
+<?php
+
+  /**
+   * @file
+   * Contains aps_flowplayer.module..
+   */
+
+  /**
+   * Implements hook_theme().
+   */
+  function aps_flowplayer_theme() {
+    return [
+      'aps_flowplayer' => [
+        'variables' => [
+          'key' => NULL,
+          'autoplay' => NULL,
+          'live' => NULL,
+          'controls' => NULL,
+          'colour' => NULL,
+        ],
+      ],
+    ];
+  }

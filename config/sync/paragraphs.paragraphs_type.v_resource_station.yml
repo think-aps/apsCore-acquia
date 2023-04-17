@@ -1,0 +1,10 @@
+uuid: 54e2e1ea-5e66-4353-b12e-66852695342c
+langcode: en
+status: true
+dependencies: {  }
+id: v_resource_station
+label: 'Venue Resource Station'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

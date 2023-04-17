@@ -1,0 +1,19 @@
+uuid: 56fb6f55-78bf-4adf-8ea2-64f772224648
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_ha_floating_element
+field_name: field_ha_floating_element
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

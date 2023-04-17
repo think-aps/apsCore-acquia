@@ -1,0 +1,725 @@
+uuid: f38ede55-b6d9-4616-9658-d02c4ce4d38a
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+    - system.menu.footer
+    - system.menu.header-menu
+    - views.view.aps_live_event
+  content:
+    - 'block_content:basic:75edc1c3-8598-4087-868b-555a590c12c7'
+  module:
+    - block_content
+    - system
+    - views
+label: Global
+name: global
+group: Core
+description: 'Active for all pages'
+requireAllConditions: false
+disabled: false
+conditions: {  }
+reactions:
+  blocks:
+    id: blocks
+    uuid: a292cf3d-1b0e-4945-be1b-9ac95297b78c
+    blocks:
+      72cae964-8a70-4855-a3be-7aaad5f5c5b9:
+        uuid: 72cae964-8a70-4855-a3be-7aaad5f5c5b9
+        id: system_branding_block
+        label: 'Site branding'
+        provider: system
+        label_display: '0'
+        region: header
+        weight: '-10'
+        custom_id: system_branding_block
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 1
+        use_site_slogan: 1
+        third_party_settings: {  }
+      bb1a6504-d76f-4d89-80a5-a2a0b48721b6:
+        uuid: bb1a6504-d76f-4d89-80a5-a2a0b48721b6
+        id: 'system_menu_block:account'
+        label: 'User account menu'
+        provider: system
+        label_display: '0'
+        region: primary_menu
+        weight: '-3'
+        custom_id: system_menu_block_account
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      f26cd43f-8095-4d58-9f71-59873712e6fe:
+        uuid: f26cd43f-8095-4d58-9f71-59873712e6fe
+        id: system_messages_block
+        label: Messages
+        provider: system
+        label_display: '0'
+        region: highlighted
+        weight: '0'
+        custom_id: system_messages_block
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      120e429f-9e49-45ee-9cde-8310d5bd8241:
+        uuid: 120e429f-9e49-45ee-9cde-8310d5bd8241
+        id: local_tasks_block
+        label: Tabs
+        provider: core
+        label_display: '0'
+        region: content
+        weight: '-4'
+        custom_id: local_tasks_block
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        primary: 1
+        secondary: 1
+        third_party_settings: {  }
+      21f7d41a-dbf1-4e1d-9d05-248ced6bfd81:
+        uuid: 21f7d41a-dbf1-4e1d-9d05-248ced6bfd81
+        id: page_title_block
+        label: 'Page title'
+        provider: core
+        label_display: '0'
+        region: content
+        weight: '-3'
+        custom_id: page_title_block
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      9fa000b1-d3c1-4325-a647-2d5f28d3c148:
+        uuid: 9fa000b1-d3c1-4325-a647-2d5f28d3c148
+        id: system_main_block
+        label: 'Main page content'
+        provider: system
+        label_display: '0'
+        region: content
+        weight: '-2'
+        custom_id: system_main_block
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      f757b91d-eb9d-4c94-af09-593dd4cc5de2:
+        uuid: f757b91d-eb9d-4c94-af09-593dd4cc5de2
+        id: 'system_menu_block:footer'
+        label: Footer
+        provider: system
+        label_display: '0'
+        region: footer_first
+        weight: '-3'
+        custom_id: system_menu_block_footer
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      acbeef1c-c4e8-4db1-a44f-b255902aee24:
+        uuid: acbeef1c-c4e8-4db1-a44f-b255902aee24
+        id: 'block_content:75edc1c3-8598-4087-868b-555a590c12c7'
+        label: 'Footer Info'
+        provider: block_content
+        label_display: '0'
+        region: footer_third
+        weight: '0'
+        custom_id: block_content_75edc1c3_8598_4087_868b_555a590c12c7
+        theme: aps_core_w3css
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+      53be725d-9c02-45b6-a106-8da85f77c571:
+        uuid: 53be725d-9c02-45b6-a106-8da85f77c571
+        id: system_branding_block
+        label: 'Site branding'
+        provider: system
+        label_display: '0'
+        region: header
+        weight: '0'
+        custom_id: system_branding_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 1
+        use_site_slogan: 1
+        third_party_settings: {  }
+      c8f11425-7678-479b-b038-176a88fe80d1:
+        uuid: c8f11425-7678-479b-b038-176a88fe80d1
+        id: 'system_menu_block:account'
+        label: 'User account menu'
+        provider: system
+        label_display: '0'
+        region: primary_menu
+        weight: '-5'
+        custom_id: system_menu_block_account
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      0dac8d45-84f0-4d15-afa8-ea50a83c328e:
+        uuid: 0dac8d45-84f0-4d15-afa8-ea50a83c328e
+        id: system_messages_block
+        label: Messages
+        provider: system
+        label_display: '0'
+        region: highlighted
+        weight: '-5'
+        custom_id: system_messages_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      ea1ab525-2fa7-4829-95dc-d540c054a2c6:
+        uuid: ea1ab525-2fa7-4829-95dc-d540c054a2c6
+        id: local_tasks_block
+        label: Tabs
+        provider: core
+        label_display: '0'
+        region: content
+        weight: '-5'
+        custom_id: local_tasks_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        primary: 1
+        secondary: 1
+        third_party_settings: {  }
+      e42997f8-87ba-497b-b12a-cee5040da23c:
+        uuid: e42997f8-87ba-497b-b12a-cee5040da23c
+        id: page_title_block
+        label: 'Page title'
+        provider: core
+        label_display: '0'
+        region: content
+        weight: '-4'
+        custom_id: page_title_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      d405f542-f7fb-4e6c-902c-c9228e48953a:
+        uuid: d405f542-f7fb-4e6c-902c-c9228e48953a
+        id: system_main_block
+        label: 'Main page content'
+        provider: system
+        label_display: '0'
+        region: content
+        weight: '-3'
+        custom_id: system_main_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      61df53df-f0dc-44d4-b24b-9efce6cc1110:
+        uuid: 61df53df-f0dc-44d4-b24b-9efce6cc1110
+        id: 'system_menu_block:footer'
+        label: 'Footer Menu'
+        provider: system
+        label_display: '0'
+        region: footer_first
+        weight: '0'
+        custom_id: system_menu_block_footer
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      5f2fd94b-4c71-49e5-9946-053b87df9f96:
+        uuid: 5f2fd94b-4c71-49e5-9946-053b87df9f96
+        id: 'block_content:75edc1c3-8598-4087-868b-555a590c12c7'
+        label: 'Footer Info'
+        provider: block_content
+        label_display: '0'
+        region: footer_fourth
+        weight: '0'
+        custom_id: footer_info_block
+        theme: aps_core
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+      58231785-330c-49db-8b0c-07b805d28550:
+        uuid: 58231785-330c-49db-8b0c-07b805d28550
+        id: system_branding_block
+        label: 'Site branding'
+        provider: system
+        label_display: '0'
+        region: header
+        weight: '-5'
+        custom_id: system_branding_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 0
+        use_site_slogan: 0
+        third_party_settings: {  }
+      13dc0bad-7234-4bc1-b574-5f527c785978:
+        uuid: 13dc0bad-7234-4bc1-b574-5f527c785978
+        id: system_messages_block
+        label: Messages
+        provider: system
+        label_display: '0'
+        region: highlighted
+        weight: '-5'
+        custom_id: system_messages_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      5f95ed6e-9f3c-4b04-a0b7-957fef2b3a10:
+        uuid: 5f95ed6e-9f3c-4b04-a0b7-957fef2b3a10
+        id: system_main_block
+        label: 'Main page content'
+        provider: system
+        label_display: '0'
+        region: content
+        weight: '-3'
+        custom_id: system_main_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      7d8e6c7d-6b4e-4c93-8b07-d4b6a4603296:
+        uuid: 7d8e6c7d-6b4e-4c93-8b07-d4b6a4603296
+        id: 'system_menu_block:footer'
+        label: 'Footer Menu'
+        provider: system
+        label_display: '0'
+        region: footer_second
+        weight: '-4'
+        custom_id: system_menu_block_footer
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      d0bbc829-e184-4a2e-b229-a444fc7b447c:
+        uuid: d0bbc829-e184-4a2e-b229-a444fc7b447c
+        id: 'block_content:75edc1c3-8598-4087-868b-555a590c12c7'
+        label: 'Footer Info'
+        provider: block_content
+        label_display: '0'
+        region: footer_first
+        weight: '-4'
+        custom_id: footer_info_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+      93454fab-b79f-41e6-a2f9-35b6b927aeb2:
+        uuid: 93454fab-b79f-41e6-a2f9-35b6b927aeb2
+        id: system_branding_block
+        label: 'Site branding'
+        provider: system
+        label_display: '0'
+        region: header
+        weight: '-3'
+        custom_id: system_branding_block
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 0
+        use_site_slogan: 0
+        third_party_settings: {  }
+      6bcb13b9-cb2a-45ef-a251-0d2796737104:
+        uuid: 6bcb13b9-cb2a-45ef-a251-0d2796737104
+        id: system_messages_block
+        label: Messages
+        provider: system
+        label_display: '0'
+        region: highlighted
+        weight: '0'
+        custom_id: system_messages_block
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      67d98b58-375c-4dca-bcc2-8c954681afa5:
+        uuid: 67d98b58-375c-4dca-bcc2-8c954681afa5
+        id: system_main_block
+        label: 'Main page content'
+        provider: system
+        label_display: '0'
+        region: content
+        weight: '-2'
+        custom_id: system_main_block
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      e849f8df-3181-4019-83d3-2069cffd6cae:
+        uuid: e849f8df-3181-4019-83d3-2069cffd6cae
+        id: 'system_menu_block:footer'
+        label: 'Footer Menu'
+        provider: system
+        label_display: '0'
+        region: footer_second
+        weight: '-3'
+        custom_id: system_menu_block_footer
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      89d89a09-d0da-4bb3-9f3c-ceb6b1bfed01:
+        uuid: 89d89a09-d0da-4bb3-9f3c-ceb6b1bfed01
+        id: 'block_content:75edc1c3-8598-4087-868b-555a590c12c7'
+        label: 'Footer Info'
+        provider: block_content
+        label_display: '0'
+        region: footer_first
+        weight: '-10'
+        custom_id: footer_info_block
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+      5cc0247f-d83e-47bb-b5eb-c64de5603e55:
+        uuid: 5cc0247f-d83e-47bb-b5eb-c64de5603e55
+        id: system_branding_block
+        label: 'Site branding'
+        provider: system
+        label_display: '0'
+        region: top_header
+        weight: '0'
+        custom_id: system_branding_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 1
+        use_site_slogan: 1
+        third_party_settings: {  }
+      45a81c7a-09cb-47da-bb3e-31c8f3d7f6de:
+        uuid: 45a81c7a-09cb-47da-bb3e-31c8f3d7f6de
+        id: 'system_menu_block:account'
+        label: 'User account menu'
+        provider: system
+        label_display: '0'
+        region: header
+        weight: '0'
+        custom_id: system_menu_block_account
+        theme: aps_express_bootstrap
+        css_class: container
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      e4790302-8955-4e69-9186-2f2fd97d2f89:
+        uuid: e4790302-8955-4e69-9186-2f2fd97d2f89
+        id: system_messages_block
+        label: Messages
+        provider: system
+        label_display: '0'
+        region: highlighted
+        weight: '-3'
+        custom_id: system_messages_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      ba9f3d87-03f3-4f7a-8bd4-fa9461ba230f:
+        uuid: ba9f3d87-03f3-4f7a-8bd4-fa9461ba230f
+        id: local_tasks_block
+        label: Tabs
+        provider: core
+        label_display: '0'
+        region: highlighted
+        weight: '-2'
+        custom_id: local_tasks_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        primary: 1
+        secondary: 1
+        third_party_settings: {  }
+      d9964b15-5f8b-407d-9456-fe46755f9403:
+        uuid: d9964b15-5f8b-407d-9456-fe46755f9403
+        id: page_title_block
+        label: 'Page title'
+        provider: core
+        label_display: '0'
+        region: content
+        weight: '-3'
+        custom_id: page_title_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      939fddab-8046-4e4d-ae76-8b2c1d40da38:
+        uuid: 939fddab-8046-4e4d-ae76-8b2c1d40da38
+        id: system_main_block
+        label: 'Main page content'
+        provider: system
+        label_display: '0'
+        region: content
+        weight: '-2'
+        custom_id: system_main_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        third_party_settings: {  }
+      245e23f8-fddf-40d4-9deb-18ab74e5f23f:
+        uuid: 245e23f8-fddf-40d4-9deb-18ab74e5f23f
+        id: 'system_menu_block:footer'
+        label: 'Footer Menu'
+        provider: system
+        label_display: '0'
+        region: footer_first
+        weight: '0'
+        custom_id: system_menu_block_footer
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      ba033ae6-15ac-4573-8149-6d12f5ab70e5:
+        uuid: ba033ae6-15ac-4573-8149-6d12f5ab70e5
+        id: 'block_content:75edc1c3-8598-4087-868b-555a590c12c7'
+        label: 'Footer Info'
+        provider: block_content
+        label_display: '0'
+        region: footer_second
+        weight: '-5'
+        custom_id: footer_info_block
+        theme: aps_express_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+      132f504b-b9f9-4c30-a354-796fdb64d2e5:
+        uuid: 132f504b-b9f9-4c30-a354-796fdb64d2e5
+        id: 'views_block:aps_live_event-banner'
+        label: ''
+        provider: views
+        label_display: '0'
+        region: live
+        weight: '0'
+        custom_id: live_event_banner
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        views_label: ''
+        items_per_page: none
+        third_party_settings: {  }
+      f66b8f2f-aff9-4a40-88bf-dbfae7ccbd5b:
+        uuid: f66b8f2f-aff9-4a40-88bf-dbfae7ccbd5b
+        id: 'system_menu_block:header-menu'
+        label: 'Header Menu'
+        provider: system
+        label_display: '0'
+        region: primary_menu
+        weight: '0'
+        custom_id: system_menu_block_header_menu
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      ac140b12-b820-4b7b-9762-76d803f01746:
+        uuid: ac140b12-b820-4b7b-9762-76d803f01746
+        id: system_branding_block
+        label: 'Footer Logo'
+        provider: system
+        label_display: '0'
+        region: footer_logo
+        weight: '0'
+        custom_id: system_branding_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 0
+        use_site_slogan: 0
+        third_party_settings: {  }
+      3e9ac22b-be71-43f9-8a56-288d5116623a:
+        uuid: 3e9ac22b-be71-43f9-8a56-288d5116623a
+        id: 'system_menu_block:header-menu'
+        label: 'Header Menu'
+        provider: system
+        label_display: '0'
+        region: footer_second
+        weight: '-5'
+        custom_id: footer_primary_menu
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      0e7f5cf6-6ff9-4b88-803c-4f3f30ce0be9:
+        uuid: 0e7f5cf6-6ff9-4b88-803c-4f3f30ce0be9
+        id: 'system_menu_block:header-menu'
+        label: 'Header Menu'
+        provider: system
+        label_display: '0'
+        region: primary_menu
+        weight: '0'
+        custom_id: system_menu_block_header_menu
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+      d0001f7a-3215-4c0b-9375-991102f26bc9:
+        uuid: d0001f7a-3215-4c0b-9375-991102f26bc9
+        id: system_branding_block
+        label: 'Footer Logo'
+        provider: system
+        label_display: '0'
+        region: footer_logo
+        weight: '0'
+        custom_id: system_branding_block
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        use_site_logo: 1
+        use_site_name: 0
+        use_site_slogan: 0
+        third_party_settings: {  }
+      8c019be5-0cda-45ff-971f-16f40e25da16:
+        uuid: 8c019be5-0cda-45ff-971f-16f40e25da16
+        id: 'system_menu_block:header-menu'
+        label: 'Header Menu'
+        provider: system
+        label_display: '0'
+        region: footer_second
+        weight: '-4'
+        custom_id: system_menu_block_header_menu
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: global
+        context_mapping: {  }
+        level: '1'
+        depth: '0'
+        expand_all_items: 0
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

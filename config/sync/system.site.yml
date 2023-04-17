@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+langcode: en
+uuid: 2ae66e5d-30e4-4df9-af3d-d13f145151d2
+name: 'ABNEY HEALTHCARE'
+mail: developer@thinkaps.com
+slogan: 'VIRTUAL EVENTS'
+page:
+  403: /user/register
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

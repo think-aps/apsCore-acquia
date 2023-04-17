@@ -1,0 +1,26 @@
+uuid: 78fa6694-2dac-4492-8e80-ed44acc5ae04
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.card
+  module:
+    - crop
+name: card
+label: 'Card (Crop 5:2)'
+effects:
+  5062763a-6008-4045-895f-ab0aebd2e031:
+    uuid: 5062763a-6008-4045-895f-ab0aebd2e031
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: card
+      automatic_crop_provider: null
+  26a0a1a7-3ed3-4ee0-8d34-3e0fdbfe7334:
+    uuid: 26a0a1a7-3ed3-4ee0-8d34-3e0fdbfe7334
+    id: image_scale
+    weight: 2
+    data:
+      width: 400
+      height: null
+      upscale: true

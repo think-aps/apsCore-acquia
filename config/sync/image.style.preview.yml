@@ -1,0 +1,26 @@
+uuid: c8ada712-cc2c-4df1-b687-1830dfe2d125
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.preview
+  module:
+    - crop
+name: preview
+label: 'Preview (16:9)'
+effects:
+  99a33048-2555-4a56-add0-276e2f1a5ed7:
+    uuid: 99a33048-2555-4a56-add0-276e2f1a5ed7
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: preview
+      automatic_crop_provider: null
+  742f5c71-5a72-45b8-aafa-b10c7dd27e61:
+    uuid: 742f5c71-5a72-45b8-aafa-b10c7dd27e61
+    id: image_scale
+    weight: 2
+    data:
+      width: 400
+      height: null
+      upscale: true

@@ -1,0 +1,15 @@
+uuid: ad330d0c-4665-4244-8d92-2bba07c77ec3
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.like
+  module:
+    - flag
+id: flag_action.like_flag
+label: Like
+type: webform_submission
+plugin: 'flag_action:like_flag'
+configuration:
+  flag_id: like
+  flag_action: flag

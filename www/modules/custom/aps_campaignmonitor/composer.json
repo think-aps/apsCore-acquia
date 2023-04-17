@@ -1,0 +1,15 @@
+{
+    "name": "apsgitadmin/aps_campaignmonitor",
+    "description": "Allow the module the ability to download necessary source files",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "APS Developer",
+            "email": "developer@thinkaps.com"
+        }
+    ],
+    "require": {
+        "campaignmonitor/createsend-php": "^5.0.2"
+    }
+}

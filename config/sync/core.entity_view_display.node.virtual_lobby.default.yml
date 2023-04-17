@@ -1,0 +1,28 @@
+uuid: 96447fe7-d0ef-4475-bb0f-248ccd1aa62f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.virtual_lobby.field_content_access
+    - field.field.node.virtual_lobby.field_hotspot_image
+    - node.type.virtual_lobby
+  module:
+    - entity_reference_revisions
+    - user
+id: node.virtual_lobby.default
+targetEntityType: node
+bundle: virtual_lobby
+mode: default
+content:
+  field_hotspot_image:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_content_access: true
+  links: true

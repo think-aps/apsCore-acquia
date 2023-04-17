@@ -1,0 +1,15 @@
+uuid: d1722deb-944f-4b6f-9b6a-f6abcb42822d
+langcode: en
+status: true
+dependencies: {  }
+id: agenda_time
+label: 'Agenda Time'
+date_format: ''
+time_format: 'H:i'
+time_hour_format: 'H:i'
+allday_label: ''
+separator: ' — '
+join: ', '
+ampm_reduce: '1'
+date_first: '0'
+site_time_toggle: '1'

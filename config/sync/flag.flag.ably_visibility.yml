@@ -1,0 +1,30 @@
+uuid: 414b2857-c7a1-4420-b6fa-813bfdf2b25d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: ably_visibility
+label: 'Ably - Visibility'
+bundles:
+  - tab
+entity_type: node
+global: true
+flag_short: Hide
+flag_long: ''
+flag_message: ''
+unflag_short: Reveal
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: false
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

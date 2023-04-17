@@ -1,0 +1,13 @@
+features:
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 1
+favicon:
+  use_default: 1
+email_header_logo: {  }
+email_header_logo_url: 'https://mcusercontent.com/a2a1917b6b8c0511230a8c675/images/e9a85c12-1de4-ed49-92cf-ad2c8c93e70f.png'
+email_footer_logo: {  }
+email_footer_logo_url: 'https://mcusercontent.com/a2a1917b6b8c0511230a8c675/images/8ab7972d-3154-e106-2b76-495cfb0cae88.png'

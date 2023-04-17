@@ -1,0 +1,10 @@
+global-styling:
+  version: VERSION
+  js:
+    js/custom.js: {}
+  css:
+    component:
+      css/style.css: { weight: 99 }
+  dependencies:
+    - core/jquery
+    - core/drupal

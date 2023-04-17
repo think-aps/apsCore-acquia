@@ -1,0 +1,31 @@
+uuid: a091c37e-affe-4106-8864-2f15bbdf5215
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tile_file.field_tile_button_label
+    - field.field.paragraph.tile_file.field_tile_media
+    - paragraphs.paragraphs_type.tile_file
+id: paragraph.tile_file.default
+targetEntityType: paragraph
+bundle: tile_file
+mode: default
+content:
+  field_tile_button_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_tile_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: file
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

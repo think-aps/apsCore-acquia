@@ -1,0 +1,19 @@
+uuid: ef9b87b1-4cbd-459b-8254-2ae8028fe91d
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.word_cloud_tags
+    - field.storage.comment.field_wc_comment_tags
+id: comment.word_cloud_tags.field_wc_comment_tags
+field_name: field_wc_comment_tags
+entity_type: comment
+bundle: word_cloud_tags
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

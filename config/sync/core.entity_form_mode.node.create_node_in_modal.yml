@@ -1,0 +1,10 @@
+uuid: 93511065-6ede-4205-90ca-164c781a8b3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.create_node_in_modal
+label: 'Create node in modal'
+targetEntityType: node
+cache: true

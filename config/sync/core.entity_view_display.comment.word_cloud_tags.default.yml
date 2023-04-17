@@ -1,0 +1,34 @@
+uuid: d26a27c9-fba2-4d59-a39d-447602921b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.word_cloud_tags
+    - field.field.comment.word_cloud_tags.field_wc_comment_tags
+    - field.field.comment.word_cloud_tags.field_wc_message
+id: comment.word_cloud_tags.default
+targetEntityType: comment
+bundle: word_cloud_tags
+mode: default
+content:
+  field_wc_comment_tags:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_wc_message:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

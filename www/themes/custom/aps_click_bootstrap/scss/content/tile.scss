@@ -1,0 +1,32 @@
+/**
+/* Tile
+/* ----------------------------------------------------------------------------- */
+.node--type-tile {
+  .node__content {
+    .tile-thumbnail {
+      img {
+        @extend .m-0;
+      }
+    }
+
+    .tile-wrapper {
+      .tile-content {
+        text-align: left;
+        padding: 1rem 1.5rem;
+
+        .title {
+
+        }
+      }
+
+      .tile-link {
+        a {
+          @extend .m-0;
+
+          @include rounded-edges(0);
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,12 @@
+aps_campaignmonitor.client:
+  title: 'Client'
+  route_name: aps_campaignmonitor.client
+  base_route: aps_campaignmonitor.client
+aps_campaignmonitor.mailing:
+  title: 'System Emails'
+  route_name: aps_campaignmonitor.mailing
+  base_route: aps_campaignmonitor.client
+aps_campaignmonitor.flag:
+  title: 'Flag'
+  route_name: aps_campaignmonitor.flag
+  base_route: aps_campaignmonitor.client

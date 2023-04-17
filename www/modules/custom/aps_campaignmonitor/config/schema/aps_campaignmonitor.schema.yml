@@ -1,0 +1,48 @@
+aps_campaignmonitor.settings:
+  type: config_object
+  label: 'Client Configuration'
+  mapping:
+    api_key:
+      label: 'API Key'
+      type: string
+    client_id:
+      label: 'Client ID'
+      type: string
+    all_users_list_id:
+      label: 'All Users List ID'
+      type: string
+    flagged_entities:
+      label: 'Flagged Entities'
+      type: sequence
+      sequence:
+        type: mapping
+        label: 'Flagged Entity'
+        mapping:
+          flag_id:
+            type: string
+            label: 'Flag ID'
+          field_label:
+            type: string
+            label: 'Field Label'
+    drupal_fallback:
+      label: 'Drupal Sender Fallback'
+      type: boolean
+    mailing_keys:
+      label: 'Mailing Keys'
+      type: sequence
+      sequence:
+        type: mapping
+        label: 'Mailing Key Item'
+        mapping:
+          transactional_id:
+            type: string
+            label: 'Transactional Template ID'
+          message_key:
+            type: string
+            label: 'Message Key'
+          method:
+            type: string
+            label: 'Comparison Method'
+    subscriber_flag:
+      label: 'Subscriber Flag'
+      type: string

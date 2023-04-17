@@ -1,0 +1,24 @@
+uuid: 2e09312b-0d4d-49b7-bd0d-7a5ba5587690
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.virtual_lobby.field_content_access
+    - field.field.node.virtual_lobby.field_hotspot_image
+    - node.type.virtual_lobby
+  module:
+    - user
+id: node.virtual_lobby.teaser
+targetEntityType: node
+bundle: virtual_lobby
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_access: true
+  field_hotspot_image: true

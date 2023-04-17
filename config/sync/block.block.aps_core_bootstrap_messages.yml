@@ -1,0 +1,22 @@
+uuid: 8d81c997-e6e1-4224-bf94-8399db877b00
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - aps_core_bootstrap
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: aps_core_bootstrap_messages
+theme: aps_core_bootstrap
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

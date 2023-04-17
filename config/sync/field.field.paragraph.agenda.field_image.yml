@@ -1,0 +1,38 @@
+uuid: ff2976c3-57b6-46ac-ad9d-af47f5d45203
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - paragraphs.paragraphs_type.agenda
+  module:
+    - image
+id: paragraph.agenda.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: agenda
+label: Photo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'faculty/photo/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 600KB
+  max_resolution: 320x320
+  min_resolution: 80x80
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

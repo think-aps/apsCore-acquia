@@ -1,0 +1,5 @@
+aps_email:
+  version: VERSION
+  css:
+    theme:
+      css/email-style.css: {}

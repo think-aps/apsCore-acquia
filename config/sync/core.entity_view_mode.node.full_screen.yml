@@ -1,0 +1,10 @@
+uuid: 6737c79a-7358-4bc4-ab32-daa48daef820
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.full_screen
+label: 'Full Screen'
+targetEntityType: node
+cache: true

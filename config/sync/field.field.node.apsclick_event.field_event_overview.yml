@@ -1,0 +1,26 @@
+uuid: 321b8e36-0b5d-488d-93ed-0316a69b12ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_overview
+    - node.type.apsclick_event
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.apsclick_event.field_event_overview
+field_name: field_event_overview
+entity_type: node
+bundle: apsclick_event
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

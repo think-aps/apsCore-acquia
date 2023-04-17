@@ -1,0 +1,23 @@
+uuid: 58a62197-0b66-4a45-9da5-54d01e220158
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_on_demand.field_video_on_demand
+    - paragraphs.paragraphs_type.video_on_demand
+  module:
+    - video_embed_field
+id: paragraph.video_on_demand.default
+targetEntityType: paragraph
+bundle: video_on_demand
+mode: default
+content:
+  field_video_on_demand:
+    type: video_embed_field_textfield
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,11 @@
+aps_segment:
+  version: 1.x
+  header: true
+  js:
+    js/bootstrap.js: {}
+    js/actions.js: {}
+    https://player.vimeo.com/api/player.js: { type: external, minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

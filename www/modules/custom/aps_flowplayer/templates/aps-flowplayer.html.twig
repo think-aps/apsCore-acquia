@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Display the Flowplayer embed video.
+ */
+#}
+
+{{ attach_library('aps_flowplayer/aps_flowplayer') }}
+
+{%
+  set classes = [
+    controls ? 'disable-controls',
+    live ? 'live-mode',
+  ]
+%}
+
+<style>
+  .fp-switch .fp-icon,
+  .fp-timeline .fp-progress {
+    background-color: {{ colour }};
+  }
+</style>
+
+<div class="wowza-embed">
+  <div class="wowza-wrapper ratio ratio-16x9">
+    <div id="wowza_player" {{ attributes.addClass(classes) }}></div>
+  </div>
+
+  <script id="flowplayer" src="//player.video.wowza.com/hosted/{{ key }}/wowza.js" type="text/javascript"></script>
+</div>

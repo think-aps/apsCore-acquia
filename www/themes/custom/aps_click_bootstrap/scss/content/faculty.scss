@@ -1,0 +1,104 @@
+/**
+/* Faculty
+/* ----------------------------------------------------------------------------- */
+.node--type-faculty,
+.mfp-content {
+  .faculty-popup {
+
+  }
+
+  .faculty-wrapper {
+    .photo-spacer {
+
+    }
+
+    .faculty-container {
+      @include drop-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
+
+      .photo-wrapper {
+        --bs-aspect-ratio: calc(1 / 4 * 100%);
+
+        .photo {
+          width: 50%;
+          left: 25%;
+
+          .field--type-image {
+
+          }
+
+          img {
+            @include drop-shadow(2px, 2px, 15px, 0, rgba($secondary-shade, 0.5));
+          }
+        }
+
+        .mfp-close {
+
+        }
+      }
+
+      .faculty-content {
+        .faculty-titles {
+          .name {
+          }
+
+          .affiliation {
+          }
+
+          .biography {
+
+          }
+        }
+
+        .faculty-link {
+          a {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .mfp-custom-close {
+
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .paragraph--type--faculty,
+  .mfp-content {
+
+    .faculty-popup {
+
+    }
+
+    .faculty-wrapper {
+      .photo-spacer {}
+
+      .faculty-container {
+        .photo-wrapper {
+          .photo {
+            .field--type-image {}
+
+            img {}
+          }
+        }
+
+        .faculty-content {
+          .faculty-titles {
+            .name {}
+
+            .affiliation {}
+
+            .biography {}
+          }
+
+          .faculty-link {
+            a {}
+          }
+        }
+      }
+    }
+
+    .mfp-custom-close {}
+  }
+}

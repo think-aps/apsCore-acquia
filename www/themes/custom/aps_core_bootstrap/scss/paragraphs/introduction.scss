@@ -1,0 +1,72 @@
+/**
+/* Introduction
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--introduction {
+  .field--type-link {
+    @extend .mt-3;
+
+    a {
+      @extend .btn;
+      @extend .btn-primary;
+      @extend .btn-arrow-right;
+    }
+  }
+
+  .field--type-iframe {
+    @include rounded-edges($rounded-edges);
+    @include drop-shadow;
+
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+
+    overflow: hidden;
+
+    > div {
+      @extend .ratio;
+      @extend .ratio-16x9;
+
+      iframe {
+
+      }
+    }
+  }
+
+  .layout {
+    &.layout--twocol-section {
+      .layout__region {
+        &--first {
+          padding-right: 3rem;
+        }
+
+        &--second {
+
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .paragraph--type--introduction {
+    .field--type-link {
+      a {
+        max-width: none;
+      }
+    }
+
+    .layout {
+      &.layout--twocol-section {
+        .layout__region {
+          &--first {
+            flex: 0 1 100%;
+            padding-right: 0;
+            padding-bottom: 1rem;
+          }
+
+          &--second {
+            flex: 0 1 100%;
+          }
+        }
+      }
+    }
+  }
+}

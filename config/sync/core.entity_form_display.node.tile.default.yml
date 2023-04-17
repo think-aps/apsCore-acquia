@@ -1,0 +1,91 @@
+uuid: e46991c1-0c6d-4754-9dfe-f762c090323d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tile.body
+    - field.field.node.tile.field_tile_image
+    - field.field.node.tile.field_tile_paragraph
+    - image.style.medium
+    - node.type.tile
+  module:
+    - allowed_formats
+    - image_widget_crop
+    - maxlength
+    - paragraphs
+    - text
+id: node.tile.default
+targetEntityType: node
+bundle: tile
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_tile_image:
+    type: image_widget_crop
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - preview
+      crop_types_required:
+        - preview
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings: {  }
+  field_tile_paragraph:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Action
+      title_plural: Actions
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true
+  url_redirects: true

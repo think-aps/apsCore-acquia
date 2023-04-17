@@ -1,0 +1,98 @@
+/**
+/* Carousel
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--carousel {
+  .field--name-field-title {
+    @extend h2;
+
+    text-align: center;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+
+    .lSSlideOuter {
+      .lSSlideWrapper {
+        .carousel-list {
+          height: auto !important;
+          display: flex;
+          justify-content: stretch;
+          gap: calc(var(--bs-gutter-x) * 2);
+
+          &:before,
+          &:after {
+            position: absolute;
+          }
+
+          li {
+            margin-top: var(--bs-gutter-x);
+            margin-bottom: var(--bs-gutter-x);
+
+            &:first-child,
+            &:first-of-type {
+              margin-left: calc(var(--bs-gutter-x) * 1);
+            }
+
+            &:last-child,
+            &:last-of-type {
+              margin-right: calc(var(--bs-gutter-x) * 1) !important;
+            }
+
+            article,
+            .node__content {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    &.carousel-active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .carousel-controls {
+        @extend .btn;
+        @extend .btn-primary;
+        @extend .rounded-circle;
+
+        @include drop-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
+
+        position: relative;
+        min-width: 30px;
+        height: 30px;
+
+        &:after {
+          position: absolute;
+          height: 70%;
+          width: 60%;
+          left: 20%;
+          top: 15%;
+          content: "";
+          display: block;
+          background: url("../images/icons/arrow-right.svg") center right no-repeat transparent;
+          background-size: contain;
+          -webkit-transition: -webkit-transform 0.2s ease-in-out;
+          transition: -webkit-transform 0.2s ease-in-out;
+          -o-transition: -o-transform 0.2s ease-in-out;
+          transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out, -o-transform 0.2s ease-in-out;
+        }
+
+        &.prev {
+          &:after {
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+
+    .carousel-controls {
+      display: none;
+    }
+  }
+}

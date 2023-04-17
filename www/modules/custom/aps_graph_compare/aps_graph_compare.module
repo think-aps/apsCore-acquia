@@ -1,0 +1,110 @@
+<?php
+
+  use Drupal\Core\Link;
+  use Drupal\Core\Render\Markup;
+  use Drupal\Core\Url;
+
+  /**
+   * Implements hook_theme().
+   */
+  function aps_graph_compare_theme() {
+    return array(
+      'aps_graph_compare' => array(
+        'variables' => array(
+          'title' => NULL,
+          'submissions' => NULL,
+          'types' => NULL,
+        ),
+      ),
+    );
+  }
+
+  function aps_graph_compare_comparison_group_table($key) {
+    $keys = \Drupal::config('aps_graph_compare.settings')->get('comparison_keys');
+    $valid_types = array('checkboxes', 'radios');
+
+    $header = array(
+      'title' => t('Field'),
+      'name' => t('Name'),
+      'type' => t('Type'),
+      'link' => t('Link'),
+    );
+
+    $rows = array();
+    if (array_key_exists($key, $keys)) {
+      $primary = \Drupal::entityTypeManager()->getStorage('webform')->load($keys[$key]['primary']);
+      $secondary = \Drupal::entityTypeManager()->getStorage('webform')->load($keys[$key]['secondary']);
+
+      if ($primary instanceof \Drupal\webform\Entity\Webform &&
+        (method_exists($primary, 'getElementsDecodedAndFlattened') && method_exists($secondary, 'getElementsDecodedAndFlattened'))) {
+        $primary_fields = $primary->getElementsDecodedAndFlattened();
+        $secondary_fields = $secondary->getElementsDecodedAndFlattened();
+
+
+        foreach ($primary_fields as $field_name => $field) {
+          $match = array_key_exists($field_name, $secondary_fields) && in_array($field['#type'], $valid_types);
+
+          $link = Link::fromTextAndUrl(
+            Markup::create(t('Compare')),
+            Url::fromRoute(
+              "aps_graph_compare.{$key}.{$field_name}",
+              array(),
+              array(
+                'attributes' => array(
+                  'class' => array(
+                    'btn', 'btn-primary', 'btn-array-right'
+                  ),
+                  'target' => '_blank'
+                )
+              )
+            )
+          );
+
+          $rows[] = array(
+            'title' => (array_key_exists('#title', $field))? $field['#title'] : '',
+            'name' => $field_name,
+            'type' => ucfirst(str_replace('_', ' ', $field['#type'])),
+            'link' => ($match)? $link : '-',
+          );
+        }
+      }
+    }
+
+    return array(
+      '#type' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#empty' => t('No fields exist on the primary Webform type.'),
+    );
+  }
+
+  function aps_graph_compare_load_webform_submissions($webform) {
+    if ($webform->hasSubmissions()) {
+      $query = \Drupal::entityQuery('webform_submission')->condition('webform_id', $webform->id());
+      $result = $query->accessCheck(FALSE)->execute();
+
+      $submissions = array();
+      foreach ($result as $item) {
+        $submission = \Drupal\webform\Entity\WebformSubmission::load($item);
+        $submissions[] = $submission->getData();
+      }
+
+      return $submissions;
+    }
+
+    return FALSE;
+  }
+
+  function aps_graph_compare_formatted_webform_submissions($webform) {
+    $formatted = array();
+
+    if ($submissions = aps_graph_compare_load_webform_submissions($webform)) {
+      foreach ($submissions as $submission) {
+        foreach ($submission as $field_name => $value) {
+          $formatted[$field_name][] = $submission[$field_name];
+        }
+      }
+    }
+
+    return $formatted;
+  }

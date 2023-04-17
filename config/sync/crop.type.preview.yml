@@ -1,0 +1,12 @@
+uuid: 03c64283-1d58-4d7e-839c-536a855e2a10
+langcode: en
+status: true
+dependencies: {  }
+label: Preview
+id: preview
+description: ''
+aspect_ratio: '16:9'
+soft_limit_width: 80
+soft_limit_height: 45
+hard_limit_width: 48
+hard_limit_height: 27

@@ -1,0 +1,20 @@
+uuid: 99b52a4f-74d3-4934-a705-6d40426c368c
+langcode: en
+status: true
+dependencies:
+  theme:
+    - aps_email
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: aps_email_local_actions
+theme: aps_email
+region: content
+weight: -4
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

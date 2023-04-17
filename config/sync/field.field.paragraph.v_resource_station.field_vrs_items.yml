@@ -1,0 +1,88 @@
+uuid: 640eb378-59fd-45fe-97fc-f13469cfd4b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vrs_items
+    - paragraphs.paragraphs_type.v_resource_station
+    - paragraphs.paragraphs_type.venue_resource_item
+  module:
+    - entity_reference_revisions
+id: paragraph.v_resource_station.field_vrs_items
+field_name: field_vrs_items
+entity_type: paragraph
+bundle: v_resource_station
+label: Resources
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      venue_resource_item: venue_resource_item
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: 21
+        enabled: false
+      ask_a_question:
+        weight: 22
+        enabled: false
+      breakout_link:
+        weight: 24
+        enabled: false
+      breakouts:
+        weight: 23
+        enabled: false
+      chairperson:
+        weight: 25
+        enabled: false
+      event_evaluation:
+        weight: 26
+        enabled: false
+      event_faculty:
+        weight: 27
+        enabled: false
+      event_faculty_member:
+        weight: 28
+        enabled: false
+      hotspot_area:
+        weight: 29
+        enabled: false
+      hotspot_image:
+        weight: 30
+        enabled: false
+      live_voting:
+        weight: 31
+        enabled: false
+      poster:
+        weight: 32
+        enabled: false
+      posters:
+        weight: 33
+        enabled: false
+      request_materials:
+        weight: 34
+        enabled: false
+      resource_item:
+        weight: 36
+        enabled: false
+      resources:
+        weight: 35
+        enabled: false
+      v_resource_station:
+        weight: 38
+        enabled: false
+      venue_resource_item:
+        weight: 37
+        enabled: true
+      webform:
+        weight: 39
+        enabled: false
+      welcome:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

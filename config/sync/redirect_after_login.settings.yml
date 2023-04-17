@@ -1,0 +1,8 @@
+login_redirection:
+  anonymous: null
+  authenticated: /node
+  chairperson: /dashboard/webcast
+  event_admin: /dashboard/webcast
+  content_admin: /dashboard/webcast
+  administrator: /dashboard/webcast
+exclude_urls: '/user/reset/*'

@@ -1,0 +1,37 @@
+<?php
+  /*
+   * @file
+   * Install and Uninstall instructions
+   */
+
+  use Drupal\field\Entity\FieldStorageConfig;
+
+  /**
+   * Implements hook_install().
+   */
+  function aps_campaignmonitor_install($is_syncing) {
+
+  }
+
+  /**
+   * Implements hook_uninstall().
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  function aps_campaignmonitor_uninstall($is_syncing) {
+    $entity_definitions = \Drupal::entityTypeManager()->getDefinitions();
+
+    foreach ($entity_definitions as $entity_name => $entity_definition) {
+      if ($field = FieldStorageConfig::loadByName($entity_name, APS_CM_FIELD_NAME)) {
+        try {
+          $field->delete();
+        } catch (\Drupal\Core\Entity\EntityStorageException $exception ) {
+          Drupal::logger('aps_campaignmonitor')->error(t('Exception caught when trying to remove @field_name field from @entity', array(
+            '@field_name' => APS_CM_FIELD_NAME,
+            '@entity' => $entity_name,
+          )));
+        }
+      }
+    }
+
+  }

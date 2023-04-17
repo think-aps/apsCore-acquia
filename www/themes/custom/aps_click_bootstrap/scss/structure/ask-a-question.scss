@@ -1,0 +1,57 @@
+/**
+/* Ask a Question
+/* ----------------------------------------------------------------------------- */
+.view {
+  &.view-aps-ask-a-question {
+    .chairperson {
+      .question-wrapper {
+        .question {
+        }
+
+        .author {
+        }
+
+        .actions {
+          .links {
+            .flags {
+              a {
+              }
+            }
+
+            .edit {
+              a {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Editing
+/* ----------------------------------------------------------------------------- */
+div[id*="webform-submission-ask-a-question"] {
+  nav {
+    &.webform-submission-navigation {
+    }
+  }
+
+  details {
+    &.webform-submission-information {
+    }
+  }
+
+  .form-actions {
+    display: flex;
+
+    .btn,
+    button {
+      @extend .btn-arrow-right;
+
+      width: 100%;
+      max-width: none;
+    }
+  }
+}

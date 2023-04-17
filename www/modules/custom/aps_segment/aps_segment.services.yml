@@ -1,0 +1,5 @@
+services:
+  aps_segment.flag_subscriber:
+    class: Drupal\aps_segment\EventSubscriber\FlagSubscriber
+    tags:
+      - { name: event_subscriber }  

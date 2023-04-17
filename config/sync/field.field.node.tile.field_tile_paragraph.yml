@@ -1,0 +1,106 @@
+uuid: 90a73fd8-b92e-4011-b82c-894e16fa0ebc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tile_paragraph
+    - node.type.tile
+    - paragraphs.paragraphs_type.tile_file
+    - paragraphs.paragraphs_type.tile_link
+    - paragraphs.paragraphs_type.tile_poster
+    - paragraphs.paragraphs_type.tile_video
+  module:
+    - entity_reference_revisions
+id: node.tile.field_tile_paragraph
+field_name: field_tile_paragraph
+entity_type: node
+bundle: tile
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tile_file: tile_file
+      tile_link: tile_link
+      tile_poster: tile_poster
+      tile_video: tile_video
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: 25
+        enabled: false
+      faculty:
+        weight: 26
+        enabled: false
+      from_library:
+        weight: 27
+        enabled: false
+      hotspot_area:
+        weight: 28
+        enabled: false
+      hotspot_image:
+        weight: 29
+        enabled: false
+      image:
+        weight: 30
+        enabled: false
+      live_voting:
+        weight: 31
+        enabled: false
+      social_wall:
+        weight: 32
+        enabled: false
+      tile_file:
+        weight: 33
+        enabled: true
+      tile_link:
+        weight: 34
+        enabled: true
+      tile_poster:
+        weight: 35
+        enabled: true
+      tile_video:
+        weight: 36
+        enabled: true
+      v_agenda:
+        weight: 41
+        enabled: false
+      v_agenda_day:
+        weight: 42
+        enabled: false
+      v_agenda_item:
+        weight: 43
+        enabled: false
+      v_breakout_session:
+        weight: 44
+        enabled: false
+      v_resource_station:
+        weight: 45
+        enabled: false
+      venue_resource_item:
+        weight: 37
+        enabled: false
+      video_iframe:
+        weight: 38
+        enabled: false
+      video_on_demand:
+        weight: 39
+        enabled: false
+      video_theoplayer:
+        weight: 40
+        enabled: false
+      webform:
+        weight: 46
+        enabled: false
+      welcome:
+        weight: 47
+        enabled: false
+      word_cloud:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,27 @@
+_core:
+  default_config_hash: o4bYR9ZupWb3AsOIizTUG4g-nu1mdJqA59UB7QT-ifQ
+definitions:
+  contact__site_page:
+    menu_name: footer
+    parent: ''
+    weight: -44
+    expanded: false
+    enabled: false
+  user__page:
+    weight: -48
+    menu_name: account
+    parent: ''
+    enabled: true
+    expanded: false
+  user__logout:
+    enabled: true
+    menu_name: account
+    parent: ''
+    expanded: false
+    weight: -47
+  change_pwd_page__change_password:
+    enabled: false
+    menu_name: account
+    parent: ''
+    expanded: false
+    weight: -9

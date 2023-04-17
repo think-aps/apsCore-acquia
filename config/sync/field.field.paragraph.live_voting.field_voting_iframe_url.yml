@@ -1,0 +1,44 @@
+uuid: afb0dc59-4503-451c-b184-9d979663f3ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_voting_iframe_url
+    - paragraphs.paragraphs_type.live_voting
+  module:
+    - iframe
+id: paragraph.live_voting.field_voting_iframe_url
+field_name: field_voting_iframe_url
+entity_type: paragraph
+bundle: live_voting
+label: URL
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    url: 'https://aps-dev3.com/polling/index.html'
+    title: ''
+    headerlevel: '3'
+    class: ''
+    frameborder: '0'
+    scrolling: auto
+    transparency: '0'
+    allowfullscreen: '0'
+    tokensupport: '0'
+    width: 100%
+    height: '640'
+    expose_class: false
+default_value_callback: ''
+settings:
+  title: null
+  headerlevel: '3'
+  class: ''
+  frameborder: '0'
+  scrolling: null
+  transparency: '1'
+  allowfullscreen: '0'
+  tokensupport: '0'
+  width: null
+  height: null
+field_type: iframe

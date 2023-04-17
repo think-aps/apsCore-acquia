@@ -1,0 +1,35 @@
+<h3>{{ title }}</h3>
+
+<div class="submission-graph">
+  <div class="submissions">
+    {% for submission in submissions -%}
+      <div class="submission" data-correct="{{ submission.correct ? 'correct' : 'incorrect' }}">
+        <div class="submission-label">
+          {{ submission.label }}
+        </div>
+        <div class="submission-bars">
+          {% for type, label in types %}
+            <div class="submission-bar {{ type }}">
+              <div class="bar" style="width: {{ submission.percentage[type] }}%">
+                <div class="percentage">
+                  <span>{{ submission.percentage[type] }}</span>%
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% if types|length > 1 %}
+    <div class="legend">
+      {% for type, label in types %}
+        <div class="type {{ type }}">
+          <div class="colour rounded-pill">&nbsp;</div>
+          <div class="label">{{ label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+

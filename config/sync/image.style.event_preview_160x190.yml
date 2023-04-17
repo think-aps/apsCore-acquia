@@ -1,0 +1,15 @@
+uuid: d61677f9-7d47-4a32-bceb-9b67c2dd3574
+langcode: en
+status: true
+dependencies: {  }
+name: event_preview_160x190
+label: 'Event Preview 220x124'
+effects:
+  d87c42f2-e85d-4f10-bb93-be744035fda1:
+    uuid: d87c42f2-e85d-4f10-bb93-be744035fda1
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 220
+      height: 124
+      anchor: center-center

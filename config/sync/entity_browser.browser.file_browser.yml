@@ -1,0 +1,41 @@
+uuid: fba2655e-f95b-40cf-811a-54d28149432f
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_media_library
+  module:
+    - views
+name: file_browser
+label: 'File Browser'
+display: modal
+display_configuration:
+  width: ''
+  height: '500'
+  link_text: 'Select file'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  836cccbc-9530-423f-ba74-def795b2c84f:
+    id: view
+    uuid: 836cccbc-9530-423f-ba74-def795b2c84f
+    label: Library
+    weight: 1
+    settings:
+      submit_text: Select
+      auto_select: false
+      view: aps_media_library
+      view_display: file
+  abc94039-921c-4d7b-8922-45a95353b1f9:
+    id: upload
+    uuid: abc94039-921c-4d7b-8922-45a95353b1f9
+    label: Upload
+    weight: 2
+    settings:
+      submit_text: Upload
+      upload_location: 'public://'
+      multiple: true
+      extensions: 'pdf xls xlsx doc docx ppt pptx'

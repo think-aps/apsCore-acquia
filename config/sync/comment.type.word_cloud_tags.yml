@@ -1,0 +1,8 @@
+uuid: 28dea986-3412-4149-807d-5d6b2a6b7516
+langcode: en
+status: true
+dependencies: {  }
+id: word_cloud_tags
+label: 'Word Cloud'
+target_entity_type_id: node
+description: 'Comment type used to add tags to Word Cloud nodes'

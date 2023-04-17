@@ -1,0 +1,19 @@
+@function registrationGrid($rows) {
+  $template: null;
+
+  @for $x from 1 through $rows {
+    $string: '';
+
+    @if ($x < 4) {
+      $string: $string + "l" + $x + " . user";
+    }
+    @else {
+      $string: $string + "l" + $x + " . " + "r" + $x;
+    }
+
+    $template: $template $string;
+  }
+
+  @return $template;
+}
+

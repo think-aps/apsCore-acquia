@@ -1,0 +1,10 @@
+uuid: 0b136bc7-32f2-4fc1-b9e5-d8e64bad8c79
+langcode: en
+status: true
+dependencies: {  }
+id: hotspot_image
+label: 'Hotspot image'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

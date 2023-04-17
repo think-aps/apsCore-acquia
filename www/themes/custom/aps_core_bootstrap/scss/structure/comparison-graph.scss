@@ -1,0 +1,160 @@
+/**
+/* Comparison Graphs
+/* ----------------------------------------------------------------------------- */
+body.comparison-graph {
+  #page {
+    background: $gray-100;
+
+    header,
+    footer {
+      display: none;
+    }
+
+    #main-wrapper {
+      display: flex;
+      align-items: center;
+
+      section {
+        #block-system-main-block {
+          @include rounded-edges($rounded-edges);
+          @include drop-shadow;
+
+          @extend .mb-0;
+          @extend .p-5;
+
+          background: $white;
+
+          h3 {
+            @extend .font-weight-bold;
+
+            color: $secondary-shade;
+          }
+
+          .submission-graph {
+            display: flex;
+            flex-flow: row;
+
+            .submissions {
+              flex: 1;
+
+              .submission {
+                @extend .mb-3;
+
+                .submission-label {
+                  @extend .p-2;
+                  @extend .font-weight-bold;
+
+                  display: flex;
+                  flex-flow: row;
+                  align-items: center;
+                  font-size: $h4-font-size;
+                  color: $secondary-shade;
+                }
+
+                .submission-bars {
+                  .submission-bar {
+                    @include rounded-edges(calc(#{$rounded-edges} * 2));
+
+                    border: solid 2px $white;
+                    background: $gray-100;
+                    overflow: hidden;
+
+                    .bar {
+                      @extend .py-2;
+
+                      @include rounded-edges(calc(#{$rounded-edges} * 2));
+
+                      overflow: hidden;
+                      min-width: 2.5rem;
+                      display: flex;
+                      justify-content: flex-end;
+                      min-height: 2rem;
+
+                      .percentage {
+                        @extend .px-2;
+
+                        color: $white;
+                      }
+                    }
+
+                    &:nth-child(odd),
+                    &:nth-of-type(odd) {
+                      .bar {
+                        @extend .bg-primary;
+                      }
+                    }
+
+                    &:nth-child(even),
+                    &:nth-of-type(even) {
+                      .bar {
+                        @extend .bg-secondary;
+                      }
+                    }
+                  }
+                }
+
+
+                &.correct {
+                  .choice-label {
+                    &:after {
+                      font-size: 135%;
+                      content: '\2713';
+                      color: $green;
+                      line-height: 1rem;
+
+                      @extend .px-3;
+                    }
+                  }
+
+                  .choice-bar {
+                    @extend .highlighted-item;
+                  }
+                }
+              }
+            }
+
+            .legend {
+              padding-left: 1.5rem;
+              width: 20%;
+
+              .type {
+                display: flex;
+                flex-flow: row;
+                margin: 4px 0;
+                justify-content: flex-start;
+                align-items: center;
+
+                .label {
+                  @extend .font-weight-bold;
+
+                  font-size: $h5-font-size;
+                  color: $secondary-shade;
+                  line-height: 1.2;
+                }
+
+                .colour {
+                  margin-right: 1rem;
+                  width: 20%;
+                }
+
+                &:nth-child(odd),
+                &:nth-of-type(odd) {
+                  .colour {
+                    @extend .bg-primary;
+                  }
+                }
+
+                &:nth-child(even),
+                &:nth-of-type(even) {
+                  .colour {
+                    @extend .bg-secondary;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

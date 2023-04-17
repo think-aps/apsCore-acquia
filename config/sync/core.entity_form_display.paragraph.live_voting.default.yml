@@ -1,0 +1,82 @@
+uuid: 2122e37f-1722-47a0-9da7-2f1033365fd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.live_voting.field_voting_iframe_url
+    - paragraphs.paragraphs_type.live_voting
+  module:
+    - field_group
+    - iframe
+third_party_settings:
+  field_group:
+    group_group:
+      children:
+        - group_details
+        - group_content
+      label: Group
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_details:
+      children:
+        - field_tab_visibility
+        - field_tab_display_name
+        - field_menu_icon
+      label: Details
+      region: content
+      parent_name: group_group
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_content:
+      children:
+        - field_voting_iframe_url
+      label: Content
+      region: content
+      parent_name: group_group
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: paragraph.live_voting.default
+targetEntityType: paragraph
+bundle: live_voting
+mode: default
+content:
+  field_voting_iframe_url:
+    type: iframe_urlwidthheight
+    weight: 3
+    region: content
+    settings:
+      class: ''
+      frameborder: '0'
+      scrolling: auto
+      transparency: '0'
+      allowfullscreen: '0'
+      tokensupport: '0'
+      width: 100%
+      height: '640'
+      expose_class: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

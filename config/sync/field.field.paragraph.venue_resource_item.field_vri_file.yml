@@ -1,0 +1,27 @@
+uuid: f7183e99-5267-4c2f-b2e3-631c0c231879
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vri_file
+    - paragraphs.paragraphs_type.venue_resource_item
+  module:
+    - file
+id: paragraph.venue_resource_item.field_vri_file
+field_name: field_vri_file
+entity_type: paragraph
+bundle: venue_resource_item
+label: File
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf zip ppt doc xls pptx jpeg jpg png docx xlsx'
+  max_filesize: ''
+  description_field: false
+field_type: file

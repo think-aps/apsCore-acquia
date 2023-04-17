@@ -1,0 +1,21 @@
+uuid: 72fd3e8a-4e95-47fa-8064-8fbb2a4aa358
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vrs_text
+    - paragraphs.paragraphs_type.v_resource_station
+  module:
+    - text
+id: paragraph.v_resource_station.field_vrs_text
+field_name: field_vrs_text
+entity_type: paragraph
+bundle: v_resource_station
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

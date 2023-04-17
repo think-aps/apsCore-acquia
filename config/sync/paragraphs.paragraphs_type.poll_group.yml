@@ -1,0 +1,10 @@
+uuid: 30a5b04b-833f-43a9-8d6b-f269703fe104
+langcode: en
+status: true
+dependencies: {  }
+id: poll_group
+label: 'Poll Group'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

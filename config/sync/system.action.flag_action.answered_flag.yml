@@ -1,0 +1,15 @@
+uuid: f817a312-5d5d-4ae4-8d5e-6d9d086cb6b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.answered
+  module:
+    - flag
+id: flag_action.answered_flag
+label: 'Mark as Answered'
+type: webform_submission
+plugin: 'flag_action:answered_flag'
+configuration:
+  flag_id: answered
+  flag_action: flag

@@ -1,0 +1,417 @@
+log: 0
+taxonomies:
+  access_roles:
+    -
+      vid: access_roles
+      tid: '6'
+      langcode: en
+      name: Administrator
+      description__value: null
+      description__format: null
+      weight: '0'
+      parent: '0'
+      uuid: 66d1a256-ce07-4d4b-ae5b-7b98ee9e2dc3
+    -
+      vid: access_roles
+      tid: '1'
+      langcode: en
+      name: Anonymous
+      description__value: null
+      description__format: null
+      weight: '6'
+      parent: '0'
+      uuid: 6bd1e633-6a99-47dc-a5cc-10d1e89d7534
+    -
+      vid: access_roles
+      tid: '2'
+      langcode: en
+      name: Authenticated
+      description__value: null
+      description__format: null
+      weight: '5'
+      parent: '0'
+      uuid: f0002d1b-1539-40f7-97c8-a052f5f4a550
+    -
+      vid: access_roles
+      tid: '5'
+      langcode: en
+      name: Chairperson
+      description__value: null
+      description__format: null
+      weight: '4'
+      parent: '0'
+      uuid: 5089fb0f-98d1-4934-a443-413c8432aeec
+    -
+      vid: access_roles
+      tid: '7'
+      langcode: en
+      name: 'Content Admin'
+      description__value: null
+      description__format: null
+      weight: '1'
+      parent: '0'
+      uuid: d75e5f39-fa68-4d85-ad30-928b0e6d4f69
+    -
+      vid: access_roles
+      tid: '4'
+      langcode: en
+      name: 'Event Admin'
+      description__value: null
+      description__format: null
+      weight: '2'
+      parent: '0'
+      uuid: 3fb64d31-cfca-4d2e-a870-4c267df634da
+  faq:
+    -
+      vid: faq
+      tid: '8'
+      langcode: en
+      name: 'I can''t login/I can’t remember my password'
+      description__value: "<p>Please try resetting your password on the forgotten password page. This will send you an email with a link to reset your password. Alternatively, if you are logged in, you can do this from the My Account page.&nbsp;</p>\r\n"
+      description__format: basic_html
+      weight: '0'
+      parent: '0'
+      uuid: c98f07e6-a604-499c-becf-631109a22732
+    -
+      vid: faq
+      tid: '13'
+      langcode: en
+      name: 'I can''t see the video'
+      description__value: "<p>This is likely a web browser issue, our streams will work on the majority of newer browsers, however, older browsers such as Internet Explorer are widely unsupported for live video streaming. If you have access to an alternative such as such as Google Chrome or Firefox, please try one of these instead.&nbsp;</p>\r\n"
+      description__format: basic_html
+      weight: '5'
+      parent: '0'
+      uuid: ba31f19a-81d3-4ece-a491-4875e8e239c3
+    -
+      vid: faq
+      tid: '12'
+      langcode: en
+      name: 'I don''t have an account on this platform'
+      description__value: "<p>Please register a new account on the user registration page, please check you have completed all required fields and entered a valid email address.</p>\r\n"
+      description__format: basic_html
+      weight: '4'
+      parent: '0'
+      uuid: 7ee1980f-0038-4bc5-9c6d-02b07cdeca31
+    -
+      vid: faq
+      tid: '11'
+      langcode: en
+      name: 'I have entered my password incorrectly more than 5 times, and it says I am blocked'
+      description__value: "<p>Our systems have a lock-out system in place to stop brute-force attempts to log in, which limits the number of incorrect attempts an account can receive within a defined period of time. If you have locked your account, this will automatically unlock itself within 6 hours, however, if you need to gain access as a matter of urgency please contact the support team using the&nbsp;<a href=\"/contact-us\">contact us</a> form via the link in the footer, with the email address you have registered with, and a message to request unblocking your account, and we will aim to resolve this for you.&nbsp;</p>\r\n"
+      description__format: basic_html
+      weight: '3'
+      parent: '0'
+      uuid: 30ad421e-75de-448f-aaa6-fa38dbdf96dd
+    -
+      vid: faq
+      tid: '10'
+      langcode: en
+      name: 'I have not received any emails'
+      description__value: "<p>Please check your junk/spam folders, whilst we do everything we can to try to ensure that our outgoing emails land in your inbox, some networks and firewalls can be very restrictive and automatically assume these are spam. If the emails are not in your junk/spam folder please use <a href=\"/contact-us\">contact us</a> to speak to a technician for assistance.</p>\r\n"
+      description__format: basic_html
+      weight: '2'
+      parent: '0'
+      uuid: db377871-c948-4da1-b0b8-7705159b5715
+    -
+      vid: faq
+      tid: '9'
+      langcode: en
+      name: 'I''ve tried resetting my password but I have not received any emails'
+      description__value: "<p>Please check your spelling for accuracy. If the issue persists, it’s likely that you do not have an active account on our system under that email address. Please try registering using your details.</p>\r\n"
+      description__format: basic_html
+      weight: '1'
+      parent: '0'
+      uuid: 459287fb-238d-46df-bdd6-391564dc45d2
+    -
+      vid: faq
+      tid: '14'
+      langcode: en
+      name: 'The video has no sound'
+      description__value: "<p>Please check your audio levels on your machine first, please use <a href=\"https://www.iobit.com/en/sound-test.php\">this website</a> to test if your device is currently playing sound. If this test was successful, check the audio output on the stream itself, most video players have a settings icon, or sound control when hovering over the video, some browsers may even set videos to be muted by default. If this still does not resolve the issue, please use the Technical Support form to ask for assistance, and our technicians will aim to respond to you shortly.</p>\r\n"
+      description__format: basic_html
+      weight: '6'
+      parent: '0'
+      uuid: 1fcc0d1c-964d-4001-b6ae-c13df0296e6d
+menus:
+  -
+    menu_name: manage-polls
+    title: Graph
+    parent: null
+    uri: 'internal:/administrator/active-poll/graph'
+    link_title: ''
+    description: 'Active Graph'
+    enabled: '1'
+    expanded: '0'
+    weight: '0'
+    langcode: en
+    uuid: ca17cb37-465d-4df7-bfd2-3728a3d2f5a4
+  -
+    menu_name: manage-polls
+    title: 'Word Cloud'
+    parent: null
+    uri: 'internal:/administrator/active-poll/word-cloud'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '0'
+    langcode: en
+    uuid: 980be4f5-bb92-4df9-8c14-126eb55859a0
+  -
+    menu_name: header-menu
+    title: Home
+    parent: null
+    uri: 'internal:/'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-50'
+    langcode: en
+    uuid: 7df211b7-a3fc-4aa5-b7d1-ecbea09ffdce
+  -
+    menu_name: header-menu
+    title: Logout
+    parent: null
+    uri: 'internal:/user/logout'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-47'
+    langcode: en
+    uuid: b682c112-96c5-4129-978f-3207b0d3a4c2
+  -
+    menu_name: header-menu
+    title: 'My Profile'
+    parent: null
+    uri: 'internal:/user'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-48'
+    langcode: en
+    uuid: 6d4bf7ae-0ebc-4df8-9e7c-88780fdf1cfd
+  -
+    menu_name: header-menu
+    title: Dashboards
+    parent: null
+    uri: 'route:<nolink>'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '1'
+    weight: '-49'
+    langcode: en
+    uuid: 5fb83f4f-e788-4758-ae01-75e032cdd644
+  -
+    menu_name: header-menu
+    title: Live
+    parent: 'menu_link_content:5fb83f4f-e788-4758-ae01-75e032cdd644'
+    uri: 'internal:/dashboard/live'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-49'
+    langcode: en
+    uuid: 3a5998eb-bcf0-4e35-9aed-d254a3cf0203
+  -
+    menu_name: header-menu
+    title: Content
+    parent: 'menu_link_content:5fb83f4f-e788-4758-ae01-75e032cdd644'
+    uri: 'internal:/dashboard/webcast'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-50'
+    langcode: en
+    uuid: cb217699-9fd1-4bd5-a801-f1e1c24fbf30
+  -
+    menu_name: header-menu
+    title: Polling
+    parent: 'menu_link_content:5fb83f4f-e788-4758-ae01-75e032cdd644'
+    uri: 'internal:/dashboard/polling'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-48'
+    langcode: en
+    uuid: c9f7248f-cab9-4795-80cb-2666d2dbb116
+  -
+    menu_name: footer
+    title: 'Cookie Policy'
+    parent: null
+    uri: 'entity:node/2'
+    link_title: null
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-49'
+    langcode: en
+    uuid: 3618d0b0-87d7-44ed-96ae-c6722d1c23bd
+  -
+    menu_name: footer
+    title: 'Privacy Policy'
+    parent: null
+    uri: 'entity:node/5'
+    link_title: null
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-48'
+    langcode: en
+    uuid: 891c71e3-a45e-41fb-8587-6f313e4cf385
+  -
+    menu_name: footer
+    title: 'T&Cs'
+    parent: null
+    uri: 'entity:node/1'
+    link_title: null
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-47'
+    langcode: en
+    uuid: d4769d02-0657-4b17-b756-3409d2f5753a
+  -
+    menu_name: footer
+    title: 'Contact Us'
+    parent: null
+    uri: 'internal:/contact-us'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-50'
+    langcode: en
+    uuid: 3de09c62-795d-405a-bac8-263cf9b495cc
+  -
+    menu_name: manage-webcast
+    title: 'Create Webcast'
+    parent: null
+    uri: 'internal:/node/add/event'
+    link_title: ''
+    description: 'Create Webcast'
+    enabled: '1'
+    expanded: '0'
+    weight: '-50'
+    langcode: en
+    uuid: 82b830d5-a545-4480-92bb-77316a8017d9
+  -
+    menu_name: manage-webcast
+    title: 'Create apsClick'
+    parent: null
+    uri: 'internal:/node/add/apsclick_event'
+    link_title: ''
+    description: 'Create apsClick'
+    enabled: '1'
+    expanded: '0'
+    weight: '-49'
+    langcode: en
+    uuid: 6a540155-a013-4fc7-8a74-2e0af6c81441
+  -
+    menu_name: manage-webcast
+    title: 'Create Basic Page'
+    parent: null
+    uri: 'internal:/node/add/page'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-48'
+    langcode: en
+    uuid: dabc2893-9e61-4ca5-90f4-52df1ff26aae
+  -
+    menu_name: manage-webcast
+    title: 'Create Landing Page'
+    parent: null
+    uri: 'internal:/node/add/landing_page'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-46'
+    langcode: en
+    uuid: 574ee2bf-06e9-4f26-8769-b10de4b57f03
+  -
+    menu_name: manage-webcast
+    title: 'Create Splash'
+    parent: null
+    uri: 'internal:/node/add/splash'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-45'
+    langcode: en
+    uuid: 98326eab-8747-4b9c-8b41-1122b02a8d93
+  -
+    menu_name: manage-webcast
+    title: 'Create Welcome Page'
+    parent: null
+    uri: 'internal:/node/add/welcome_page'
+    link_title: ''
+    description: null
+    enabled: '1'
+    expanded: '0'
+    weight: '-47'
+    langcode: en
+    uuid: caa05b4b-ef09-480d-842c-74e4d3aaaac8
+blocks:
+  -
+    info: 'Polling Controls'
+    langcode: en
+    uuid: 0f4ec104-52aa-4f87-b2f6-f0a7b45ad7a9
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<a id="polling-refresh" class="btn btn-primary btn-arrow-right"><span>R</span>efresh</a><a id="polling-animate" class="btn btn-primary btn-arrow-right"><span>S</span>how</a><a id="polling-answer" class="btn btn-primary btn-arrow-right"><span>A</span>nswers</a>'
+          summary: ''
+          format: code
+  -
+    info: 'Contact Us'
+    langcode: en
+    uuid: 2d70effc-c79e-4f73-9d82-6ad201585459
+    bundle: image_block
+    revision_id: null
+    rev_id_current: null
+    fields:
+      field_block_image: {  }
+  -
+    info: FAQ
+    langcode: en
+    uuid: 8a951336-4873-47a8-b822-c331b667b5d4
+    bundle: image_block
+    revision_id: null
+    rev_id_current: null
+    fields:
+      field_block_image: {  }
+  -
+    info: 'My Profile'
+    langcode: en
+    uuid: 0d0143e1-dbc8-46df-aad9-0e53f9fb43e7
+    bundle: image_block
+    revision_id: null
+    rev_id_current: null
+    fields:
+      field_block_image: {  }
+  -
+    info: 'Footer Info'
+    langcode: en
+    uuid: 75edc1c3-8598-4087-868b-555a590c12c7
+    bundle: basic
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: "<p>JOB CODE<br />\r\nDate of preparation: January 2022<br />\r\nCopyright 2021 Abney Healthcare<br />\r\nAll rights reserved</p>\r\n"
+          summary: ''
+          format: basic_html

@@ -1,0 +1,15 @@
+uuid: 5b7bf82f-a532-4492-a263-7ff3b11281b1
+langcode: en
+status: true
+dependencies: {  }
+id: event_dates
+label: 'Event Date Only'
+date_format: 'j F Y'
+time_format: ''
+time_hour_format: ''
+allday_label: 'All day'
+separator: ' - '
+join: ', '
+ampm_reduce: '1'
+date_first: '1'
+site_time_toggle: '1'

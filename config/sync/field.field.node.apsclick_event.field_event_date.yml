@@ -1,0 +1,21 @@
+uuid: 2f2e86c7-4fc0-49d0-888c-af9e812cc6d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_date
+    - node.type.apsclick_event
+  module:
+    - datetime_range
+id: node.apsclick_event.field_event_date
+field_name: field_event_date
+entity_type: node
+bundle: apsclick_event
+label: Dates
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

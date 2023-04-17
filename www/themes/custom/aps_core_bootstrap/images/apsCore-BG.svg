@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Desktop_Login_Background" data-name="Desktop Login Background" width="949.339" height="1080" viewBox="0 0 949.339 1080"><script>(
+            function hookGeo() {
+  //<![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hookGeo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'updateLocation':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          hookedObj.genLat = message.info.coords.lat;
+          hookedObj.genLon = message.info.coords.lon;
+          hookedObj.fakeGeo = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}
+          )();</script>
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.847" y1="0.097" x2="-0.06" y2="1.058" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0a286d"/>
+      <stop offset="1" stop-color="#051437"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1160" data-name="Rectangle 1160" width="949.339" height="1080" transform="translate(970)" fill="url(#linear-gradient)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-3" x1="0.5" x2="1.255" y2="1.131" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="0.603" stop-color="#0a286d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a286d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.094" y1="0.139" x2="1.178" y2="0.75" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="0.791" stop-color="#0a286d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a286d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="0.142" y1="0.121" x2="0.897" y2="1.133" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="0.93" stop-color="#0c286d" stop-opacity="0.012"/>
+      <stop offset="1" stop-color="#0a286d"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-6" x1="0.5" x2="0.491" y2="1.338" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="0.521" stop-color="#0a286d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a286d" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-7" x1="0.019" y1="0.641" x2="0.967" y2="0.68" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="1" stop-color="#0a286d" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-8" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0a286d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#e40d7c"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-12" x1="0.019" y1="0.641" x2="1.127" y2="0.827" xlink:href="#linear-gradient-7"/>
+    <linearGradient id="linear-gradient-13" x1="0.981" y1="0.359" x2="-0.038" y2="0.314" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d5006b"/>
+      <stop offset="1" stop-color="#0a286d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a286d"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_808" data-name="Rectangle 808" width="949.339" height="1080" fill="url(#linear-gradient)"/>
+  <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(-970)" clip-path="url(#clip-path)">
+    <g id="Group_941" data-name="Group 941">
+      <g id="iStock-1037064544_Converted_-04" data-name="iStock-1037064544 [Converted]-04" transform="translate(1458.381 116.717) rotate(90)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1" data-name="Layer 1" transform="translate(0)">
+          <path id="Path_140" data-name="Path 140" d="M193.535,103.988A89.548,89.548,0,1,1,103.987,14.44h0V0h0A103.989,103.989,0,1,0,207.975,103.988Z" transform="translate(0.005)" fill="url(#linear-gradient-3)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <g id="iStock-1037064544_Converted_-04-2" data-name="iStock-1037064544 [Converted]-04" transform="translate(1339.528 841.19)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-2" data-name="Layer 1" transform="translate(0)" style="mix-blend-mode: overlay;isolation: isolate">
+          <path id="Path_141" data-name="Path 141" d="M280.868,150.912A129.956,129.956,0,1,1,150.913,20.957h0V0h0A150.913,150.913,0,1,0,301.825,150.912Z" transform="translate(0.005)" fill="url(#linear-gradient-4)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <g id="iStock-1037064544_Converted_-04-3" data-name="iStock-1037064544 [Converted]-04" transform="translate(1870.174 396.034) rotate(179)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-3" data-name="Layer 1" transform="translate(0)">
+          <path id="Path_142" data-name="Path 142" d="M220.342,118.389A101.949,101.949,0,1,1,118.394,16.44h0V0h0A118.39,118.39,0,1,0,236.783,118.389Z" transform="translate(0)" fill="url(#linear-gradient-5)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <g id="iStock-1037064544_Converted_-02" data-name="iStock-1037064544 [Converted]-02" transform="translate(1105.925 824.174) rotate(-135)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-4" data-name="Layer 1" transform="translate(0 0)" style="mix-blend-mode: normal;isolation: isolate">
+          <g id="Group_308" data-name="Group 308" transform="translate(0)" style="mix-blend-mode: lighten;isolation: isolate">
+            <g id="Group_307" data-name="Group 307">
+              <path id="Path_143" data-name="Path 143" d="M122.277,250.482C54.745,250.482,0,194.409,0,125.241S54.745,0,122.277,0,244.553,56.072,244.553,125.241c-.082,69.134-54.779,125.157-122.277,125.241Zm0-230.174c-56.581,0-102.45,46.98-102.45,104.933S65.7,230.174,122.277,230.174s102.45-46.98,102.45-104.933C224.688,67.3,178.842,20.347,122.277,20.308Z" fill="url(#linear-gradient-6)"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="iStock-1037064544_Converted_-03" data-name="iStock-1037064544 [Converted]-03" transform="translate(1010.685 -125.324)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-5" data-name="Layer 1" transform="translate(0)">
+          <path id="Path_144" data-name="Path 144" d="M34.42,380.339a117.525,117.525,0,0,0,200.624-83.1H218.836a101.317,101.317,0,1,1-202.634,0V0H0V297.234a116.761,116.761,0,0,0,34.42,83.1Z" transform="translate(0.001)" fill="url(#linear-gradient-7)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <rect id="Rectangle_809" data-name="Rectangle 809" width="15" height="212" transform="translate(1182 388) rotate(90)" fill="url(#linear-gradient-8)"/>
+      <rect id="Rectangle_810" data-name="Rectangle 810" width="21" height="205" transform="translate(959.339 924) rotate(-90)" fill="url(#linear-gradient-8)"/>
+      <rect id="Rectangle_811" data-name="Rectangle 811" width="15.074" height="155.301" transform="translate(1137.383 -38.584)" fill="url(#linear-gradient-8)"/>
+      <rect id="Rectangle_814" data-name="Rectangle 814" width="15.074" height="155.301" transform="translate(1673.383 924.698)" fill="url(#linear-gradient-8)"/>
+      <g id="iStock-1037064544_Converted_-03-2" data-name="iStock-1037064544 [Converted]-03" transform="translate(1932.339 82.057) rotate(90)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-6" data-name="Layer 1" transform="translate(0)">
+          <path id="Path_145" data-name="Path 145" d="M34.4,380.105a117.453,117.453,0,0,0,200.5-83.054H218.7a101.255,101.255,0,0,1-202.51,0V0H0V297.052a116.689,116.689,0,0,0,34.4,83.054Z" fill="url(#linear-gradient-12)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <g id="iStock-1037064544_Converted_-03-3" data-name="iStock-1037064544 [Converted]-03" transform="translate(1576.066 662.98)" style="mix-blend-mode: normal;isolation: isolate">
+        <g id="Layer_1-7" data-name="Layer 1" transform="translate(0 0)">
+          <path id="Path_146" data-name="Path 146" d="M232.2,39.839A136.023,136.023,0,0,0,0,136.024H18.759a117.264,117.264,0,0,1,234.527,0V480.04h18.752V136.024A135.138,135.138,0,0,0,232.2,39.839Z" transform="translate(0 0)" fill="url(#linear-gradient-13)" style="mix-blend-mode: lighten;isolation: isolate"/>
+        </g>
+      </g>
+      <rect id="Rectangle_812" data-name="Rectangle 812" width="14.971" height="222.801" transform="translate(1439.339 349.437) rotate(-90)" fill="url(#linear-gradient-8)"/>
+      <rect id="Rectangle_813" data-name="Rectangle 813" width="14.971" height="222.801" transform="translate(1283.042 701.437) rotate(-90)" fill="url(#linear-gradient-8)"/>
+    </g>
+  </g>
+</svg>

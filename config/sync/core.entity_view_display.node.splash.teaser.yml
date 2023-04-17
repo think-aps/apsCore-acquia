@@ -1,0 +1,26 @@
+uuid: 5c40d0b7-e150-4d1f-abb8-f6e91436c0c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.splash.field_splash_duration
+    - field.field.node.splash.field_splash_redirect
+    - field.field.node.splash.field_splash_video
+    - node.type.splash
+  module:
+    - user
+id: node.splash.teaser
+targetEntityType: node
+bundle: splash
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_splash_duration: true
+  field_splash_redirect: true
+  field_splash_video: true

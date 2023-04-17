@@ -1,0 +1,201 @@
+/**
+/* Ask a Question
+/* ----------------------------------------------------------------------------- */
+.view {
+  &.view-aps-ask-a-question {
+    .chairperson {
+      @extend .mb-3;
+
+      .question-wrapper {
+        @include drop-shadow;
+        @include rounded-edges($rounded-edges);
+
+        display: flex;
+        flex-flow: column;
+
+        .question {
+          flex: 1;
+          font-size: $font-size-xl;
+
+          @extend .p-3;
+        }
+
+        .author {
+          color: $secondary-shade;
+          font-size: $font-size-base;
+
+          @extend .px-3;
+        }
+
+        .actions {
+          @extend .p-3;
+
+          .links {
+            display: flex;
+            flex-flow: row;
+
+            .flags {
+              display: flex;
+              flex-flow: row;
+              gap: 1rem;
+
+              a {
+                white-space: nowrap;
+              }
+            }
+
+            .edit {
+              flex: 1;
+              text-align: right;
+
+              a {
+                @include rounded-edges(calc(#{$rounded-edges} * 0.75));
+
+                color: darken($yellow, 12%);
+                display: inline-block;
+                padding: 6px 12px 6px 36px;
+                border: solid 2px $yellow;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: $font-size-base;
+                background: url("../images/icons/edit.svg") left center no-repeat lighten($yellow, 37%);
+                background-size: 50% 50%;
+
+                @extend .font-weight-bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.view-aps-event-list {
+    &.view-display-id-question_extend {
+      details {
+        border: 0;
+        background: $white;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+
+        @include rounded-edges($rounded-edges);
+        @include drop-shadow;
+
+        @extend .my-5;
+
+        summary {
+          font-size: $font-size-base;
+          background-color: $secondary-shade;
+          color: $white;
+          display: flex;
+          align-items: center;
+          text-transform: uppercase;
+          justify-content: flex-start;
+          vertical-align: middle;
+          height: 3.5rem;
+          width: 100%;
+          outline: none;
+
+          @extend .px-3;
+          @extend .py-2;
+          @extend .btn-arrow-dropdown;
+
+          &:before {
+            content: "";
+            height: 1.5em;
+            width: 2.5em;
+            background: url("../images/icons/support.svg") center left no-repeat transparent;
+            background-size: contain;
+            clear: none;
+          }
+
+          @include only-safari {
+            line-height: 2.5rem;
+
+            &:before {
+              display: none;
+            }
+
+            span {
+              display: none;
+            }
+          }
+
+          &:after {
+            top: calc(50% - 9px);
+          }
+
+          &::-webkit-details-marker,
+          &::-webkit-details-marker {
+            display: none;
+          }
+
+          &:hover,
+          &:focus {
+            box-shadow: none;
+            background-color: $secondary-dark;
+          }
+        }
+
+        &[open] {
+          summary {
+            &:after {
+              -moz-transform: rotate(0deg);
+              -webkit-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              -ms-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+          }
+        }
+
+        &:not([open]) {
+          summary {
+            &:after {
+              -moz-transform: rotate(-90deg);
+              -webkit-transform: rotate(-90deg);
+              -o-transform: rotate(-90deg);
+              -ms-transform: rotate(-90deg);
+              transform: rotate(-90deg);
+            }
+          }
+        }
+
+        .details-wrapper {
+          padding: 1rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          align-items: center;
+          justify-content: center;
+
+          a {
+            min-width: 20rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Editing
+/* ----------------------------------------------------------------------------- */
+div[id*="webform-submission-ask-a-question"] {
+  nav {
+    &.webform-submission-navigation {
+      display: none;
+    }
+  }
+
+  details {
+    &.webform-submission-information {
+      display: none;
+    }
+  }
+
+  .form-actions {
+    display: inline-flex;
+  }
+}

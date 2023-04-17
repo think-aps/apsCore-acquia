@@ -1,0 +1,18 @@
+/**
+/* Basic Page
+/* ----------------------------------------------------------------------------- */
+.node--type-page {
+  header.header {
+    margin-bottom: 0;
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  .node--type-page {
+    header.header {
+    }
+  }
+}

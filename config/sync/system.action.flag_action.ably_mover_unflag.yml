@@ -1,0 +1,15 @@
+uuid: 9649ec70-7265-4497-ab0c-d22877986c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_mover
+  module:
+    - flag
+id: flag_action.ably_mover_unflag
+label: Remove
+type: node
+plugin: 'flag_action:ably_mover_unflag'
+configuration:
+  flag_id: ably_mover
+  flag_action: unflag

@@ -1,0 +1,15 @@
+uuid: 6b99aecf-ab1f-4c68-9ca7-f99489194fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.register_interest
+  module:
+    - flag
+id: flag_action.register_interest_unflag
+label: Registered
+type: node
+plugin: 'flag_action:register_interest_unflag'
+configuration:
+  flag_id: register_interest
+  flag_action: unflag

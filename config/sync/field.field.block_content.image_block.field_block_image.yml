@@ -1,0 +1,38 @@
+uuid: 6c6a5cd2-1673-456c-9f90-b9de89a46001
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_block
+    - field.storage.block_content.field_block_image
+  module:
+    - image
+id: block_content.image_block.field_block_image
+field_name: field_block_image
+entity_type: block_content
+bundle: image_block
+label: 'Block Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: block/images
+  file_extensions: 'png gif jpg jpeg svg'
+  max_filesize: 1MB
+  max_resolution: 500x500
+  min_resolution: 20x20
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

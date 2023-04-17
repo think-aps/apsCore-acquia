@@ -1,0 +1,15 @@
+uuid: 289e5b77-2d5f-41ee-a7df-a90327533e09
+langcode: en
+status: true
+dependencies: {  }
+name: chairperson_150x150
+label: 'Chairperson 150x150'
+effects:
+  1cadc98e-7fb7-4858-a274-8ebc5843b048:
+    uuid: 1cadc98e-7fb7-4858-a274-8ebc5843b048
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 150
+      height: 150
+      anchor: center-center

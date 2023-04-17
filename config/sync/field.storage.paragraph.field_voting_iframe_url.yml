@@ -1,0 +1,19 @@
+uuid: 1cd8818a-d088-46ab-b4c3-1226ba1026e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - iframe
+    - paragraphs
+id: paragraph.field_voting_iframe_url
+field_name: field_voting_iframe_url
+entity_type: paragraph
+type: iframe
+settings: {  }
+module: iframe
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

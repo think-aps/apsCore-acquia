@@ -1,0 +1,31 @@
+uuid: 18115010-8585-44aa-834c-966988c3c0ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tile_poster.field_tile_button_label
+    - field.field.paragraph.tile_poster.field_tile_media
+    - paragraphs.paragraphs_type.tile_poster
+id: paragraph.tile_poster.default
+targetEntityType: paragraph
+bundle: tile_poster
+mode: default
+content:
+  field_tile_button_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_tile_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: poster
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

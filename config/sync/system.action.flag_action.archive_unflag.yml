@@ -1,0 +1,15 @@
+uuid: 3cddf3f2-37fd-4431-8337-09ac90b7ca2a
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.archive
+  module:
+    - flag
+id: flag_action.archive_unflag
+label: 'Unarchive Question'
+type: webform_submission
+plugin: 'flag_action:archive_unflag'
+configuration:
+  flag_id: archive
+  flag_action: unflag

@@ -1,0 +1,57 @@
+uuid: 339a6899-6106-461c-81ac-fc2073414831
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hotspot_image.field_hi_areas
+    - field.field.paragraph.hotspot_image.field_hi_image
+    - field.field.paragraph.hotspot_image.field_hi_image_hover
+    - paragraphs.paragraphs_type.hotspot_image
+  module:
+    - entity_reference_revisions
+    - svg_image
+id: paragraph.hotspot_image.default
+targetEntityType: paragraph
+bundle: hotspot_image
+mode: default
+content:
+  field_hi_areas:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_hi_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_hi_image_hover:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

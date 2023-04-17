@@ -1,0 +1,43 @@
+uuid: 07c07fdc-3a24-4f5a-8cff-f86610e75121
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tile_file.field_tile_button_label
+    - field.field.paragraph.tile_file.field_tile_media
+    - paragraphs.paragraphs_type.tile_file
+  module:
+    - inline_entity_form
+id: paragraph.tile_file.default
+targetEntityType: paragraph
+bundle: tile_file
+mode: default
+content:
+  field_tile_button_label:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tile_media:
+    type: inline_entity_form_complex
+    weight: 1
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

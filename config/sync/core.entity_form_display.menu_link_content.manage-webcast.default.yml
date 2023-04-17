@@ -1,0 +1,48 @@
+uuid: 9af07e42-8afb-42b9-b36b-1d4a152b5594
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.icon_browser
+    - field.field.menu_link_content.manage-webcast.field_media_icon
+    - system.menu.manage-webcast
+  module:
+    - entity_browser
+    - link
+id: menu_link_content.manage-webcast.default
+targetEntityType: menu_link_content
+bundle: manage-webcast
+mode: default
+content:
+  field_media_icon:
+    type: entity_browser_entity_reference
+    weight: 3
+    region: content
+    settings:
+      entity_browser: icon_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: true
+      open: true
+      field_widget_display_settings:
+        view_mode: icon
+      selection_mode: selection_append
+    third_party_settings: {  }
+  menu_item_roles:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  menu_item_override_children: true
+  view_mode: true

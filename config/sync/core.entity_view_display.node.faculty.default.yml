@@ -1,0 +1,52 @@
+uuid: 2b77f0de-d5bc-46d9-aa0f-14277e631b37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.faculty.body
+    - field.field.node.faculty.field_content_access
+    - field.field.node.faculty.field_intro
+    - field.field.node.faculty.field_photo
+    - image.style.tile
+    - node.type.faculty
+  module:
+    - svg_image
+    - text
+    - user
+id: node.faculty.default
+targetEntityType: node
+bundle: faculty
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_intro:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: tile
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_content_access: true
+  links: true

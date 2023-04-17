@@ -1,0 +1,13 @@
+{
+    "name": "apsgitadmin/aps_segment",
+    "description": "A composer.json file for aps segment module",
+    "type": "drupal-custom-module",
+    "authors": [
+        {
+            "name": "APS Developer",
+            "email": "developer@thinkaps.com"
+        }
+    ],
+    "require": {
+    }
+}

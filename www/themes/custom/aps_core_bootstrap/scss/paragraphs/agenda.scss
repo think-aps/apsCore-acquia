@@ -1,0 +1,116 @@
+/**
+/* Agenda
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--agenda {
+  .agenda-wrapper {
+    @include rounded-edges($rounded-edges);
+    @include drop-shadow;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row;
+    justify-content: stretch;
+
+    .agenda-time {
+      background-color: $gray-100;
+      color: $primary-shade;
+      display: flex;
+      line-height: 1em;
+      flex-flow: column;
+      text-align: center;
+      justify-content: center;
+      font-size: calc(#{$font-size-base} * 3);
+      padding: 3rem;
+
+      @extend .font-weight-bold;
+
+      .timezone {
+        color: $secondary-shade;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-lg;
+        line-height: 1.2em;
+
+        @extend .mt-2;
+      }
+    }
+
+    .agenda-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .photo-wrapper {
+        .photo {
+          .field--type-image {
+            float: none;
+            margin: 0;
+          }
+
+          img {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            margin: 0 0 0 3rem;
+
+            @extend .rounded-circle;
+          }
+        }
+      }
+
+      .description {
+        flex: 1;
+        padding: 2rem 3rem;
+
+        .title {
+          font-size: $font-size-lg;
+          color: $secondary-shade;
+
+          @extend .font-weight-bold;
+          @extend .mb-3;
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .paragraph--type--agenda {
+    .agenda-wrapper {
+      flex-flow: column;
+
+      .agenda-time {
+        display: block;
+        padding: 1.5rem;
+      }
+
+      .agenda-info {
+        flex: 1;
+        padding: 0;
+
+        .photo-wrapper {
+          display: none;
+
+          .photo {
+            .field--type-image {
+              float: none;
+              margin: 0;
+            }
+
+            img {
+              margin: 0;
+            }
+          }
+        }
+
+        .description {
+          text-align: center;
+          padding: 1.5rem;
+
+          .title {
+
+          }
+        }
+      }
+    }
+  }
+}

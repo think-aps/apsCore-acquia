@@ -1,0 +1,33 @@
+uuid: cd0aedd2-81bb-4b57-9bf1-e5563f2e1afc
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_ha_target
+field_name: field_ha_target
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: blank
+      label: 'New window'
+    -
+      value: modal_800
+      label: 'Modal window (800x500)'
+    -
+      value: modal_full
+      label: 'Modal window (full size)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

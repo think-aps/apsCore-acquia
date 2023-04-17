@@ -1,0 +1,46 @@
+/**
+/* Interactivity sidebar for Events
+/* ----------------------------------------------------------------------------- */
+.node--type-interactivity-tab {
+  .paragraph {
+    &.paragraph--type--webform {
+      form {
+        .form-actions {
+          button {
+            width: 100%;
+            max-width: none;
+
+            @extend .btn-primary;
+            @extend .btn-arrow-right;
+          }
+        }
+      }
+    }
+
+    &.paragraph--type--live-voting {
+      .field--type-iframe {
+        > div {
+
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .node--type-interactivity-tab {
+    .paragraph {
+      &.paragraph--type--webform {
+
+      }
+
+      &.paragraph--type--live-voting {
+        .field--type-iframe {
+          > div {
+            --bs-aspect-ratio: calc(3 / 2 * 100%);
+          }
+        }
+      }
+    }
+  }
+}

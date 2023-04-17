@@ -1,0 +1,249 @@
+uuid: f4c60f5a-92aa-4c36-9218-b60d5ab59b6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full_screen
+    - field.field.node.event.field_addevent_button
+    - field.field.node.event.field_content_access
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_interactivity
+    - field.field.node.event.field_event_overview
+    - field.field.node.event.field_event_tabs
+    - field.field.node.event.field_event_video
+    - field.field.node.event.field_event_view_display
+    - field.field.node.event.field_live
+    - field.field.node.event.field_popup
+    - node.type.event
+    - webform.webform.tech_support
+  module:
+    - dashboards
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
+    - user
+    - view_mode_switch
+    - webform
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Edit Button'
+          context_mapping: {  }
+          custom_classes: edit-button
+        components:
+          d419b55a-e4ff-40ec-ba97-3743a871cbe3:
+            uuid: d419b55a-e4ff-40ec-ba97-3743a871cbe3
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_event_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1fc43689-2c74-4342-8aa9-5047982039d7:
+            uuid: 1fc43689-2c74-4342-8aa9-5047982039d7
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_event_view_display'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: view_mode_switch_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          8b4f14bf-abb6-438b-90d5-b3f49c9c4780:
+            uuid: 8b4f14bf-abb6-438b-90d5-b3f49c9c4780
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_event_interactivity'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          deac78ba-3070-4b83-ba8d-02fc70328c22:
+            uuid: deac78ba-3070-4b83-ba8d-02fc70328c22
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Edit Button'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'edit_button:embed'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Webinar Interaction'
+          context_mapping: {  }
+          custom_classes: webinar-interaction
+        components:
+          66ed46ec-8093-4849-918d-62ae73632b10:
+            uuid: 66ed46ec-8093-4849-918d-62ae73632b10
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_event_video'
+              label: 'Video Type'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Webinar Tech Support'
+          context_mapping: {  }
+          column_widths: 75-25
+          custom_classes: webinar-support
+        components:
+          a18cb5ec-54bb-4297-a968-f19f465ea1e0:
+            uuid: a18cb5ec-54bb-4297-a968-f19f465ea1e0
+            region: first
+            configuration:
+              id: webform_block
+              label: 'Technical Support'
+              label_display: '0'
+              provider: webform
+              context_mapping: {  }
+              webform_id: tech_support
+              default_data: ''
+              redirect: false
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Webinar Tabs'
+          context_mapping: {  }
+          column_widths: 75-25
+          custom_classes: webinar-tabs
+        components:
+          8d63d443-a17f-44ee-b8fb-44e3fd8700d7:
+            uuid: 8d63d443-a17f-44ee-b8fb-44e3fd8700d7
+            region: first
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Webinar Tabs'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'aps_webinar_tabs:tabs'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Popup
+          context_mapping: {  }
+          custom_id: ''
+          custom_classes: ''
+          custom_class_choose: {  }
+          custom_styles: ''
+          custom_data_attributes: ''
+          regions:
+            content:
+              region_id: ''
+              region_class_choose: {  }
+              region_classes: ''
+              region_styles: ''
+              region_data: ''
+        components:
+          dc712c79-e454-456c-9bbe-89157a7d6c4b:
+            uuid: dc712c79-e454-456c-9bbe-89157a7d6c4b
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_popup'
+              label: Popup
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.event.full_screen
+targetEntityType: node
+bundle: event
+mode: full_screen
+content:
+  field_event_interactivity:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: first
+  field_event_video:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: first
+  field_event_view_display:
+    type: view_mode_switch_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: first
+hidden:
+  field_addevent_button: true
+  field_content_access: true
+  field_event_date: true
+  field_event_image: true
+  field_event_overview: true
+  field_event_tabs: true
+  field_live: true
+  field_popup: true
+  flag_register_interest: true
+  links: true

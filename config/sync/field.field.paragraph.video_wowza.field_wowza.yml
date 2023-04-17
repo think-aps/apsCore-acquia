@@ -1,0 +1,23 @@
+uuid: 4fab21d3-46b8-468c-b879-8466d35a9376
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_wowza
+    - paragraphs.paragraphs_type.video_wowza
+  module:
+    - aps_flowplayer
+id: paragraph.video_wowza.field_wowza
+field_name: field_wowza
+entity_type: paragraph
+bundle: video_wowza
+label: Wowza
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    flowplayer_videokey: ''
+default_value_callback: ''
+settings: {  }
+field_type: aps_flowplayer

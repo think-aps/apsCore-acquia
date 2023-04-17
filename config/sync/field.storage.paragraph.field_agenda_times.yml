@@ -1,0 +1,20 @@
+uuid: 15be8c15-67ee-449c-b6cc-f68ee45d87ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - paragraphs
+id: paragraph.field_agenda_times
+field_name: field_agenda_times
+entity_type: paragraph
+type: daterange
+settings:
+  datetime_type: datetime
+module: datetime_range
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

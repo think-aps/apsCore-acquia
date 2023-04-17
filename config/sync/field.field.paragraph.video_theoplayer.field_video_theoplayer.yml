@@ -1,0 +1,27 @@
+uuid: a9e49ed2-28b3-4b92-808b-a1da9fac530c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_theoplayer
+    - paragraphs.paragraphs_type.video_theoplayer
+  module:
+    - aps_theo_embed_field
+id: paragraph.video_theoplayer.field_video_theoplayer
+field_name: field_video_theoplayer
+entity_type: paragraph
+bundle: video_theoplayer
+label: THEOplayer
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    theoplayer_image_revision: ''
+    theoplayer_videokey: 'https://cdn.myth.theoplayer.com/d7d0317c-c27d-4d5a-9f71-4b89b08c11b2'
+    theoplayer_playlist_url: 'https://cdn3.wowza.com/1/VUg0WGovYzk3NzlP/QUV1eEd1/hls/live/playlist.m3u8'
+    theoplayer_thumbnail_url: ''
+    theoplayer_image: '0'
+default_value_callback: ''
+settings: {  }
+field_type: theojs

@@ -1,0 +1,32 @@
+uuid: 8ebd7dbe-b4cb-49e7-b103-d0c868b81f61
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.venue_resource_item.field_vri_file
+    - field.field.paragraph.venue_resource_item.field_vri_text
+    - field.field.paragraph.venue_resource_item.field_vri_title
+    - paragraphs.paragraphs_type.venue_resource_item
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.venue_resource_item.preview
+targetEntityType: paragraph
+bundle: venue_resource_item
+mode: preview
+content:
+  field_vri_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_vri_file: true
+  field_vri_text: true

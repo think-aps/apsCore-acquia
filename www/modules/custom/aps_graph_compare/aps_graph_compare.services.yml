@@ -1,0 +1,5 @@
+services:
+  aps_graph_compare.dynamic_routes:
+    class: Drupal\aps_graph_compare\Routing\DynamicRoutesAlter
+    tags:
+      - { name: event_subscriber }

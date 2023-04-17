@@ -1,0 +1,21 @@
+uuid: acdcc84c-799a-4130-aa09-0aa77931038d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ha_target
+    - paragraphs.paragraphs_type.hotspot_area
+  module:
+    - options
+id: paragraph.hotspot_area.field_ha_target
+field_name: field_ha_target
+entity_type: paragraph
+bundle: hotspot_area
+label: Target
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

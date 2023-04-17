@@ -1,0 +1,48 @@
+uuid: 9cd7d92c-252c-45db-b045-3048283afc2e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:image_block:8a951336-4873-47a8-b822-c331b667b5d4'
+  module:
+    - block_content
+    - system
+label: FAQ
+name: faq
+group: 'Page, Core'
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  request_path:
+    id: request_path
+    negate: false
+    uuid: 4d5c089c-56c3-4db5-ad12-0719aed668b7
+    context_mapping: {  }
+    pages: /faq
+reactions:
+  blocks:
+    id: blocks
+    uuid: 2685efae-6c10-4b48-9bdf-9a8489a3ec3f
+    blocks:
+      da9f9c9c-3713-4438-a83a-4fe04b34b0de:
+        uuid: da9f9c9c-3713-4438-a83a-4fe04b34b0de
+        id: 'block_content:8a951336-4873-47a8-b822-c331b667b5d4'
+        label: 'Frequently Asked Questions'
+        provider: block_content
+        label_display: visible
+        region: featured_top
+        weight: '0'
+        custom_id: block_content_8a951336_4873_47a8_b822_c331b667b5d4
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: faq
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

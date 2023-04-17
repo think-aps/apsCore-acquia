@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "e8e2223d-83e5-40cd-9079-09d4c8abe48f",
+		"name": "Segment HTTP Tracking API",
+		"description": "The Segment HTTP Tracking API lets you record analytics data from any website or application. The requests hit our servers, and we route your data to any destination you want!\n\nSegment has native sources for most use cases (Javascript, iOS, etc.) that are all built for high-performance and are open-source. But sometimes you may want to send to the HTTP API directly—that’s what this reference is for.\n\nhttps://segment.com/docs/connections/sources/catalog/libraries/server/http-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Form API",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Webform module",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Comment form",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		},
+		{
+			"name": "Direct message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "lets you tie a user to their actions and record traits about them. It includes a unique User ID and any optional traits you know about them.\n\nWe recommend calling identify a single time when the user’s account is first created, and only identifying again later when their traits change."
+			},
+			"response": []
+		}
+	]
+}

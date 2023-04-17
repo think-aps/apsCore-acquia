@@ -1,0 +1,10 @@
+uuid: f219e56f-896d-49d1-9f47-2b96752075d4
+langcode: en
+status: true
+dependencies: {  }
+id: tile_file
+label: File
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

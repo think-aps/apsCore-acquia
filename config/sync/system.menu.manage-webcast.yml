@@ -1,0 +1,8 @@
+uuid: 3b9576ab-c78d-4523-b3f3-84237aff7bae
+langcode: en
+status: true
+dependencies: {  }
+id: manage-webcast
+label: 'Dashboard - Manage Content'
+description: 'Dashboard - Menu to administer content applicable to Multicast/Webcast sites'
+locked: false

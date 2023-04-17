@@ -1,0 +1,40 @@
+uuid: a5f99e01-9dac-4495-a2df-2448472743b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.hotspot_area.field_ha_coord
+    - field.field.paragraph.hotspot_area.field_ha_floating_element
+    - field.field.paragraph.hotspot_area.field_ha_image
+    - field.field.paragraph.hotspot_area.field_ha_link
+    - field.field.paragraph.hotspot_area.field_ha_mobile_coord
+    - field.field.paragraph.hotspot_area.field_ha_target
+    - field.field.paragraph.hotspot_area.field_ha_title
+    - paragraphs.paragraphs_type.hotspot_area
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.hotspot_area.preview
+targetEntityType: paragraph
+bundle: hotspot_area
+mode: preview
+content:
+  field_ha_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_ha_coord: true
+  field_ha_floating_element: true
+  field_ha_image: true
+  field_ha_link: true
+  field_ha_mobile_coord: true
+  field_ha_target: true

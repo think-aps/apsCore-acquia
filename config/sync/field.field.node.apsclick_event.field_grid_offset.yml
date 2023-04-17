@@ -1,0 +1,23 @@
+uuid: f7168789-008b-453b-bb1b-78d729c8782e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grid_offset
+    - node.type.apsclick_event
+  module:
+    - options
+id: node.apsclick_event.field_grid_offset
+field_name: field_grid_offset
+entity_type: node
+bundle: apsclick_event
+label: 'Grid Offset'
+description: 'How many rows do you wish to skip before becoming grid layout'
+required: true
+translatable: false
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

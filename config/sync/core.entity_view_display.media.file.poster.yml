@@ -1,0 +1,39 @@
+uuid: bcd33550-696d-4dec-b25d-73783243e0f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.poster
+    - field.field.media.file.field_media_file
+    - media.type.file
+  module:
+    - layout_builder
+    - pdf
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.file.poster
+targetEntityType: media
+bundle: file
+mode: poster
+content:
+  field_media_file:
+    type: pdf_default
+    label: hidden
+    settings:
+      keep_pdfjs: true
+      width: 100%
+      height: ''
+      page: null
+      zoom: null
+      custom_zoom: null
+      pagemode: null
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

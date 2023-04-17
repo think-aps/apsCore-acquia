@@ -1,0 +1,25 @@
+uuid: 1b259c4b-d757-4833-ae69-e47c2e88979a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.header-menu.field_media_icon
+    - system.menu.header-menu
+id: menu_link_content.header-menu.default
+targetEntityType: menu_link_content
+bundle: header-menu
+mode: default
+content:
+  field_media_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: icon
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  children: true
+  menu_item_override_children: true
+  menu_item_roles: true

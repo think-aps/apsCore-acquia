@@ -1,0 +1,35 @@
+uuid: 132d3d82-aaa1-461d-8f84-9808ba6534c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text.field_welcome_text
+    - paragraphs.paragraphs_type.text
+  module:
+    - allowed_formats
+    - maxlength
+    - text
+id: paragraph.text.default
+targetEntityType: paragraph
+bundle: text
+mode: default
+content:
+  field_welcome_text:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 6
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+hidden:
+  created: true
+  status: true

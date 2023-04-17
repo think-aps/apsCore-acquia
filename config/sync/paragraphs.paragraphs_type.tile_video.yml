@@ -1,0 +1,10 @@
+uuid: 647ab4af-4330-4974-88e2-38cba1c282a6
+langcode: en
+status: true
+dependencies: {  }
+id: tile_video
+label: Video
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

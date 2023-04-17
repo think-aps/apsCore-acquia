@@ -1,0 +1,55 @@
+uuid: 5ada29e0-7bc6-49f3-98cb-0cff32879aa2
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_page_header
+  module:
+    - node
+    - views
+label: apsClick
+name: apsclick
+group: 'Page, Click'
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 81466bc5-90fb-485d-85db-0a969e2cba4d
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      apsclick_event: apsclick_event
+  request_path_exclusion:
+    id: request_path_exclusion
+    negate: true
+    uuid: 679dd0db-a1e2-4d47-a6cd-dfca2d6e238d
+    context_mapping: {  }
+    pages: "/node/*/edit\r\n/node/add/*\r\n/admin/*"
+reactions:
+  blocks:
+    id: blocks
+    uuid: cd734d52-3130-44e1-b37b-47ae966d768a
+    blocks:
+      3e3df1cf-88a5-415f-8e0c-0c313ed91df9:
+        uuid: 3e3df1cf-88a5-415f-8e0c-0c313ed91df9
+        id: 'views_block:aps_page_header-banner'
+        label: ''
+        provider: views
+        label_display: '0'
+        region: featured_top
+        weight: '0'
+        custom_id: views_block_aps_page_header_banner
+        theme: aps_click_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: apsclick
+        context_mapping: {  }
+        views_label: ''
+        items_per_page: none
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

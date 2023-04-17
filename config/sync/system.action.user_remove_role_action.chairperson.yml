@@ -1,0 +1,14 @@
+uuid: 1e9ee8c1-e0be-47f1-bee7-cd8a2ac97b82
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chairperson
+  module:
+    - user
+id: user_remove_role_action.chairperson
+label: 'Remove the Chairperson role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: chairperson

@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a view template to display a list of rows.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the container.
+ * - rows: A list of rows for this list.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's contents.
+ * - title: The title of this group of rows. May be empty.
+ * - list: @todo.
+ *   - type: Starting tag will be either a ul or ol.
+ *   - attributes: HTML attributes for the list element.
+ *
+ * @see template_preprocess_views_view_list()
+ *
+ * @ingroup themeable
+ */
+#}
+
+<div class="quicktabs-wrapper" id="quicktabs-aps-webinar-tabs">
+  <div class="dropdown-tabs">
+    <a class="dropdown-button btn" type="button" id="webinar-dropdown-list" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class="icon">
+        <img src="/themes/custom/aps_core_bootstrap/images/icons/info.svg" alt="Event info" />
+      </div>
+      <div class="label">Event info</div>
+      <div class="hamburger-container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </a>
+    <ul class="navtabs-tabs dropdown-menu nav" id="webinar-tab-list" aria-labelledby="webinar-dropdown-list" role="tablist">
+      {% for row in rows %}
+        {{- row.content -}}
+      {% endfor %}
+    </ul>
+  </div>
+  {{ drupal_view('aps_webinar_tabs', 'webinar') }}
+</div>

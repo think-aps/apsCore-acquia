@@ -1,0 +1,28 @@
+uuid: 6ba04714-e980-4357-8d4d-b744d18887bb
+langcode: en
+status: true
+dependencies:
+  module:
+    - poll
+id: ably_poll
+label: 'Ably - Poll'
+bundles: {  }
+entity_type: poll
+global: true
+flag_short: Activate
+flag_long: ''
+flag_message: ''
+unflag_short: Deactivate
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:poll'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: false
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions: {  }
+linkTypeConfig: {  }

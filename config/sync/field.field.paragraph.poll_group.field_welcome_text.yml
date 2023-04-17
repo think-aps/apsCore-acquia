@@ -1,0 +1,26 @@
+uuid: 1880f30b-47f6-4f04-82b7-974b48ce5561
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_welcome_text
+    - paragraphs.paragraphs_type.poll_group
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.poll_group.field_welcome_text
+field_name: field_welcome_text
+entity_type: paragraph
+bundle: poll_group
+label: Placeholder
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

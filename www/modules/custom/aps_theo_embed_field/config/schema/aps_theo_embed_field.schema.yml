@@ -1,0 +1,6 @@
+aps_theo_embed_field.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    theoplayer_default_licence:
+      type: string

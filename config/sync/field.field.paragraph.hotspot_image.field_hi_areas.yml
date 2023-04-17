@@ -1,0 +1,82 @@
+uuid: 40d975c4-ff64-47e6-bd66-23e1ccb72c46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hi_areas
+    - paragraphs.paragraphs_type.hotspot_area
+    - paragraphs.paragraphs_type.hotspot_image
+  module:
+    - entity_reference_revisions
+id: paragraph.hotspot_image.field_hi_areas
+field_name: field_hi_areas
+entity_type: paragraph
+bundle: hotspot_image
+label: Areas
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hotspot_area: hotspot_area
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: 19
+        enabled: false
+      ask_a_question:
+        weight: 20
+        enabled: false
+      breakout_link:
+        weight: 22
+        enabled: false
+      breakouts:
+        weight: 21
+        enabled: false
+      chairperson:
+        weight: 23
+        enabled: false
+      event_evaluation:
+        weight: 24
+        enabled: false
+      event_faculty:
+        weight: 25
+        enabled: false
+      event_faculty_member:
+        weight: 26
+        enabled: false
+      hotspot_area:
+        weight: 27
+        enabled: true
+      hotspot_image:
+        weight: 28
+        enabled: false
+      live_voting:
+        weight: 29
+        enabled: false
+      poster:
+        weight: 30
+        enabled: false
+      posters:
+        weight: 31
+        enabled: false
+      request_materials:
+        weight: 32
+        enabled: false
+      resource_item:
+        weight: 34
+        enabled: false
+      resources:
+        weight: 33
+        enabled: false
+      webform:
+        weight: 35
+        enabled: false
+      welcome:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,12 @@
+uuid: 38d6c9f9-2bba-4112-9e30-979e12d306a9
+langcode: en
+status: true
+dependencies: {  }
+label: Card
+id: card
+description: ''
+aspect_ratio: '5:2'
+soft_limit_width: 100
+soft_limit_height: 40
+hard_limit_width: 50
+hard_limit_height: 20

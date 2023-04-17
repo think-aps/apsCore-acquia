@@ -1,0 +1,183 @@
+/**
+/* Header region
+/* ----------------------------------------------------------------------------- */
+header.header {
+  #navbar-main {
+    > .container {
+
+    }
+
+    .navbar-brand {
+      img,
+      svg {
+        @extend .d-none;
+      }
+    }
+  }
+
+  ul.menu {
+    > li {
+      .field--type-entity-reference {
+      }
+
+      a,
+      span {
+        & ~ * {
+          img,
+          svg {
+
+          }
+        }
+      }
+
+      span {
+        &:after {
+
+        }
+      }
+
+      .dropdown-menu {
+        li {
+          a {
+            &:hover,
+            &:focus,
+            &:active {
+
+            }
+          }
+        }
+      }
+
+      &:last-child,
+      &:last-of-type {
+      }
+    }
+  }
+
+  .navbar-toggler {
+    .hamburger-container {
+      span {
+        &:nth-child(1),
+        &:nth-child(4) {
+        }
+
+        &:nth-child(1) {
+        }
+        &:nth-child(4) {
+        }
+
+        &:nth-child(2) {
+
+        }
+        &:nth-child(3) {
+        }
+      }
+    }
+
+    &.collapsed {
+      .hamburger-container {
+        span {
+          &:nth-child(2),
+          &:nth-child(3) {
+          }
+        }
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+    }
+  }
+
+  .navbar-collapse {
+    nav {
+      .nav {
+        a,
+        span {
+
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  header.header {
+    #navbar-main {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      height: 3rem;
+
+      .navbar-brand {
+        img {
+          max-height: 2rem;
+        }
+      }
+
+      nav {
+      }
+    }
+
+    ul.menu {
+      > li {
+        &:not([class*='menu-item--']) {
+          a {
+          }
+
+          > div {
+          }
+        }
+
+        &.menu-item--collapsed,
+        &.menu-item--expanded {
+          > div {
+            .field--name-field-icon {
+              img,
+              svg {
+              }
+            }
+
+            ul.dropdown-menu {
+              li {
+                a {
+                  &:hover,
+                  &:focus,
+                  &:active {
+                  }
+                }
+              }
+            }
+          }
+
+          span {
+          }
+        }
+
+        .field--name-field-icon {
+          img,
+          svg {
+          }
+        }
+      }
+    }
+
+    .navbar-collapse {
+      &.collapsing,
+      &.show {
+        top: 3rem; // Change this value to your header height
+      }
+
+      nav {
+        .nav {
+          a,
+          span {
+          }
+        }
+      }
+    }
+  }
+}

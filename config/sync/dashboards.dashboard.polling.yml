@@ -1,0 +1,44 @@
+uuid: 360491c0-e4ea-4643-beeb-8ea29df103aa
+langcode: en
+status: true
+dependencies: {  }
+id: polling
+admin_label: Polling
+category: ''
+frontend: true
+weight: 3
+sections:
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Active Graph'
+      context_mapping: {  }
+      custom_classes: dashboard-management
+    components:
+      5493283b-44b9-447c-98b0-aeaf8e223cab:
+        uuid: 5493283b-44b9-447c-98b0-aeaf8e223cab
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Manage Polls'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'aps_poll:embed'
+        weight: 1
+        additional: {  }
+      d5f2015d-e608-4999-b370-a653683fb7d1:
+        uuid: d5f2015d-e608-4999-b370-a653683fb7d1
+        region: content
+        configuration:
+          id: 'system_menu_block:manage-polls'
+          label: 'Poll Display'
+          label_display: visible
+          provider: system
+          context_mapping: {  }
+          level: 1
+          depth: 0
+          expand_all_items: false
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }

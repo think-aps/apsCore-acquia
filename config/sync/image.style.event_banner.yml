@@ -1,0 +1,15 @@
+uuid: ceea8fec-aed6-4d3a-9eb0-e1a999ff6976
+langcode: en
+status: true
+dependencies: {  }
+name: event_banner
+label: 'Event Banner 1200'
+effects:
+  2e25234d-acf7-4bed-bcbb-d2212bc00bf2:
+    uuid: 2e25234d-acf7-4bed-bcbb-d2212bc00bf2
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

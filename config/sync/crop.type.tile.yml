@@ -1,0 +1,12 @@
+uuid: dfb3b07e-5ee4-4412-a0db-2c149ed3e456
+langcode: en
+status: true
+dependencies: {  }
+label: Tile
+id: tile
+description: ''
+aspect_ratio: '1:1'
+soft_limit_width: 72
+soft_limit_height: 72
+hard_limit_width: 32
+hard_limit_height: 32

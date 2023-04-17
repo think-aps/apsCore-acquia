@@ -1,0 +1,22 @@
+uuid: 1bb5c1f5-477d-4984-a2ca-ab1b35fba9bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.v_agenda
+id: node.v_agenda.promote
+field_name: promote
+entity_type: node
+bundle: v_agenda
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,34 @@
+uuid: 05e2588f-6f83-42b4-b497-fb9767ce0fb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.list.field_entity_list
+    - paragraphs.paragraphs_type.list
+  module:
+    - inline_entity_form
+id: paragraph.list.default
+targetEntityType: paragraph
+bundle: list
+mode: default
+content:
+  field_entity_list:
+    type: inline_entity_form_complex
+    weight: 0
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: Node
+      label_plural: Nodes
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

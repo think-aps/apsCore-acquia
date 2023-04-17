@@ -1,0 +1,31 @@
+uuid: 1fae46f7-f63f-4ae6-8536-e9ff583067f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_iframe
+    - paragraphs.paragraphs_type.introduction
+  module:
+    - iframe
+id: paragraph.introduction.field_video_iframe
+field_name: field_video_iframe
+entity_type: paragraph
+bundle: introduction
+label: iFrame
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: null
+  headerlevel: '3'
+  class: ''
+  frameborder: '0'
+  scrolling: 'no'
+  transparency: '0'
+  allowfullscreen: '1'
+  tokensupport: '0'
+  width: null
+  height: null
+field_type: iframe

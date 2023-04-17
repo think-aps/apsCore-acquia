@@ -1,0 +1,55 @@
+uuid: 6eb01166-a18e-41e9-97b6-6aa074be4c85
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_page_header
+  module:
+    - node
+    - views
+label: 'Basic Page'
+name: basic_page
+group: 'Page, Core'
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: a45f5bd4-98b1-4bde-a5a2-050cccfc889f
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+  request_path_exclusion:
+    id: request_path_exclusion
+    negate: true
+    uuid: 7eb8ecde-9a20-46d0-a863-579f55a44912
+    context_mapping: {  }
+    pages: "/node/*/edit\r\n/node/add/*\r\n/admin/*"
+reactions:
+  blocks:
+    id: blocks
+    uuid: 8bd6af67-a692-415e-892f-9118ae6933a5
+    blocks:
+      53040fa0-3c3f-4461-9ecf-ae8f37f49090:
+        uuid: 53040fa0-3c3f-4461-9ecf-ae8f37f49090
+        id: 'views_block:aps_page_header-banner'
+        label: ''
+        provider: views
+        label_display: '0'
+        region: featured_top
+        weight: '0'
+        custom_id: views_block_aps_page_header_banner
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: basic_page
+        context_mapping: {  }
+        views_label: ''
+        items_per_page: none
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

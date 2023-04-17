@@ -1,0 +1,10 @@
+uuid: be680b2f-fbf6-4e02-bd0c-f06bf21626d5
+langcode: en
+status: true
+dependencies: {  }
+id: cookiepro
+label: CookiePro
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

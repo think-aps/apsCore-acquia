@@ -1,0 +1,19 @@
+uuid: 38d19150-1215-4950-aa00-b56e9beb286e
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_vrs_text
+field_name: field_vrs_text
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,26 @@
+uuid: fda81715-a6fc-4dd3-ad44-8a4d99f71941
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_welcome_text
+    - paragraphs.paragraphs_type.popup
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.popup.field_welcome_text
+field_name: field_welcome_text
+entity_type: paragraph
+bundle: popup
+label: Message
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

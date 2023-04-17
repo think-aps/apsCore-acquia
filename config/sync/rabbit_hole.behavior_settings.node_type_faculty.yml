@@ -1,0 +1,14 @@
+uuid: 94224f11-8383-40d3-9ce9-29b15d2df654
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.faculty
+id: node_type_faculty
+entity_type_id: node_type
+entity_id: faculty
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

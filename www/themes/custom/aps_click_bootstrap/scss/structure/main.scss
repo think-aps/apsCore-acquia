@@ -1,0 +1,71 @@
+/**
+/* General body content
+/* ----------------------------------------------------------------------------- */
+#page {
+  .featured-top {
+    aside {
+      .view {
+        &.view-aps-page-header {
+          .view-content {
+            > div {
+              h2 {
+                &:after {
+                }
+              }
+
+              svg,
+              img {
+                filter: unset;
+              }
+            }
+          }
+        }
+      }
+
+      .block {
+        &.block-block-content {
+          h2 {
+            &:after {
+
+            }
+          }
+
+          svg,
+          img {
+
+          }
+        }
+      }
+    }
+  }
+
+  #main-wrapper {
+    main#content {
+      section {
+
+      }
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  #page {
+    .featured-top {
+
+    }
+  }
+
+  #main-wrapper {
+    display: flex;
+    align-items: center;
+
+    main#content {
+      section {
+
+      }
+    }
+  }
+}

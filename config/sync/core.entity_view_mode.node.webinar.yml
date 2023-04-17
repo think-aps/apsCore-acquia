@@ -1,0 +1,10 @@
+uuid: 7a444d59-c5dc-4b0c-936e-fc9294df7c56
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.webinar
+label: Webinar
+targetEntityType: node
+cache: true

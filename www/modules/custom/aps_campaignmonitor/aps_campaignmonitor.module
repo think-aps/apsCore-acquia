@@ -1,0 +1,1050 @@
+<?php
+  /**
+   * @file
+   * API configuration module that synchronises the automation of users between Drupal and Campaign Monitor.
+   */
+
+  use Drupal\Core\Entity\EntityInterface;
+  use Drupal\Core\Entity\EntityStorageException;
+  use Drupal\Core\Render\Markup;
+  use Drupal\field\Entity\FieldConfig;
+  use Drupal\field\Entity\FieldStorageConfig;
+  use Psr\Http\Message\ResponseInterface;
+
+  const APS_CM_API = "https://api.createsend.com/api/v3.3/";
+  const APS_CM_FIELD_NAME = "field_cm_list_id";
+  const APS_CM_FIELD_LABEL = "Campaign Monitor List ID";
+  const APS_CM_ALL_USER_LIST = "All Users";
+
+  /**
+   * Implements hook_ENTITY_TYPE_insert().
+   */
+  function aps_campaignmonitor_user_insert(EntityInterface $entity) {
+    if (!aps_campaignmonitor_is_active()) {
+      return;
+    }
+
+    if ($entity instanceof Drupal\user\UserInterface) {
+      $config = Drupal::config('aps_campaignmonitor.settings');
+
+      // https://www.campaignmonitor.com/api/v3-3/subscribers/#adding-a-subscriber
+      if ($list_id = $config->get('all_users_list_id')) {
+        aps_campaignmonitor_subscribe_user_to_list($entity, $list_id);
+      }
+    }
+  }
+
+
+  /**
+   * Implements hook_ENTITY_TYPE_update().
+   */
+  function aps_campaignmonitor_user_update(EntityInterface $entity) {
+    if (!aps_campaignmonitor_is_active()) {
+      return;
+    }
+
+    if ($entity instanceof Drupal\user\UserInterface) {
+      $config = Drupal::config('aps_campaignmonitor.settings');
+      $list_id = $config->get('all_users_list_id');
+
+      // Changing user info
+      try {
+        $original = Drupal::entityTypeManager()->getStorage($entity->getEntityTypeId())->loadUnchanged($entity->id());
+      } catch (Exception $ex) {
+        Drupal::logger('aps_campaignmonitor')->error(t('Cannot load original user info for @user', array(
+          '@user' => $entity->label(),
+        )));
+      }
+
+      // Check all the fields exist on the list
+      foreach (aps_campaignmonitor_get_user_custom_fields() as $user_field) {
+        aps_campaignmonitor_create_list_custom_field($user_field, $list_id);
+      }
+
+      $user_fields_data = aps_campaignmonitor_get_user_custom_fields_data($entity);
+
+      $update = array(
+        'EmailAddress' => $entity->getEmail(),
+        'ConsentToTrack' => 'Unchanged',
+        'Resubscribe' => true,
+        'CustomFields' => aps_campaignmonitor_format_user_fields($user_fields_data),
+      );
+
+      // https://www.campaignmonitor.com/api/v3-3/subscribers/#updating-a-subscriber
+      // We only have to update 1 list since the user information has the email address as the primary key
+      if ($response = aps_campaignmonitor_httpclient_request('PUT', "subscribers/{$list_id}.json?email={$original->getEmail()}", $update)) {
+        if ($response && $response->getStatusCode() == 200) {
+          Drupal::logger('aps_campaignmonitor')->notice(t('@user info has been updated', array(
+            '@user' => $entity->label(),
+          )));
+        } else {
+          Drupal::logger('aps_campaignmonitor')->warning(t('@user info could not be changed', array(
+            '@user' => $entity->label(),
+          )));
+        }
+      }
+
+      // Activating/Blocking
+      if ($original->status !== $entity->status) {
+        $lists = aps_campaignmonitor_get_user_lists($entity->getEmail());
+
+        foreach ($lists as $list) {
+          $list_id = $list->ListID;
+
+          if ($entity->isActive()) {
+            aps_campaignmonitor_subscribe_user_to_list($entity, $list_id);
+          } else {
+            aps_campaignmonitor_unsubscribe_user_from_list($entity, $list_id);
+          }
+        }
+      }
+    }
+  }
+
+
+  /**
+   * Implements hook_ENTITY_TYPE_delete().
+   */
+  function aps_campaignmonitor_user_delete(EntityInterface $entity) {
+    if (!aps_campaignmonitor_is_active()) {
+      return;
+    }
+
+    if ($entity instanceof Drupal\user\UserInterface) {
+      $lists = aps_campaignmonitor_get_user_lists($entity->getEmail());
+
+      foreach ($lists as $list) {
+        aps_campaignmonitor_delete_user_from_list($entity, $list->ListID);
+      }
+    }
+  }
+
+  /**
+   * Implements hook_entity_insert().
+   */
+  function aps_campaignmonitor_entity_insert(EntityInterface $entity) {
+    if (!aps_campaignmonitor_is_active()) {
+      return;
+    }
+
+    $config = Drupal::config('aps_campaignmonitor.settings');
+
+    if ($flag = Drupal::service('flag')->getFlagById($config->get('subscriber_flag'))) {
+      if ($flag instanceof Drupal\flag\Entity\Flag) {
+        // Check we are using the correct entity type
+        if ($entity->getEntityTypeId() === $flag->getFlaggableEntityTypeId()) {
+          aps_campaignmonitor_entity_create_list($entity);
+        }
+      }
+    }
+  }
+
+  /**
+   * Implements hook_mail_alter().
+   */
+  function aps_campaignmonitor_mail_alter(&$message) {
+    if (!aps_campaignmonitor_is_active()) {
+      return;
+    }
+
+    $config = Drupal::config('aps_campaignmonitor.settings');
+
+    // Retrieve the transactional mailing ID related to this sender
+    if ($transactional_id = aps_campaignmonitor_retrieve_mailing_key($message['id'])) {
+      // Setup the recipient list as an array
+      $recipient_list = preg_split('/[,;]/', $message['to'], -1, PREG_SPLIT_NO_EMPTY);
+      $transactional_recipients = array();
+      foreach ($recipient_list as $recipient) {
+        if (filter_var(trim($recipient), FILTER_VALIDATE_EMAIL)) {
+          $transactional_recipients[] = trim($recipient);
+        }
+      }
+
+      // Subject Line
+      $subject_line = ($message['subject'] instanceof Markup) ? $message['subject']->__toString() : $message['subject'];
+
+      // Setup the body text from an array
+      $transactional_body = '';
+      foreach ($message['body'] as $key => $body_fragment) {
+        if ($body_fragment instanceof Markup) {
+          $transactional_body .= $body_fragment->__toString();
+        } else {
+          $transactional_body .= $body_fragment;
+        }
+      }
+      $transactional_body = nl2br($transactional_body);
+
+      // Generate an array for attachments
+      $transactional_attachments = array();
+      // For Webforms we have to retrieve the path to the attached file
+      if (Drupal::service('module_handler')->moduleExists('webform') && array_key_exists('webform_submission', $message['params'])) {
+        $webform_submission = $message['params']['webform_submission'];
+        if ($webform_submission instanceof \Drupal\webform\Entity\WebformSubmission) {
+          $webform = $webform_submission->getWebform();
+
+          // Loop through all the potential file attachments
+          foreach ($webform->getElementsAttachments() as $attachment_field_name) {
+            $attachment_field = $webform->getElement($attachment_field_name);
+            $attachment_real_path = Drupal::token()->replace($attachment_field['#url'], array('webform_submission' => $webform_submission));
+            $attachment_file = file_get_contents($attachment_real_path);
+
+            $transactional_attachments[] = array(
+              'Content' => base64_encode($attachment_file),
+              'Name' => $attachment_field['#filename'],
+              'Type' => mime_content_type($attachment_real_path),
+            );
+          }
+        }
+      } elseif (array_key_exists('attachments', $message['params'])){
+        foreach ($message['params']['attachments'] as $attachment) {
+          $attachment_file = file_get_contents($attachment['_fileurl']);
+
+          $transactional_attachments[] = array(
+            'Content' => base64_encode($attachment_file),
+            'Name' => $attachment['filename'],
+            'Type' => $attachment['filemime']
+          );
+        }
+      }
+
+      // Setup the outgoing email
+      $transactional_mail = array(
+        'To' => $transactional_recipients,
+        'CC' => array(),
+        'BCC' => null,
+        'Data' => array(
+          'subjectLine' => $subject_line,
+          'emailBody' => $transactional_body,
+        ),
+        'AddRecipientsToList' => false,
+        'ConsentToTrack' => 'Unchanged',
+        'Attachments' => $transactional_attachments,
+      );
+
+      // We have to send 'Smart' transactional emails, otherwise we need to do the branding inside Drupal too
+      // https://www.campaignmonitor.com/api/v3-3/transactional/#send-smart-email
+      if ($transactional_id) {
+        if ($response = aps_campaignmonitor_httpclient_request('POST', "transactional/smartEmail/{$transactional_id}/send", $transactional_mail)) {
+          if ($response && $response->getStatusCode() == 202) {
+            // Stop the message sending from Drupal
+            $message['send'] = false;
+
+            Drupal::logger('aps_campaignmonitor')->notice('Redirected Drupal from sending \'@type\', <strong>@subject</strong> mail to @recipients, to CampaignMonitor instead.', array(
+              '@type' => $message['id'],
+              '@subject' => $subject_line,
+              '@recipients' => implode(',', $transactional_recipients),
+            ));
+
+            return;
+          }
+        }
+
+        $message['send'] = ($config->get('drupal_fallback')) ? true : false;
+
+        Drupal::logger('aps_campaignmonitor')->warning('Could not redirect the \'@type\' mail to CampaignMonitor, the email @status sent by Drupal', array(
+          '@type' => $message['id'],
+          '@status' => ($config->get('drupal_fallback')) ? 'was' : 'was not',
+        ));
+      }
+    }
+    else {
+      Drupal::logger('aps_campaignmonitor')->notice('Transactional ID is not set, could not redirect Drupal from sending \'@type\' mail', array(
+        '@type' => $message['id'],
+      ));
+    }
+  }
+
+  /**
+   * Subscribe a user to a selected list - For unblocking/new accounts
+   *
+   * @param Object
+   *    $user - User Object
+   * @param String
+   *    $list_id - ID of the list to add the user to
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False depending on whether or not the client account is able to be connected to or not
+   */
+  function aps_campaignmonitor_subscribe_user_to_list($user, $list_id):bool {
+    // Check all the fields exist on the list
+    foreach (aps_campaignmonitor_get_user_custom_fields() as $user_field) {
+      aps_campaignmonitor_create_list_custom_field($user_field, $list_id);
+    }
+
+    $user_fields_data = aps_campaignmonitor_get_user_custom_fields_data($user);
+
+    $subscriber = array(
+      'EmailAddress' => $user->getEmail(),
+      'Name' => $user->label(),
+      'ConsentToTrack' => 'Yes',
+      'Resubscribe' => TRUE,
+      'RestartSubscriptionBasedAutoresponders' => TRUE,
+      'CustomFields' => aps_campaignmonitor_format_user_fields($user_fields_data),
+    );
+
+    if ($response = aps_campaignmonitor_httpclient_request('POST', "subscribers/{$list_id}.json", $subscriber)) {
+      if ($response && $response->getStatusCode() == 201) {
+        Drupal::logger('aps_campaignmonitor')->notice(t('User @name added to list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      } else {
+        Drupal::logger('aps_campaignmonitor')->warning(t('An error occurred when trying to subscribe this user "@name" to the list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      }
+    }
+
+    return ($response)? true : false;
+  }
+
+  /**
+   * Bulk subscribe users to a list
+   *
+   * @param array
+   *    $users - Array of User Objects
+   * @param String
+   *    $list_id - ID of the list to add the users to
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False depending on whether or not the client account is able to be connected to or not
+   */
+  function aps_campaignmonitor_bulk_subscribe_users_to_list($users, $list_id):bool {
+    $request_body = [];
+
+    $subscribers = [];
+
+    foreach ($users as $user) {
+      $user_data = aps_campaignmonitor_get_user_custom_fields_data($user);
+      $subscribers[]= array(
+        'EmailAddress' => $user->getEmail(),
+        'Name' => $user->label(),
+        'ConsentToTrack' => 'Yes',
+        'CustomFields' => aps_campaignmonitor_format_user_fields($user_data),
+      );
+    }
+
+    $request_body["Subscribers"] = $subscribers;
+    $request_body["Resubscribe"] = TRUE;
+    $request_body["RestartSubscriptionBasedAutoresponders"] = TRUE;
+
+    // See https://www.campaignmonitor.com/api/v3-3/subscribers/#importing-many-subscribers
+    if ($response = aps_campaignmonitor_httpclient_request('POST', "subscribers/{$list_id}/import.json", $request_body)) {
+      if ($response && $response->getStatusCode() == 201) {
+        Drupal::logger('aps_campaignmonitor')->notice(t('A total of @num_users users have been added to list id @list_id', array(
+          '@num_users' => count($users),
+          '@list_id' => $list_id,
+        )));
+      } else {
+        Drupal::logger('aps_campaignmonitor')->warning(t('An error occurred when trying to subscribe @num_users users to the list id @list_id', array(
+          '@num_users' => count($users),
+          '@list_id' => $list_id,
+        )));
+      }
+    }
+
+    return ($response)? true : false;
+  }
+
+  /**
+   * Unsubscribes a user from a selected list - For blocking/unverified accounts
+   *
+   * @param Object
+   *    $user - User Object
+   * @param String
+   *    $list_id - ID of the list to remove the user from
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False depending on whether or not the client account is able to be connected to or not
+   */
+  function aps_campaignmonitor_unsubscribe_user_from_list($user, $list_id):bool {
+    $data = array(
+      'EmailAddress' => $user->getEmail(),
+    );
+
+    if ($response = aps_campaignmonitor_httpclient_request('POST', "subscribers/{$list_id}/unsubscribe.json", $data)) {
+      if ($response && $response->getStatusCode() == 200) {
+        Drupal::logger('aps_campaignmonitor')->notice(t('User @name unsubscribed from list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      } else {
+        Drupal::logger('aps_campaignmonitor')->warning(t('An error occurred when trying to unsubscribe this user "@name" from the list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      }
+    }
+
+    return ($response)? true : false;
+  }
+
+  /**
+   * Deletes a user from a selected list - For when user accounts are deleted
+   *
+   * @param Object
+   *    $user - User Object
+   * @param String
+   *    $list_id - ID of the list to remove the user from
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False depending on whether or not the client account is able to be connected to or not
+   */
+  function aps_campaignmonitor_delete_user_from_list($user, $list_id):bool {
+    $user_email = urlencode($user->getEmail());
+
+    if ($response = aps_campaignmonitor_httpclient_request('DELETE', "subscribers/{$list_id}.json?email={$user_email}", NULL)) {
+      if ($response && $response->getStatusCode() == 200) {
+        Drupal::logger('aps_campaignmonitor')->notice(t('User @name deleted from list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      } else {
+        Drupal::logger('aps_campaignmonitor')->warning(t('An error occurred when trying to delete this user "@name" from the list id @list_id', array(
+          '@name' => $user->label(),
+          '@list_id' => $list_id,
+        )));
+      }
+    }
+
+    return ($response)? true : false;
+  }
+
+  /**
+   * Helper function to determine if we're connected to an account at all yet
+   *
+   * @param String
+   *    $client_id - Client ID Number
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False depending on whether or not the client account is able to be connected to or not
+   */
+  function aps_campaignmonitor_is_active($client_id = null): bool {
+    if (!$client_id) {
+      $client_id = Drupal::config('aps_campaignmonitor.settings')->get('client_id');
+    }
+
+    $response = aps_campaignmonitor_httpclient_request('GET', "clients/{$client_id}.json", null);
+
+    return $response && $response->getStatusCode() == 200;
+  }
+
+  /**
+   * Creates a field on the given entity type within Drupal
+   *
+   * @param String
+   *    $entity_type - Name of a Drupal Entity Type
+   * @param String
+   *    $bundle - Name of a bundle associated with the Entity Type
+   *
+   * @throws
+   */
+  function aps_campaignmonitor_create_entity_field($entity_type, $bundle) {
+    // Return the field storage configuration, or create it if it does not exist
+    if (empty(FieldStorageConfig::loadByName($entity_type, APS_CM_FIELD_NAME))) {
+      $field_storage = FieldStorageConfig::create(
+        array(
+          'field_name' => APS_CM_FIELD_NAME,
+          'langcode' => 'en',
+          'entity_type' => $entity_type,
+          'type' => 'string',
+          'settings' => array(
+            'max_length' => 255,
+            'case_sensitive' => FALSE,
+            'is_ascii' => FALSE,
+          ),
+          'module' => 'core',
+          'locked' => FALSE,
+          'cardinality' => 1,
+          'translatable' => TRUE,
+          'persist_with_no_fields' => FALSE,
+          'custom_storage' => FALSE,
+        )
+      );
+
+      try {
+        $field_storage->save();
+        Drupal::logger('aps_campaignmonitor')->notice(t('Field Storage created for @field on @type.', array(
+          '@field' => APS_CM_FIELD_LABEL,
+          '@type' => $entity_type,
+        )));
+      } catch (EntityStorageException $ex) {
+        Drupal::logger('aps_campaignmonitor')->error(t('Field Storage could not be created for @field on @type.', array(
+          '@field' => APS_CM_FIELD_LABEL,
+          '@type' => $entity_type,
+        )));
+      }
+    }
+
+    // Generate the field configuration for the given bundle
+    if (empty(FieldConfig::loadByName($entity_type, $bundle, APS_CM_FIELD_NAME))) {
+      $field_config = FieldConfig::create([
+        'field_name' => APS_CM_FIELD_NAME,
+        'entity_type' => $entity_type,
+        'bundle' => $bundle,
+        'label' => APS_CM_FIELD_LABEL,
+        'required' => FALSE,
+        'translatable' => TRUE,
+        'description' => t('Field to create connection between Campaign Monitor and selected Entity'),
+      ]);
+      try {
+        $field_config->save();
+        Drupal::logger('aps_campaignmonitor')->notice(t('Field @label created for @type: @bundle.', array(
+          '@label' => APS_CM_FIELD_LABEL,
+          '@type' => $entity_type,
+          '@bundle' => $bundle,
+        )));
+      } catch (EntityStorageException $ex) {
+        Drupal::logger('aps_campaignmonitor')->error(t('Field @label could not be created for @type: @bundle.', array(
+          '@label' => APS_CM_FIELD_LABEL,
+          '@type' => $entity_type,
+          '@bundle' => $bundle,
+        )));
+      }
+    }
+  }
+
+  /**
+   * Returns all lists active on the account
+   *
+   * @throws
+   *
+   * @return Array|Boolean
+   *    Segment ID code for the new option
+   */
+  function aps_campaignmonitor_get_lists() {
+    // See https://www.campaignmonitor.com/api/v3-3/clients/#getting-subscriber-lists
+    $config = Drupal::config('aps_campaignmonitor.settings');
+    if ($client_id = $config->get('client_id')) {
+      $response = aps_campaignmonitor_httpclient_request('GET', "clients/{$client_id}/lists.json", null);
+      if ($response && $response->getStatusCode() == 200) {
+        return json_decode($response->getBody()->getContents());
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Returns all lists users is subscribed to
+   *
+   * @param Object
+   *    $user_entity - User object.
+   *
+   * @throws
+   *
+   * @return Array|Boolean
+   *    Segment ID code for the new option
+   */
+  function aps_campaignmonitor_get_user_lists($user_email) {
+    // See https://www.campaignmonitor.com/api/v3-3/clients/#getting-lists-email-address
+    $config = Drupal::config('aps_campaignmonitor.settings');
+    if ($client_id = $config->get('client_id')) {
+      $response = aps_campaignmonitor_httpclient_request('GET', "clients/{$client_id}/listsforemail.json?email={$user_email}", null);
+      if ($response && $response->getStatusCode() == 200) {
+        return json_decode($response->getBody()->getContents());
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Validate the client information works
+   *
+   * @param String
+   *    $client_id - String of Client ID.
+   * @param String
+   *    $api_key - String of API Key
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or false if it validates
+   */
+  function aps_campaignmonitor_validate_client($client_id, $api_key): bool {
+    $response = aps_campaignmonitor_httpclient_request('GET', "clients/{$client_id}/lists.json", null, $api_key);
+
+    return $response && $response->getStatusCode() == 200;
+  }
+
+  /**
+   * Generates a list within Campaign Monitor
+   *
+   * @param Object
+   *    $entity - Agnostic Drupal Entity type, eg Node, Comment, Taxonomy.
+   *
+   * @throws
+   *
+   * @return String|Boolean
+   *    List ID code for the new option
+   */
+  function aps_campaignmonitor_create_list($entity = null) {
+    $config = Drupal::config('aps_campaignmonitor.settings');
+
+    // If no entity is received, we are creating the All Users list
+    if ($entity) {
+      $list_name = $entity->label();
+    } else {
+      $list_name = APS_CM_ALL_USER_LIST;
+    }
+
+    $new_list = array(
+      'Title' => $list_name,
+      'UnsubscribePage' => Drupal::request()->getSchemeAndHttpHost() . '/campaign-monitor/unsubscribed',
+      'UnsubscribeSetting' => 'OnlyThisList',
+      'ConfirmedOptIn' => false,
+      'ConfirmationSuccessPage' => Drupal::request()->getSchemeAndHttpHost() . '/campaign-monitor/subscribed'
+    );
+
+    $response = aps_campaignmonitor_httpclient_request('POST', "lists/{$config->get('client_id')}.json", $new_list);
+    if ($response && $response->getStatusCode() == 201) {
+      Drupal::logger('aps_campaignmonitor')->notice(t('@list_name list has been created.', array(
+        '@list_name' => $list_name,
+      )));
+
+      $list_id = json_decode($response->getBody()->getContents());
+      foreach (aps_campaignmonitor_get_user_custom_fields() as $user_field) {
+        aps_campaignmonitor_create_list_custom_field($user_field, $list_id);
+      }
+      return $list_id;
+    }
+
+    Drupal::logger('aps_campaignmonitor')->warning(t('An error occurred when trying to create list @list_name.', array(
+      '@list_name' => $list_name,
+    )));
+
+    return false;
+  }
+
+  /**
+   * Generates a list within Campaign Monitor specifically for entities
+   *
+   * @param Object
+   *    $entity - Agnostic Drupal Entity type, eg Node, Comment, Taxonomy.
+   *
+   * @throws
+   *
+   * @return String|Boolean
+   *    List ID code for the new option
+   */
+  function aps_campaignmonitor_entity_create_list($entity) {
+    $config = Drupal::config('aps_campaignmonitor.settings');
+    if ($config->get('subscriber_flag')) {
+      // Check the entity has the field first
+      if ($entity->hasField(APS_CM_FIELD_NAME)) {
+        if ($entity->get(APS_CM_FIELD_NAME)->isEmpty()) {
+          $list_id = aps_campaignmonitor_create_list($entity);
+
+          $entity->set(APS_CM_FIELD_NAME, $list_id);
+          $entity->save();
+
+          return $list_id;
+        } else {
+          return $entity->get(APS_CM_FIELD_NAME)->getValue();
+        }
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Generates a field within a specified list
+   *
+   * @param Array
+   *    $field - An array of the field information pre-formatted
+   * @param String
+   *    $list_id - CM list ID
+   *
+   * @throws
+   *
+   * @return Boolean
+   *    True or False based on whether or not the field was created
+   */
+  function aps_campaignmonitor_create_list_custom_field($field, $list_id):bool {
+    // Retrieve the list of existing fields on the List
+    $list_fields = aps_campaignmonitor_get_list_custom_fields($list_id);
+
+    // Create fields on the list if they don't exist
+    if (!array_key_exists($field['definition']['FieldName'], $list_fields)) {
+      // See https://www.campaignmonitor.com/api/v3-3/lists/#creating-custom-field
+      if ($response = aps_campaignmonitor_httpclient_request('POST', "lists/{$list_id}/customfields.json", $field['definition'])) {
+        if ($response && $response->getStatusCode() == 201) {
+          Drupal::logger('aps_campaignmonitor')->info(t('Custom field \'@field\' added to list.', array(
+            '@field' => $field['definition']['FieldName'],
+          )));
+        } else {
+          Drupal::logger('aps_campaignmonitor')->error(t('An error occurred when trying to create custom field @field on list.', array(
+            '@field' => $field['definition']['FieldName'],
+          )));
+        }
+      }
+
+      return ($response)? true : false;
+    }
+
+    return false;
+  }
+
+  /**
+   * Retrieves the existing fields for a given list
+   *
+   * @param String|Null
+   *    $list_id - Name of a Drupal Entity Type
+   *
+   * @throws
+   *
+   * @return Array|Boolean
+   *    List of the existing custom fields
+   */
+  function aps_campaignmonitor_get_list_custom_fields($list_id = null) {
+    if (!$list_id) {
+      $list_id = Drupal::config('aps_campaignmonitor.settings')->get('all_users_list_id');
+    }
+
+    $fields = array();
+    // See https://www.campaignmonitor.com/api/v3-3/lists/#list-custom-fields
+    $response = aps_campaignmonitor_httpclient_request('GET', "lists/{$list_id}/customfields.json", null);
+    if ($response && $response->getStatusCode() == 200) {
+      $contents = json_decode($response->getBody()->getContents());
+
+      foreach ($contents as $field) {
+        $fields[$field->FieldName] = (array)$field;
+      }
+
+      return $fields;
+    }
+
+    return false;
+  }
+
+  /**
+   * Formats the values for each item to be returned as property
+   **
+   * @param  Object
+   *   $user - Drupal user object.
+   *
+   * @throws
+   *
+   * @return Array
+   *   Formatted list of user fields
+   */
+  function aps_campaignmonitor_get_user_custom_fields():array {
+    $definitions = Drupal::service('entity_field.manager')->getFieldDefinitions('user', 'user');
+    $user_fields = array();
+
+    foreach ($definitions as $field_name => $field) {
+      if (substr($field_name, 0, 6) === "field_") {
+        switch ($field->get('field_type')) {
+          case 'entity_reference':
+            // Create a blank array for the titles
+            $options = array();
+
+            // Retrieve the possible options for the Reference
+            $entity_type = $field->getSetting('target_type');
+            $entity_storage = Drupal::service('entity_type.manager')->getStorage($entity_type);
+
+            // Generate a query to retrieve the full list and add to possible outcomes
+            $query = $entity_storage->getQuery()->condition('status', 1);
+            foreach ($field->get('settings')['handler_settings']['target_bundles'] as $bundle) {
+              $query->orConditionGroup()->condition('type', $bundle);
+            }
+            $entity_list = $entity_storage->loadMultiple($query->execute());
+            foreach ($entity_list as $entity_option) {
+              array_push($options, $entity_option->label());
+            }
+
+            $user_fields[$field_name] = array(
+              'definition' => array(
+                'FieldName' => $field_name,
+                'DataType' => 'MultiSelectMany',
+                'KeepExistingOptions' => true,
+                'Options' => array_values($options),
+                'VisibleInPreferenceCenter' => false,
+              ),
+            );
+
+            break;
+
+          case 'list_string':
+            // Create a blank array for the responses
+            $options = options_allowed_values($field->getFieldStorageDefinition());
+
+            $user_fields[$field_name] = array(
+              'definition' => array(
+                'FieldName' => $field_name,
+                'DataType' => 'MultiSelectMany',
+                'KeepExistingOptions' => true,
+                'Options' => array_values($options),
+                'VisibleInPreferenceCenter' => false,
+              ),
+            );
+
+            break;
+
+          case 'image':
+          case 'file':
+            // We dont need to track files/images
+            break;
+
+          default:
+            $user_fields[$field_name] = array(
+              'definition' => array(
+                'FieldName' => $field_name,
+                'DataType' => 'Text',
+                'VisibleInPreferenceCenter' => false,
+              ),
+            );
+
+            break;
+        }
+      }
+    }
+
+    return $user_fields;
+  }
+
+  /**
+   * Retrieves the data from the user fields for subscription
+   **
+   * @param  Object
+   *    $user - Drupal user object.
+   *
+   * @throws
+   *
+   * @return Array
+   *    $fields - User field list
+   */
+  function aps_campaignmonitor_get_user_custom_fields_data($user):array {
+    $fields = aps_campaignmonitor_get_user_custom_fields();
+    $definitions = Drupal::service('entity_field.manager')->getFieldDefinitions('user', 'user');
+
+    foreach ($fields as $field_name => &$field) {
+      $field_data = $user->get($field_name)->getValue();
+
+      switch ($definitions[$field_name]->get('field_type')) {
+        case 'entity_reference':
+          // Create a blank array for the titles
+          $responses = array();
+
+          // Retrieve the possible options for the Reference
+          $entity_type = $definitions[$field_name]->get('fieldStorage')->get('settings')['target_type'];
+
+          foreach ($field_data as $field_response) {
+            $entity = Drupal::entityTypeManager()->getStorage($entity_type)->load($field_response['target_id']);
+            array_push($responses, $entity->label());
+          }
+
+          $field['data'] = array(
+            'Key' => $field_name,
+            'Value' => $responses,
+          );
+
+          break;
+
+        case 'list_string':
+          // Create a blank array for the responses
+          $responses = array();
+          $options = options_allowed_values($definitions[$field_name]->getFieldStorageDefinition());
+
+          foreach ($field_data as $field_response) {
+            array_push($responses, $options[$field_response['value']]);
+          }
+
+          $field['data'] = array(
+            'Key' => $field_name,
+            'Value' => $responses,
+          );
+
+          break;
+
+        default:
+          // Create a blank array for the responses
+          $responses = array();
+          foreach ($field_data as $field_response) {
+            array_push($responses, $field_response['value']);
+          }
+
+          $field['data'] = array(
+            'Key' => $field_name,
+            'Value' => implode(', ', $responses),
+          );
+
+          break;
+      }
+    }
+
+    return $fields;
+  }
+
+  /**
+   * Formats the values of the user fields to allow for adding/updating data
+   **
+   * @param  Array
+   *   $fields - Array of items such as values or fields.
+   *
+   * @throws
+   *
+   * @return Array
+   *   Formatted list of user fields
+   */
+  function aps_campaignmonitor_format_user_fields($fields):array {
+    $formatted = array();
+
+    foreach ($fields as $field) {
+      if (is_array($field['data']['Value'])) {
+        foreach ($field['data']['Value'] as $field_value) {
+          $formatted[] = array(
+            'Key' => $field['data']['Key'],
+            'Value' => $field_value,
+          );
+        }
+      } else {
+        $formatted[] = $field['data'];
+      }
+    }
+
+    return $formatted;
+  }
+
+  /**
+   * Retrieves the appropriate Transactional Mailing key based on the Drupal sender ID
+   *
+   * @param String
+   *    $message_id - Internal Drupal ID of message
+   *
+   * @throws
+   *
+   * @return String|Boolean
+   *    Key string for the transaction ID to use as the email sender, or false if not found
+   */
+  function aps_campaignmonitor_retrieve_mailing_key($message_id) {
+    $transactional_id = false;
+    $mailing_keys = Drupal::config('aps_campaignmonitor.settings')->get('mailing_keys');
+
+    foreach ($mailing_keys as $mailing_key) {
+      // Setup the 'all' transactional ID until another supersedes it
+      if ($mailing_key['message_key'] === "all") {
+        $transactional_id = $mailing_key['transactional_id'];
+        continue;
+      }
+
+      switch ($mailing_key['method']) {
+        case 'equals': {
+          if ($mailing_key['message_key'] == $message_id) {
+            $transactional_id = $mailing_key['transactional_id'];
+          }
+          break;
+        }
+        case 'starts': {
+          if (str_starts_with($message_id, $mailing_key['message_key'])) {
+            $transactional_id = $mailing_key['transactional_id'];
+          }
+          break;
+        }
+        case 'contains': {
+          if (str_contains($message_id, $mailing_key['message_key'])) {
+            $transactional_id = $mailing_key['transactional_id'];
+          }
+          break;
+        }
+        case 'ends': {
+          if (str_ends_with($message_id, $mailing_key['message_key'])) {
+            $transactional_id = $mailing_key['transactional_id'];
+          }
+          break;
+        }
+        default: {
+          return false;
+        }
+      }
+    }
+
+    return ($transactional_id)? $transactional_id : false;
+  }
+
+  /**
+   * Worker function to perform the HTTP requests so that we don't have to keep repeating code
+   *
+   * @param String
+   *    $method - HTTP request method, expected to be PUT, GET, POST, DELETE etc.
+   * @param String
+   *    $url - The endpoint of the Campaign Monitor API to hit.
+   * @param Array
+   *    $body - The body of the message to send to Campaign Monitor when we need to put new data
+   * @param String
+   *    $api_key - The API Key from the account, or retrieve the current config one if not provided
+   *
+   * @return ResponseInterface|Boolean
+   *    JSON response string, response varies from each request
+   *
+   */
+  function aps_campaignmonitor_httpclient_request($method, $url, $body, $api_key = null) {
+
+    // If no api_key is provided, load it from config
+    if (empty($api_key)) {
+      $api_key = Drupal::config('aps_campaignmonitor.settings')->get('api_key');
+    }
+
+    // Setup the headers
+    $data = array(
+      'auth' => array(
+        $api_key,
+        'x'
+      ),
+    );
+
+    if (!$body) {
+      $body = array();
+    }
+
+    try {
+      $data['body'] = json_encode($body);
+
+      Drupal::logger('aps_campaignmonitor')->info(t('Request data: @data', array(
+        '@data' => print_r($data, TRUE)
+      )));
+
+      $response = Drupal::httpClient()->request($method, APS_CM_API . $url, $data);
+
+      if ($response->getStatusCode() == 429) {
+        $queue = Drupal::service('queue')->get('reschedule_queue');
+
+        $item = new stdClass();
+
+        $item->method   = $method;
+        $item->uri      = $url;
+        $item->body     = $body;
+        $item->code     = $response->getStatusCode();
+
+        $queue->createItem($item);
+
+        Drupal::logger('aps_campaignmonitor')->info(t('Request added to the queue to be processed on next cron run. Request data: @data', array(
+          '@data' => print_r($data, TRUE)
+        )));
+
+      }
+
+      return $response;
+
+    } catch (GuzzleHttp\Exception\GuzzleException $e) {
+      Drupal::logger('aps_campaignmonitor')->error(t('An exception was caught trying to connect to the CampaignMonitor API via @function - \'%exception\'', array(
+        '@function' => debug_backtrace()[1]['function'],
+        '%exception' => $e->getMessage(),
+      )));
+    }
+
+    return false;
+  }

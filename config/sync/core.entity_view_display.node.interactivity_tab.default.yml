@@ -1,0 +1,30 @@
+uuid: 70d5c1d7-d522-4573-9240-176be2ab8f49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.interactivity_tab.field_content_access
+    - field.field.node.interactivity_tab.field_media_icon
+    - field.field.node.interactivity_tab.field_paragraph_content
+    - node.type.interactivity_tab
+  module:
+    - entity_reference_revisions
+    - user
+id: node.interactivity_tab.default
+targetEntityType: node
+bundle: interactivity_tab
+mode: default
+content:
+  field_paragraph_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_content_access: true
+  field_media_icon: true
+  links: true

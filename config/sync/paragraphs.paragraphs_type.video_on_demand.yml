@@ -1,0 +1,10 @@
+uuid: 49bf0cdb-b909-48d0-a2fc-001674fafad9
+langcode: en
+status: true
+dependencies: {  }
+id: video_on_demand
+label: Vimeo/YouTube
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

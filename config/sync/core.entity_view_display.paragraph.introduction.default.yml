@@ -1,0 +1,130 @@
+uuid: 9df13587-53d0-4a17-874b-25ff8ff51364
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.introduction.field_tile_link
+    - field.field.paragraph.introduction.field_video_iframe
+    - field.field.paragraph.introduction.field_welcome_text
+    - paragraphs.paragraphs_type.introduction
+  module:
+    - iframe
+    - layout_builder
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Two Column'
+          context_mapping: {  }
+          column_widths: 50-50
+          custom_classes: ''
+        components:
+          c4bd3cd1-6a5b-419b-ba16-535bbd6a6ee8:
+            uuid: c4bd3cd1-6a5b-419b-ba16-535bbd6a6ee8
+            region: first
+            configuration:
+              id: 'field_block:paragraph:introduction:field_welcome_text'
+              label: Text
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          4291f19d-4c9b-42e0-9992-1da69da9a2f9:
+            uuid: 4291f19d-4c9b-42e0-9992-1da69da9a2f9
+            region: first
+            configuration:
+              id: 'field_block:paragraph:introduction:field_tile_link'
+              label: Link
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 255
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          660add00-9acc-43cd-b9f4-25452a3d03fb:
+            uuid: 660add00-9acc-43cd-b9f4-25452a3d03fb
+            region: second
+            configuration:
+              id: 'field_block:paragraph:introduction:field_video_iframe'
+              label: iFrame
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: iframe_only
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: paragraph.introduction.default
+targetEntityType: paragraph
+bundle: introduction
+mode: default
+content:
+  field_tile_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_video_iframe:
+    type: iframe_default
+    label: above
+    settings:
+      url: ''
+      title: ''
+      headerlevel: '3'
+      class: ''
+      frameborder: '0'
+      scrolling: ''
+      transparency: '0'
+      allowfullscreen: '0'
+      tokensupport: '0'
+      width: ''
+      height: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_welcome_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

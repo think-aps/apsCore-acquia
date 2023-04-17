@@ -1,0 +1,14 @@
+uuid: eca81513-8c4d-49cf-9ec4-672a84265048
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.chairperson
+  module:
+    - user
+id: user_add_role_action.chairperson
+label: 'Add the Chairperson role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: chairperson

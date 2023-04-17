@@ -1,0 +1,32 @@
+uuid: 425b725e-5080-4a6a-b22c-de6ecb08e789
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.file
+    - field.field.media.file.field_media_file
+    - media.type.file
+  module:
+    - file
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.file.file
+targetEntityType: media
+bundle: file
+mode: file
+content:
+  field_media_file:
+    type: file_url_plain
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

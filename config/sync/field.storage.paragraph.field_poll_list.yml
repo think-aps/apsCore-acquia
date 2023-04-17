@@ -1,0 +1,20 @@
+uuid: 8587137d-3275-4238-81e0-6ce0f4c41fed
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - poll
+id: paragraph.field_poll_list
+field_name: field_poll_list
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: poll
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

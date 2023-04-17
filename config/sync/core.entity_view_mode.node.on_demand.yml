@@ -1,0 +1,10 @@
+uuid: f04672f0-f2fd-440e-9ff7-0da5b3487b5b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.on_demand
+label: On-Demand
+targetEntityType: node
+cache: true

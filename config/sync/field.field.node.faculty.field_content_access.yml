@@ -1,0 +1,33 @@
+uuid: cc440ef8-32d0-43ee-9d31-1797acb926ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_access
+    - node.type.faculty
+    - taxonomy.vocabulary.access_roles
+  content:
+    - 'taxonomy_term:access_roles:f0002d1b-1539-40f7-97c8-a052f5f4a550'
+id: node.faculty.field_content_access
+field_name: field_content_access
+entity_type: node
+bundle: faculty
+label: 'Content Access'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    target_uuid: f0002d1b-1539-40f7-97c8-a052f5f4a550
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      access_roles: access_roles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

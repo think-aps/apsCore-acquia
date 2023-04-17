@@ -1,0 +1,9 @@
+aps_graph_compare.field:
+  path: /aps-graph-comparison/{key}/{field}
+  defaults:
+    _controller: \Drupal\aps_graph_compare\Controller\GraphComparison::field
+    _title: 'Field Comparison'
+    key: 0
+    field: example
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,28 @@
+uuid: 63ec0d7f-0664-49b8-aee0-d2ed7711d93f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.faculty
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.faculty.body
+field_name: body
+entity_type: node
+bundle: faculty
+label: Biography
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: true
+field_type: text_with_summary

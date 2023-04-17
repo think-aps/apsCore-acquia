@@ -1,0 +1,96 @@
+/**
+/* Agenda
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--agenda {
+  .agenda-wrapper {
+    @include drop-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
+
+    overflow: visible;
+    flex-flow: row;
+
+    .agenda-time {
+      font-size: $font-size-xl;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      padding: 0.5rem 1rem 0.5rem 0;
+      width: 16.5%;
+
+      time {
+        display: none;
+        text-align: center;
+
+        &:first-child,
+        &:first-of-type {
+          display: block;
+        }
+      }
+
+      .separator {
+        display: none;
+      }
+
+      .timezone {
+        font-size: $font-size-lg;
+      }
+    }
+
+    .agenda-info {
+      @include drop-shadow(2px, 2px, 15px, 0, rgba($secondary-shade, 0.5));
+      @include rounded-edges($rounded-edges);
+
+      .photo-wrapper {
+        .photo {
+          .field--type-image {
+
+          }
+
+          img {
+
+          }
+        }
+      }
+
+      .description {
+        text-align: left;
+        padding: 1rem;
+        height: 100%;
+
+        .title {
+
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .paragraph--type--agenda {
+    .agenda-wrapper {
+      .agenda-time {
+
+      }
+
+      .agenda-info {
+        .photo-wrapper {
+          .photo {
+            .field--type-image {
+
+            }
+
+            img {
+            }
+          }
+        }
+
+        .description {
+          .title {
+
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "sass:math";
+
+/**
+/* Dev designed mixins
+/* ----------------------------------------------------------------------------- */
+@mixin transition-speed($speed: 1000, $property: all) {
+  -webkit-transition: unquote($property) #{$speed}ms ease-in-out;
+  -moz-transition: unquote($property) #{$speed}ms ease-in-out;
+  -ms-transition: unquote($property) #{$speed}ms ease-in-out;
+  -o-transition: unquote($property) #{$speed}ms ease-in-out;
+  transition: unquote($property) #{$speed}ms ease-in-out;
+}
+
+@mixin drop-shadow($hlen: 0, $vlen: 5px, $rad: 15px, $spread: 0, $rgba: rgba($secondary-shade, 0.2)) {
+  -webkit-box-shadow: $hlen $vlen $rad $spread $rgba;
+  -moz-box-shadow: $hlen $vlen $rad $spread $rgba;
+  box-shadow: $hlen $vlen $rad $spread $rgba;
+}
+
+@mixin rounded-edges($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin change-color($color, $opacity: 1) {
+  $r: calc(red($color) / 255);
+  $g: calc(green($color) / 255);
+  $b: calc(blue($color) / 255);
+  $a: $opacity;
+
+  // grayscale fallback if SVG from data url is not supported
+  $lightness: lightness($color);
+  filter: saturate(0%) brightness(0%) invert($lightness) opacity($opacity);
+
+  // color filter
+  $svg-filter-id: "change-color";
+  filter: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg">\
+      <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+        <feColorMatrix type="matrix" values="\
+          0 0 0 0 #{$r}\
+          0 0 0 0 #{$g}\
+          0 0 0 0 #{$b}\
+          0 0 0 #{$a} 0\
+        "/>\
+      </filter>\
+    </svg>\
+    ##{$svg-filter-id}');
+}
+
+@mixin knockout-image($brightness: 1, $opacity: 1) {
+  -webkit-filter: brightness(0) invert($brightness) opacity($opacity);
+  filter: brightness(0) invert($brightness) opacity($opacity);
+}
+
+@mixin only-safari() {
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      @content;
+    }
+  }
+}

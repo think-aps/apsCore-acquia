@@ -1,0 +1,27 @@
+uuid: bd3a9ffb-4518-4a36-a91f-ede45febb3a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_theoplayer.field_video_theoplayer
+    - paragraphs.paragraphs_type.video_theoplayer
+  module:
+    - aps_theo_embed_field
+id: paragraph.video_theoplayer.default
+targetEntityType: paragraph
+bundle: video_theoplayer
+mode: default
+content:
+  field_video_theoplayer:
+    type: theojs
+    label: hidden
+    settings:
+      theo_autoplay: '1'
+      theo_color_value: '#0093cb'
+      theo_live: 0
+      theo_controls: 0
+      theo_color: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

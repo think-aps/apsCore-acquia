@@ -1,0 +1,8 @@
+uuid: fbac784a-651a-462c-8a1c-5b0d7e0be996
+langcode: en
+status: true
+dependencies: {  }
+id: venue_agenda_time
+label: 'Venue Agenda Time'
+locked: false
+pattern: 'H:i'

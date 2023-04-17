@@ -1,0 +1,245 @@
+uuid: 12bf1c69-6e9d-4275-89ab-4ea541ebc9d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_affiliation
+    - field.field.user.user.field_country
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_last_name
+    - field.field.user.user.field_profession
+    - field.field.user.user.field_title
+    - views.view.aps_event_list
+  module:
+    - dashboards
+    - layout_builder
+    - layout_discovery
+    - options
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_twocol_section
+        layout_settings:
+          label: 'Profile Fields'
+          context_mapping: {  }
+          column_widths: 50-50
+          custom_classes: user-profile
+        components:
+          1af4fb06-a7db-4ec2-8cec-f603de87d179:
+            uuid: 1af4fb06-a7db-4ec2-8cec-f603de87d179
+            region: first
+            configuration:
+              id: 'field_block:user:user:field_last_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          5299b5b1-58a4-4579-a70f-174da8606019:
+            uuid: 5299b5b1-58a4-4579-a70f-174da8606019
+            region: second
+            configuration:
+              id: 'field_block:user:user:field_country'
+              label: Country
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          6bf71aa0-1f8c-4eae-aee1-a96247d9338f:
+            uuid: 6bf71aa0-1f8c-4eae-aee1-a96247d9338f
+            region: first
+            configuration:
+              id: 'field_block:user:user:field_title'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          84ee66b8-a6bd-40ed-b46e-a0354f45a8d0:
+            uuid: 84ee66b8-a6bd-40ed-b46e-a0354f45a8d0
+            region: first
+            configuration:
+              id: 'field_block:user:user:field_first_name'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          b939493e-8783-42d7-be84-96407cac48d4:
+            uuid: b939493e-8783-42d7-be84-96407cac48d4
+            region: first
+            configuration:
+              id: 'field_block:user:user:field_profession'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          8fdbd629-0e91-455e-a65e-7e6a3f07ee4b:
+            uuid: 8fdbd629-0e91-455e-a65e-7e6a3f07ee4b
+            region: first
+            configuration:
+              id: 'field_block:user:user:field_affiliation'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          56008154-042a-4417-84cd-be5075ce790e:
+            uuid: 56008154-042a-4417-84cd-be5075ce790e
+            region: second
+            configuration:
+              id: 'field_block:user:user:mail'
+              label: Email
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'User Edit'
+          context_mapping: {  }
+          custom_classes: user-edit
+        components:
+          d644b124-4310-40a0-9b39-7380971c4f6f:
+            uuid: d644b124-4310-40a0-9b39-7380971c4f6f
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Edit Button'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'edit_user:edit'
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'User Events'
+          context_mapping: {  }
+          custom_classes: user-events
+        components:
+          43dff649-3bb7-4323-86a7-0cce629829c3:
+            uuid: 43dff649-3bb7-4323-86a7-0cce629829c3
+            region: content
+            configuration:
+              id: 'views_block:aps_event_list-my_events'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_affiliation:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: first
+  field_country:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_profession:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: first
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  member_for: true
+  realname: true

@@ -1,0 +1,15 @@
+uuid: 9770c1dd-d4ae-4268-a2da-494842e22f7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_visibility
+  module:
+    - flag
+id: flag_action.ably_visibility_flag
+label: Reveal
+type: node
+plugin: 'flag_action:ably_visibility_flag'
+configuration:
+  flag_id: ably_visibility
+  flag_action: flag

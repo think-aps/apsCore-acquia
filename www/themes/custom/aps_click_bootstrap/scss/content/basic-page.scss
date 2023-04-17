@@ -1,0 +1,57 @@
+/**
+/* Basic Page
+/* ----------------------------------------------------------------------------- */
+.node--type-page {
+  header.header {
+    margin-bottom: 0;
+  }
+
+  #page {
+    background-image: url("../images/ClickPage-BG.svg"), linear-gradient(to bottom, $secondary-shade, $secondary-dark);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    #main-wrapper {
+      .node__content {
+        text-align: center;
+
+        .field--type-image {
+          float: none;
+          margin: 0;
+        }
+
+        p {
+          color: $white;
+        }
+
+        a {
+          &:hover,
+          &:focus,
+          &:active {
+            color: $white;
+          }
+
+          &.btn {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+
+    footer.site-footer {
+      background: transparent;
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  .node--type-page {
+    header.header {
+    }
+  }
+}

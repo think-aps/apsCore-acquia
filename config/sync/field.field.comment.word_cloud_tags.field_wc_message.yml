@@ -1,0 +1,19 @@
+uuid: 0d688a53-8200-40e8-9568-b6d75ab177f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.word_cloud_tags
+    - field.storage.comment.field_wc_message
+id: comment.word_cloud_tags.field_wc_message
+field_name: field_wc_message
+entity_type: comment
+bundle: word_cloud_tags
+label: Message
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

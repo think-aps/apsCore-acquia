@@ -1,0 +1,15 @@
+uuid: 93973347-6932-4007-a72e-86603c4fb9c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.answered
+  module:
+    - flag
+id: flag_action.answered_unflag
+label: Answered
+type: webform_submission
+plugin: 'flag_action:answered_unflag'
+configuration:
+  flag_id: answered
+  flag_action: unflag

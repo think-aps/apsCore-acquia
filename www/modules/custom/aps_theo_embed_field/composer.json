@@ -1,0 +1,13 @@
+{
+    "name": "apsgitadmin/aps_theo_embed_field",
+    "description": "A composer.json file for aps theo player embed module",
+    "type": "drupal-custom-module",
+    "authors": [
+        {
+            "name": "APS Developer",
+            "email": "developer@thinkaps.com"
+        }
+    ],
+    "require": {
+    }
+}

@@ -1,0 +1,113 @@
+/**
+/* CSS Animations
+/* ----------------------------------------------------------------------------- */
+.highlighted-item,
+.highlighted-tab {
+  z-index: 200;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  & ~ .bg-cover {
+    z-index: 199;
+    position: fixed;
+    width: 100vw !important;
+    height: 100vh !important;
+    left: 0;
+    top: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.highlighted-item {
+  &.animate {
+    -webkit-animation: pulse-primary-content 800ms infinite;
+    animation: pulse-primary-content 800ms infinite;
+  }
+}
+
+.highlighted-tab {
+  &.animate {
+    -webkit-animation: pulse-primary-tab 800ms infinite;
+    animation: pulse-primary-tab 800ms infinite;
+
+    &.active {
+      -webkit-animation: pulse-primary-tab-active 800ms infinite;
+      animation: pulse-primary-tab-active 800ms infinite;
+    }
+  }
+
+}
+
+@-webkit-keyframes pulse-primary-content {
+  0% {
+    @include drop-shadow(0, 0, 15px, 5px, rgba($primary-shade, 0.4));
+    outline: solid 2px $primary-shade;
+  }
+
+  70% {
+    @include drop-shadow(0, 0, 25px, 5px, rgba($primary-shade, 1.0));
+    outline: solid 2px $primary-shade;
+  }
+
+  100% {
+    @include drop-shadow(0, 0, 15px, 5px, rgba($primary-shade, 0.4));
+    outline: solid 2px $primary-shade;
+  }
+}
+@keyframes pulse-primary-content {
+  0% {
+    @include drop-shadow(0, 0, 15px, 5px, rgba($primary-shade, 0.4));
+    outline: solid 2px $primary-shade;
+  }
+
+  70% {
+    @include drop-shadow(0, 0, 25px, 5px, rgba($primary-shade, 1.0));
+    outline: solid 2px $primary-shade;
+  }
+
+  100% {
+    @include drop-shadow(0, 0, 15px, 5px, rgba($primary-shade, 0.4));
+    outline: solid 2px $primary-shade;
+  }
+}
+
+@-webkit-keyframes pulse-primary-tab {
+  0% {
+    background-color: $primary-shade;
+  }
+
+  100% {
+    background-color: $primary-dark;
+  }
+}
+@keyframes pulse-primary-tab {
+  0% {
+    background-color: $primary-shade;
+  }
+
+  100% {
+    background-color: $primary-dark;
+  }
+}
+
+@-webkit-keyframes pulse-primary-tab-active {
+  0% {
+    background-color: $primary-dark;
+  }
+
+  100% {
+    background-color: $primary-shade;
+  }
+}
+@keyframes pulse-primary-tab-active {
+  0% {
+    background-color: $primary-dark;
+  }
+
+  100% {
+    background-color: $primary-shade;
+  }
+}

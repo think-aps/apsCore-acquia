@@ -1,0 +1,19 @@
+uuid: c14d3109-3ab5-47d6-8add-d9af7aa577b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_vri_title
+    - paragraphs.paragraphs_type.venue_resource_item
+id: paragraph.venue_resource_item.field_vri_title
+field_name: field_vri_title
+entity_type: paragraph
+bundle: venue_resource_item
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: 8b6ea799-2dc5-41c0-b8a2-10462b5ca092
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - aps_email
+_core:
+  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
+id: aps_email_branding
+theme: aps_email
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

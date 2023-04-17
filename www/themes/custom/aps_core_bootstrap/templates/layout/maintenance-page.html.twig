@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Bootstrap Barrio's theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+#}
+<div id="maintenance-wrapper">
+  <div class="section clearfix">
+    <div class="icon">
+      <img src="{{ base_path ~ directory }}/images/maintenance.png" alt="Site under maintenance" />
+    </div>
+  </div>
+  <div id="main" class="clearfix">
+    <main id="content" class="column" role="main">
+      <section class="section">
+        <h1 class="title">
+          {{ 'Site under maintenance' | trans }}
+        </h1>
+        <p>
+          {{ page.content }}
+        </p>
+      </section>
+    </main>
+  </div>
+</div>

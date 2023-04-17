@@ -1,0 +1,14 @@
+/*
+Theme Name: Bootstrap 4 Sass
+Description: Bootstrap 4 with Sass
+*/
+
+// import files
+@import "import";
+
+
+//sass globbing
+//gulp-sass-glob does not support nested imports so it must be added to the target of the gulp watch
+@import './paragraphs/*.scss';
+@import './structure/*.scss';
+@import './content/*.scss';

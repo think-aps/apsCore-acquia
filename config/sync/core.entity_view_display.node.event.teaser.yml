@@ -1,0 +1,191 @@
+uuid: 180c08d8-84de-4c47-8209-ae2725a98cf3
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.field_addevent_button
+    - field.field.node.event.field_content_access
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_interactivity
+    - field.field.node.event.field_event_overview
+    - field.field.node.event.field_event_tabs
+    - field.field.node.event.field_event_video
+    - field.field.node.event.field_event_view_display
+    - field.field.node.event.field_live
+    - field.field.node.event.field_popup
+    - node.type.event
+  module:
+    - layout_builder
+    - layout_discovery
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Card Banner'
+          context_mapping: {  }
+        components:
+          56aea665-41e3-479e-ab9d-881fee0af5e3:
+            uuid: 56aea665-41e3-479e-ab9d-881fee0af5e3
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_event_image'
+              label: Thumbnail
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: visually_hidden
+                settings:
+                  image_link: content
+                  image_style: event_select
+                  svg_attributes:
+                    width: null
+                    height: null
+                  svg_render_as_image: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          5c3328ca-dfef-4542-b8a1-ee3103f9165b:
+            uuid: 5c3328ca-dfef-4542-b8a1-ee3103f9165b
+            region: content
+            configuration:
+              id: 'field_block:node:event:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: visually_hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          24c5e4e6-99a1-44c7-93ce-74ac8404f557:
+            uuid: 24c5e4e6-99a1-44c7-93ce-74ac8404f557
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_event_date'
+              label: Dates
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: smartdate_default
+                label: visually_hidden
+                settings:
+                  timezone_override: ''
+                  format: event_dates
+                  force_chronological: false
+                  add_classes: false
+                  time_wrapper: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          98a8abbd-15e7-43a3-9c29-1a325b37193c:
+            uuid: 98a8abbd-15e7-43a3-9c29-1a325b37193c
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_event_overview'
+              label: Description
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: visually_hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Card Links'
+          context_mapping: {  }
+        components:
+          bef8b7cb-5890-4572-9e8f-47b92e6867fa:
+            uuid: bef8b7cb-5890-4572-9e8f-47b92e6867fa
+            region: content
+            configuration:
+              id: 'extra_field_block:node:event:flag_register_interest'
+              label: 'Register Interest'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          e206f04d-c445-493a-9f26-99634932b7b3:
+            uuid: e206f04d-c445-493a-9f26-99634932b7b3
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_addevent_button'
+              label: 'AddEvent Button'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: ApsAddEventDefaultFormatter
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  flag_register_interest:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_addevent_button: true
+  field_content_access: true
+  field_event_date: true
+  field_event_image: true
+  field_event_interactivity: true
+  field_event_overview: true
+  field_event_tabs: true
+  field_event_video: true
+  field_event_view_display: true
+  field_live: true
+  field_popup: true

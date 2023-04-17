@@ -1,0 +1,18 @@
+uuid: 18669fb9-31b3-435d-9691-44add78a1261
+langcode: en
+status: false
+dependencies: {  }
+id: stage
+label: Stage
+description: ''
+weight: 3
+folder: ../config/split/stage
+module:
+  shield: 0
+theme: {  }
+blacklist:
+  - shield.settings
+graylist:
+  - shield.settings
+graylist_dependents: true
+graylist_skip_equal: true

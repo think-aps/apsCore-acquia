@@ -1,0 +1,89 @@
+uuid: 87d5eda5-185b-4095-a0c3-7943e6a35026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.agenda.field_agenda_times
+    - field.field.paragraph.agenda.field_image
+    - field.field.paragraph.agenda.field_name
+    - field.field.paragraph.agenda.field_timezone
+    - field.field.paragraph.agenda.field_title
+    - field.field.paragraph.agenda.field_welcome_text
+    - image.style.large
+    - paragraphs.paragraphs_type.agenda
+  module:
+    - allowed_formats
+    - image_widget_crop
+    - maxlength
+    - text
+    - time_range
+id: paragraph.agenda.default
+targetEntityType: paragraph
+bundle: agenda
+mode: default
+content:
+  field_agenda_times:
+    type: time_range
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: image_widget_crop
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: large
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - tile
+      crop_types_required:
+        - tile
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings: {  }
+  field_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_timezone:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_welcome_text:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,15 @@
+uuid: 1822534c-135e-4bb1-bb36-6526f4b4efeb
+langcode: en
+status: true
+dependencies: {  }
+name: faculty_180x180
+label: 'Faculty 180x180'
+effects:
+  d711b639-4c49-445f-bbe6-f7611210cbf3:
+    uuid: d711b639-4c49-445f-bbe6-f7611210cbf3
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 180
+      height: 180
+      anchor: center-center

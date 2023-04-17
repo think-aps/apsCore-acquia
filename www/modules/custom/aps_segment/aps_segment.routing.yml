@@ -1,0 +1,7 @@
+aps_segment.admin_settings_form:
+  path: /admin/config/system/segment-analytics
+  defaults:
+    _title: 'Segment Configuration'
+    _form: \Drupal\aps_segment\Form\APSSegmentAdminSettingsForm
+  requirements:
+    _permission: 'administer site configuration'

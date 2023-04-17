@@ -1,0 +1,20 @@
+uuid: e325dac6-13d7-4f92-8e33-50cfed7e44c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - aps_theo_embed_field
+    - paragraphs
+id: paragraph.field_video_theoplayer
+field_name: field_video_theoplayer
+entity_type: paragraph
+type: theojs
+settings:
+  max_length: 255
+module: aps_theo_embed_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

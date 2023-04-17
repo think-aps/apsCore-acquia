@@ -1,0 +1,26 @@
+uuid: afd51b8f-72e8-47fb-8746-43a1d5b74867
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poll_list
+    - paragraphs.paragraphs_type.poll_group
+id: paragraph.poll_group.field_poll_list
+field_name: field_poll_list
+entity_type: paragraph
+bundle: poll_group
+label: 'Poll List'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:poll'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+field_type: entity_reference

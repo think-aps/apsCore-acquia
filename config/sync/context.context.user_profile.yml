@@ -1,0 +1,53 @@
+uuid: 7b234820-e248-403c-96c7-8a1b95cb27fb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:image_block:0d0143e1-dbc8-46df-aad9-0e53f9fb43e7'
+  module:
+    - block_content
+label: 'User Profile'
+name: user_profile
+group: User
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  user_status:
+    id: user_status
+    negate: false
+    uuid: d1817de6-ff94-469a-95f8-95340612cd7f
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    user_status:
+      viewing_profile: viewing_profile
+      logged_viewing_profile: logged_viewing_profile
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+reactions:
+  blocks:
+    id: blocks
+    uuid: 6b0b9fa5-ccb1-459c-8182-6d9deb71882f
+    blocks:
+      eca87071-c89f-46e9-94a2-80cd07480825:
+        uuid: eca87071-c89f-46e9-94a2-80cd07480825
+        id: 'block_content:0d0143e1-dbc8-46df-aad9-0e53f9fb43e7'
+        label: 'My Profile'
+        provider: block_content
+        label_display: visible
+        region: featured_top
+        weight: '0'
+        custom_id: my_profile_banner
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: user_profile
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

@@ -1,0 +1,195 @@
+/**
+/* If you wish to override pre-defined Bootstrap classes, do so in here
+/* ----------------------------------------------------------------------------- */
+.btn {
+  @include rounded-edges(calc(#{$rounded-edges} * 0.65));
+  @include drop-shadow;
+
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  text-align: left;
+  text-transform: uppercase;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  align-items: center;
+  max-width: 20rem;
+
+  &[disabled],
+  &:disabled,
+  &.disabled {
+    background-color: $gray-600;
+    opacity: 1;
+  }
+}
+
+.btn-primary {
+  background-color: $primary-shade;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary-dark;
+  }
+
+  &[disabled],
+  &:disabled,
+  &.disabled {
+    background-color: $gray-600;
+    opacity: 1;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary-shade;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: $secondary-dark;
+  }
+
+  &[disabled],
+  &:disabled,
+  &.disabled {
+    background-color: $gray-600;
+    opacity: 1;
+  }
+}
+
+.bg-primary {
+  background-color: $primary-shade !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-shade !important;
+}
+
+.bg-accent {
+  background-color: $accent-shade !important;
+}
+
+.bg-dark {
+  background-color: $dark-shade !important;
+}
+
+.drop-shadow {
+  @include drop-shadow();
+}
+
+.border-radius {
+  @include rounded-edges($rounded-edges);
+}
+
+.btn-arrow-right {
+  position: relative;
+  padding-right: calc(2.25rem + 18px) !important;
+
+  &:after {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    top: 25%;
+    right: 0.75rem;
+    content: "";
+    display: block;
+    background: url("../../aps_core_bootstrap/images/icons/arrow-right.svg") center right no-repeat transparent;
+    background-size: contain;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    -o-transition: -o-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out, -o-transform 0.2s ease-in-out;
+  }
+}
+
+.btn-arrow-dropdown {
+  position: relative;
+  padding-right: calc(1.5rem + 18px) !important;
+
+  &:after {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    right: 0.75rem;
+    content: "";
+    display: block;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") center right no-repeat transparent;
+    background-size: contain;
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    -o-transition: -o-transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out, -o-transform 0.2s ease-in-out;
+  }
+}
+
+.font-weight-bold {
+  font-weight: $font-weight-bold;
+  // If you wish to use a specific font for bold, change mixin
+}
+
+.form-control,
+.form-select {
+  @include rounded-edges(calc(#{$rounded-edges} * 0.4));
+  @include drop-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
+
+  overflow: hidden;
+  border: solid 2px $gray-500 !important;
+
+  &:focus,
+  &:active {
+    border-color: $secondary-shade !important;
+  }
+
+  &.error {
+    border-color: $red !important;
+  }
+}
+
+.opaque {
+  background-color: $opaque-light;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.toolbar {
+  .toolbar-bar {
+    z-index: 9999;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .container,
+  .container-sm,
+  .container-md {
+    max-width: none;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .container,
+  .container-sm {
+    max-width: none;
+  }
+
+  .layout--twocol-section {
+    &.layout--twocol-section--75-25,
+    &.layout--twocol-section--67-33,
+    &.layout--twocol-section--50-50,
+    &.layout--twocol-section--33-67,
+    &.layout--twocol-section--25-75 {
+      flex-wrap: wrap;
+
+      > .layout__region--first,
+      > .layout__region--second {
+        flex: 0 1 100%;
+      }
+    }
+  }
+}

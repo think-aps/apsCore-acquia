@@ -1,0 +1,59 @@
+_core:
+  default_config_hash: 0yJNd4uWv8TzhYEPQBDiApPL2e8ar88kBmQrzDjNCqc
+nid_list: {  }
+translation_sync: true
+search: false
+type: remove
+content_types:
+  event: all
+  landing_page: all
+  page: all
+  webform: none
+  apsclick_event: all
+  networking: none
+  social_wall_page: none
+  social_wall_post: none
+  tab: all
+  tile: all
+  v_agenda: none
+  virtual_lobby: none
+  interactivity_tab: all
+  splash: all
+  faculty: none
+content_type_modes:
+  event:
+    - full
+    - full_screen
+    - multicast
+    - on_demand
+    - webinar
+  landing_page:
+    - full
+  page:
+    - full
+  webform: {  }
+  apsclick_event:
+    - full
+  networking: {  }
+  social_wall_page: {  }
+  social_wall_post: {  }
+  tab:
+    - full
+    - multicast
+    - on_demand
+    - webinar
+  tile:
+    - full
+    - multicast
+    - on_demand
+    - webinar
+  v_agenda: {  }
+  virtual_lobby: {  }
+  interactivity_tab:
+    - full
+    - multicast
+    - on_demand
+    - webinar
+  splash:
+    - full
+  faculty: {  }

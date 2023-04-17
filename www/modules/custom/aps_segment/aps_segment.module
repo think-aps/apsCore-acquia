@@ -1,0 +1,221 @@
+<?php
+
+use Drupal\user\Entity\User;
+use Drupal\Core\Site\Settings;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function aps_segment_page_attachments(array &$attachments) {
+	$user = \Drupal::currentUser();
+	$ignore = ($user->hasPermission('ignore tracking'))? TRUE : FALSE;
+
+	$attachments['#attached']['library'][] = 'aps_segment/aps_segment';
+
+	$site_info = array(
+		'siteName' => \Drupal::config('system.site')->get('name'),
+		'siteURL' => \Drupal::request()->getHost(),
+		'jobNumber' => \Drupal::config('aps_segment.settings')->get('aps_segment_job_number'),
+	);
+
+	if ($node = \Drupal::routeMatch()->getParameter('node')) {
+		$site_info = array_merge_recursive(
+			$site_info,
+			array(
+				'nodeId' => $node->id(),
+				'nodeType' => $node->getType(),
+				'nodeTitle' => $node->getTitle(),
+			),
+		);
+  	}
+	$attachments['#attached']['drupalSettings']['apsDiscovr']['siteSettings'] = $site_info;
+
+	$user_info = array(
+		'ignoreTracking' => $ignore,
+	);
+	$attachments['#attached']['drupalSettings']['apsDiscovr']['userSettings'] = $user_info;
+}
+
+/**
+ * Registration
+ * Implements hook_user_insert().
+ */
+function aps_segment_user_insert(EntityInterface $entity) {
+	$traits = array(
+		'mail' => $entity->getEmail(),
+		'name' => $entity->getAccountName(),
+	);
+
+	$segment_data = array(
+	  'type' => 'track',
+		'event' => 'Registration',
+		'userId' => (int) $entity->id(),
+    'traits' => $traits,
+	);
+
+	process_segment_api_call('track', $segment_data);
+}
+
+/**
+ * Login
+ * Implements hook_user_login().
+ */
+function aps_segment_user_login(AccountInterface $account) {
+	$traits = array(
+		'mail' => $account->getEmail(),
+		'name' => $account->getAccountName(),
+	);
+	$traits += aps_segment_user_field_formatter($account);
+
+	$segment_data = array(
+		'type' => 'identify',
+		'userId' => (int) $account->id(),
+		'traits' => $traits,
+	);
+	process_segment_api_call('track', $segment_data);
+
+}
+
+/**
+ * Logout
+ * Implements hook_user_logout().
+ */
+
+function aps_segment_user_logout(AccountInterface $account) {
+	$segment_data = array(
+		'type' => 'track',
+		'event' => 'Logout',
+		'userId' => (int) \Drupal::currentUser()->id(),
+	);
+
+	process_segment_api_call('track', $segment_data);
+}
+
+
+/**
+ * Formats the values for each item to be returned as property
+ *
+ * @param  Object
+ *   $account - AccountInterface instance.
+ */
+function aps_segment_user_field_formatter($account) {
+	$definitions = \Drupal::service('entity_field.manager')->getFieldDefinitions('user', 'user');
+
+	$fields = array();
+	foreach ($definitions as $field_name => $field) {
+		if (substr($field_name, 0, 6) === "field_") {
+			$fields[$field_name] = $account->get($field_name)->getValue();
+		}
+	}
+
+	return aps_segment_field_formatter($fields, $definitions);
+}
+
+/**
+ * Formats the values for each item to be returned as property
+ *
+ * @param  Array
+ *   $fields - Array of items such as values or fields.
+ * @param  Array
+ *   $definitions - The field type definitions.
+ */
+function aps_segment_field_formatter($fields, $definitions) {
+	$traits = array();
+
+  	foreach ($fields as $field_name => $field) {
+    	if (substr($field_name, 0, 6) === "field_" && !empty($field)) {
+			switch ($definitions[$field_name]->get('field_type')) {
+        		case 'entity_reference':
+					// Create a blank array for the titles
+				  	$titles = array();
+          			foreach ($field as $field_response) {
+            			$id = $field_response['target_id'];
+						// Check what type of entity is referenced, eg Node, User, Taxonomy etc
+          				$entity_type = $definitions[$field_name]->get('fieldStorage')->get('settings')['target_type'];
+            			$entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($id);
+
+						// Nodes have titles, whereas users and taxonomies have names
+						if ($entity_type == 'node') {
+							array_push($titles, $entity->get('title')->value);
+						} else {
+							array_push($titles, $entity->get('name')->value);
+						}
+          			}
+          			$traits[$field_name] = implode(', ', $titles);
+
+          		break;
+
+				case 'image':
+				case 'file':
+					// We dont need to track files/images
+					break;
+
+        		default:
+					// Create a blank array for the responses
+          			$responses = array();
+          			foreach ($field as $field_response) {
+            			array_push($responses, $field_response['value']);
+          			}
+          			$traits[$field_name] = implode(', ', $responses);
+
+				break;
+      		}
+    	}
+  	}
+
+  	return $traits;
+}
+
+/**
+ * Call Segment HTTP API with Drupal httpClient
+ * Types of identify, track,
+ */
+function process_segment_api_call($segment_type , $segment_data) {
+	$segment_auth = \Drupal::config('aps_segment.settings')->get('aps_segment_api_auth');
+	$segment_key = \Drupal::config('aps_segment.settings')->get('aps_segment_write_key');
+	$segment_endpoint = \Drupal::config('aps_segment.settings')->get('aps_segment_endpoint');
+
+	$user = User::load($segment_data['userId']);
+	$ignore = ($user->hasPermission('ignore tracking'))? TRUE : FALSE;
+
+	$data = array(
+		'headers' => array(
+			'Content-Type' => array('application/json'),
+			'Authorization'=> $segment_auth,
+		),
+		'body' => json_encode(
+			array_merge_recursive(
+				$segment_data,
+				array(
+					'writeKey' => $segment_key,
+					'context' => array(
+						'url'=> \Drupal::request()->getHost(),
+					),
+					'traits' => array(
+						//'ignore' => $ignore,
+						'job_number' => \Drupal::config('aps_segment.settings')->get('aps_segment_job_number'),
+					),
+				)
+			)
+		),
+	);
+
+	try {
+		$client = \Drupal::httpClient();
+		$request = $client->request('POST', $segment_endpoint . $segment_type, $data);
+
+		\Drupal::logger('aps_segment')->notice("Segment API called");
+	}
+	catch (Exception $e) {
+		\Drupal::logger('aps_segment')->notice('Segment API call failed. %traits',
+			array(
+				'%traits' => $data['body'],
+			)
+		);
+	}
+
+	return;
+}

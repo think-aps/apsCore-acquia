@@ -1,0 +1,40 @@
+uuid: ab3fb3d0-9c1b-46cc-8a70-e137e9f8a79b
+langcode: en
+status: true
+dependencies: {  }
+id: compare_webform
+admin_label: 'Compare Webform'
+category: ''
+frontend: true
+weight: 4
+sections:
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Compare Webforms'
+      context_mapping: {  }
+      custom_id: ''
+      custom_classes: dashboard-comparison
+      custom_class_choose: {  }
+      custom_styles: ''
+      custom_data_attributes: ''
+      regions:
+        content:
+          region_id: ''
+          region_class_choose: {  }
+          region_classes: ''
+          region_styles: ''
+          region_data: ''
+    components:
+      af4e17b4-2aef-4118-8c76-1c72b90f247c:
+        uuid: af4e17b4-2aef-4118-8c76-1c72b90f247c
+        region: content
+        configuration:
+          id: aps_graph_comparison
+          label: 'Compare Webforms'
+          label_display: visible
+          provider: aps_graph_compare
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }

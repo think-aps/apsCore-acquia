@@ -1,0 +1,97 @@
+uuid: d83762ab-f110-4635-a31c-bfac0b8b69aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - dashboards.dashboard.compare_webform
+    - dashboards.dashboard.live
+    - dashboards.dashboard.polling
+    - dashboards.dashboard.webcast
+    - filter.format.basic_html
+    - node.type.faculty
+    - node.type.interactivity_tab
+    - node.type.tab
+    - node.type.tile
+  module:
+    - aps_push
+    - dashboards
+    - filter
+    - flag
+    - node
+    - paragraphs
+    - paragraphs_type_permissions
+    - permissions_by_term
+    - poll
+    - system
+    - tablefield
+    - view_unpublished
+    - webform
+id: event_admin
+label: 'Event Admin'
+weight: -6
+is_admin: null
+permissions:
+  0: 'access site in maintenance mode'
+  1: 'access user profiles'
+  2: 'access webform submission user'
+  3: 'administer polls'
+  4: 'administer push notifications'
+  5: 'administer users'
+  6: 'administer webform submission'
+  7: 'can view compare_webform dashboard'
+  8: 'can view live dashboard'
+  9: 'can view polling dashboard'
+  10: 'can view webcast dashboard'
+  11: 'create faculty content'
+  12: 'create interactivity_tab content'
+  13: 'create polls'
+  14: 'create tab content'
+  15: 'create tile content'
+  16: 'delete any faculty content'
+  17: 'delete any interactivity_tab content'
+  18: 'delete any tab content'
+  19: 'delete any tile content'
+  20: 'delete own webform submission'
+  21: 'edit any faculty content'
+  22: 'edit any interactivity_tab content'
+  23: 'edit own polls'
+  24: 'flag ably_highlight'
+  25: 'flag ably_mover'
+  26: 'flag ably_poll'
+  27: 'flag ably_tab'
+  28: 'flag ably_visibility'
+  29: 'flag active_poll'
+  30: 'flag answered'
+  31: 'flag approve'
+  32: 'flag archive'
+  33: 'flag correct_answer'
+  34: 'import tablefield'
+  35: 'show term permissions on node edit page'
+  36: 'unflag ably_highlight'
+  37: 'unflag ably_mover'
+  38: 'unflag ably_poll'
+  39: 'unflag ably_tab'
+  40: 'unflag ably_visibility'
+  41: 'unflag active_poll'
+  42: 'unflag answered'
+  43: 'unflag approve'
+  44: 'unflag archive'
+  45: 'unflag correct_answer'
+  46: 'update paragraph content agenda'
+  47: 'update paragraph content image'
+  48: 'update paragraph content live_voting'
+  49: 'update paragraph content tile_file'
+  50: 'update paragraph content tile_video'
+  51: 'update paragraph content video_iframe'
+  52: 'update paragraph content video_on_demand'
+  53: 'update paragraph content video_theoplayer'
+  54: 'use text format basic_html'
+  55: 'view any webform submission'
+  57: 'view own unpublished content'
+  58: 'view own webform submission'
+  59: 'view paragraph content ask_a_question'
+  60: 'view unpublished paragraphs'
+  61: 'view user email addresses'
+  62: 'view any unpublished content'
+  63: 'view paragraph content video_wowza'
+  64: 'edit any webform submission'

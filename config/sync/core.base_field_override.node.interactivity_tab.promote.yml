@@ -1,0 +1,22 @@
+uuid: 4416eed9-2125-4c8e-8516-55aeb5b97fa2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.interactivity_tab
+id: node.interactivity_tab.promote
+field_name: promote
+entity_type: node
+bundle: interactivity_tab
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

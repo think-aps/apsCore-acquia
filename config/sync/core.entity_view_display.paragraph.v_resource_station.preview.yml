@@ -1,0 +1,36 @@
+uuid: bcc48f4c-5176-4606-8672-a12f0c41dd22
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.v_resource_station.field_vrs_image
+    - field.field.paragraph.v_resource_station.field_vrs_items
+    - field.field.paragraph.v_resource_station.field_vrs_sub_heading
+    - field.field.paragraph.v_resource_station.field_vrs_text
+    - field.field.paragraph.v_resource_station.field_vrs_title
+    - paragraphs.paragraphs_type.v_resource_station
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.v_resource_station.preview
+targetEntityType: paragraph
+bundle: v_resource_station
+mode: preview
+content:
+  field_vrs_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_vrs_image: true
+  field_vrs_items: true
+  field_vrs_sub_heading: true
+  field_vrs_text: true

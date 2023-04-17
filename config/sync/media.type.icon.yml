@@ -1,0 +1,19 @@
+uuid: e073f057-27fe-4c96-b442-d0c2468b213e
+langcode: en
+status: true
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: _none
+id: icon
+label: Icon
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

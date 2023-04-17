@@ -1,0 +1,483 @@
+<?php
+
+  /**
+   * @file
+   * Functions to support theming in the SASS Starterkit subtheme.
+   */
+
+  use Drupal\Core\Form\FormStateInterface;
+
+  /**
+   * Implements hook_form_system_theme_settings_alter() for settings form.
+   *
+   * Replace Barrio setting options with subtheme ones.
+   */
+  function aps_core_bootstrap_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+    $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = array(
+      'bg-primary' => t('Primary'),
+      'bg-secondary' => t('Secondary'),
+      'bg-accent' => t('Accent'),
+      'bg-light' => t('Light'),
+      'bg-dark' => t('Dark'),
+      'bg-white' => t('White'),
+      'bg-transparent' => t('Transparent'),
+    );
+    $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = array(
+      'bg-primary' => t('Primary'),
+      'bg-secondary' => t('Secondary'),
+      'bg-accent' => t('Accent'),
+      'bg-light' => t('Light'),
+      'bg-dark' => t('Dark'),
+      'bg-white' => t('White'),
+      'bg-transparent' => t('Transparent'),
+    );
+  }
+
+  /**
+   * Implements theme_preprocess_page() for settings form.
+   */
+  function aps_core_bootstrap_preprocess_page(array &$variables) {
+    $fonts = theme_get_setting('bootstrap_barrio_google_fonts');
+  }
+
+  /**
+   * Implements theme_page_attachments_alter() for settings form.
+   */
+  function aps_core_bootstrap_page_attachments_alter(array &$page) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if ($node) {
+      // Code to prepare the redirect for the splash pages
+      if ($node->getType() === 'splash') {
+        $redirect = $node->field_splash_redirect->getValue();
+        $duration = $node->field_splash_duration->first()->get('value')->getCastedValue();
+
+        $url = \Drupal\Core\Url::fromUri($redirect[0]['uri'], array('absolute' => TRUE))->toString();
+
+        $http_refresh = array(
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'content' => "{$duration}, url='{$url}'",
+            'http-equiv' => 'refresh',
+          ),
+        );
+        $page['#attached']['html_head'][] = [$http_refresh, 'http-refresh'];
+      }
+    }
+  }
+
+  /**
+   * Implements theme_form_alter() for settings form.
+   */
+  function aps_core_bootstrap_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if ($form_id === "user_form" || $form_id === "change_pwd_form") {
+      // Redirect users to their profile pages.
+      $form['actions']['submit']['#submit'][] = 'aps_core_bootstrap_user_edit_form_submit';
+    }
+  }
+
+  /**
+   * Redirect users to their profile pages when submitting the edit form.
+   */
+  function aps_core_bootstrap_user_edit_form_submit($form, &$form_state) {
+    $form_state->setRedirect('entity.user.canonical', ['user' => \Drupal::currentUser()->id()]);
+  }
+
+  /**
+   * Implements theme_preprocess_views_view().
+   */
+  function aps_core_bootstrap_preprocess_views_view(&$variables) {
+    $view = $variables['view'];
+
+    // Sets the grid layout class on the click tabs
+    if ($view->id() == 'aps_click_tabs' && $view->current_display == 'tabs') {
+      $grid = 'grid-row-none';
+      $offset = 'grid-offset-none';
+
+      if ($view->argument && array_key_exists('nid', $view->argument)) {
+        $node = \Drupal::entityTypeManager()->getStorage('node')->load($view->argument['nid']->argument);
+
+        if ($node->hasField('field_grid')) {
+          $grid = 'grid-row-' . $node->get('field_grid')->getString();
+        }
+        if ($node->hasField('field_grid_offset')) {
+          $offset = 'grid-offset-' . $node->get('field_grid_offset')->getString();
+        }
+      }
+
+      $variables['attributes']['class'][] = $grid;
+      $variables['attributes']['class'][] = $offset;
+    }
+  }
+
+  /**
+   * Implements theme_preprocess_views_view_field().
+   */
+  function aps_core_bootstrap_preprocess_views_view_field(&$variables) {
+    $view = $variables['view'];
+    $field = $variables['field'];
+    $row = $variables['row'];
+
+    // Add the active class to the tabs since we've hidden them now
+    if ($view->id() == 'aps_webinar_tabs') {
+      if ($view->current_display == 'tabs' || $view->current_display == 'webinar') {
+        $first = NULL;
+        $active = array();
+
+        if (array_key_exists('status', $view->field) && array_key_exists('nothing', $view->field)) {
+          foreach ($view->result as $result_id => $result) {
+            if (!isset($first)) {
+              if (intval($view->field['status']->getValue($result))) {
+                $active[] = 'active';
+                $first = TRUE;
+              }
+            } else {
+              $active[] = '';
+            }
+          }
+
+          if ($field->field == 'nothing') {
+            $variables['output'] = $active[$row->index];
+          }
+        }
+      }
+    }
+
+    // Prepares the dashboard countdown display timer
+    if ($view->id() == 'dashboard_content' && $view->current_display == 'countdown') {
+      switch($field->field) {
+        case 'field_event_date':
+          try {
+            $now = new DateTime('now', new DateTimeZone('UTC'));
+
+            list($start, $end) = explode(' / ', strip_tags($variables['output']), 2);
+            $start_date = new DateTime($start, new DateTimeZone('UTC'));
+            $end_date = new DateTime($end, new DateTimeZone('UTC'));
+
+            $diff = $start_date->diff($now);
+            if ($diff->days > 60) {
+              $frags = array(
+                'y' => array('year', 'years'),
+                'm' => array('month', 'months'),
+                'd' => array('day', 'days'),
+              );
+            } else {
+              $frags = array(
+                'days' => array('day', 'days'),
+                'h' => array('hour', 'hours'),
+                'i' => array('mins', 'mins'),
+                's' => array('secs', 'secs'),
+              );
+            }
+
+            if ($start_date > $now) {
+              $countdown = _format_date_interval($start_date->diff($now), $frags);
+              $variables['output'] = \Drupal\Core\Render\Markup::create('<div class="live-event">Now Live!</div>' . $countdown);
+            } elseif ($end_date > $now) {
+              $variables['output'] = \Drupal\Core\Render\Markup::create('<div class="live-event active">Now Live!</div>');
+            } else {
+              $variables['output'] = '';
+            }
+
+          } catch (Exception $e) {
+            Drupal::logger('aps_core_bootstrap')->error('Could not set the upcoming date for next Webcast');
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Prepares the Event Preview countdown timer
+    if ($view->id() == 'aps_event_list' && $view->current_display == 'promoted') {
+      switch($field->field) {
+        case 'field_event_date':
+          try {
+            $now = new DateTime('now', new DateTimeZone('UTC'));
+
+            list($start, $end) = explode(' / ', strip_tags($variables['output']), 2);
+            $start_date = new DateTime($start, new DateTimeZone('UTC'));
+            $end_date = new DateTime($end, new DateTimeZone('UTC'));
+
+            if ($start_date > $now) {
+              $countdown = _format_date_interval($start_date->diff($now),
+                array(
+                  'days' => array('day', 'days'),
+                  'h' => array('hour', 'hours'),
+                  'i' => array('mins', 'mins'),
+                  's' => array('secs', 'secs'),
+                )
+              );
+              $variables['output'] = \Drupal\Core\Render\Markup::create('<div class="live-event">Now Live!</div>' . $countdown);
+            } elseif ($end_date > $now) {
+              $variables['output'] = \Drupal\Core\Render\Markup::create('<div class="live-event active">Now Live!</div>');
+            } else {
+              $variables['output'] = '';
+            }
+
+          } catch (Exception $e) {
+            Drupal::logger('aps_core_bootstrap')->error('Could not set the upcoming date for next Webcast');
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Overwrite the Poll ID to become the choice display table
+    if ($view->id() == 'aps_poll' && $view->current_display == 'embed') {
+      switch ($field->field) {
+        case 'id':
+          $poll = Drupal\poll\Entity\Poll::load($field->getValue($variables['row']));
+          $options = $poll->getOptions();
+
+          $choices = array();
+          foreach ($options as $option_id => $label) {
+            try {
+              $flag_link = \Drupal::service('flag.link_builder')->build('poll_choice', $option_id, 'correct_answer');
+            } catch (exception $e) {
+              Drupal::logger('aps_core_bootstrap')->error(t('Cannot load Polling Choice flag'));
+            }
+
+            $choices[] = array(
+              'label' => $label,
+              'flag_link' => (isset($flag_link))? $flag_link : t('Flag not set'),
+            );
+          }
+
+          $variables['choices'] = $choices;
+
+        break;
+      }
+    }
+
+    // Formats the display for Polling Graphs
+    if ($view->id() == 'aps_poll_graph' && $view->current_display == 'graph') {
+      switch($field->field) {
+        case 'id':
+          // Retrieve the Poll object itself
+          $poll = Drupal\poll\Entity\Poll::load($field->getValue($variables['row']));
+          $vote_storage = \Drupal::service('poll_vote.storage');
+
+          $options = $poll->getOptions();
+          $votes = $poll->getVotes();
+          $total_votes = $vote_storage->getTotalVotes($poll);
+
+          // Try to get the flag if one exists
+          $flag = \Drupal::service('flag')->getFlagById('correct_answer');
+
+          foreach ($options as $option_id => $option) {
+            $poll_choice = \Drupal::entityTypeManager()->getStorage('poll_choice')->load($option_id);
+
+            $variables['voting'][$option_id] = array(
+              'label' => $option,
+              'count' => $votes[$option_id],
+              'percentage' => ($total_votes)? round(($votes[$option_id] / $total_votes) * 100, 1) : 0,
+              'correct' => ($flag->isFlagged($poll_choice)),
+            );
+            $variables['votes'][] = $votes[$option_id];
+          }
+
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Formats the display for Polling Word Cloud
+    if ($view->id() == 'aps_poll_graph' && $view->current_display == 'word_cloud') {
+      switch($field->field) {
+        case 'id':
+          $word_cloud_words = array();
+
+          // Retrieve the Poll object itself
+          $poll = Drupal\poll\Entity\Poll::load($field->getValue($variables['row']));
+
+          $options = $poll->getOptions();
+          $votes = $poll->getVotes();
+
+          foreach ($votes as $vote_id => $vote) {
+            $word_cloud_words[$vote_id] = array('words' => $options[$vote_id], 'count' => $vote);
+          }
+
+          $variables['words'] = $word_cloud_words;
+
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  /**
+   * Implements theme_preprocess_paragraph__TYPE().
+   *
+   * Processes the results from the Word Cloud into the appropriate data content.
+   */
+  function aps_core_bootstrap_preprocess_paragraph__word_cloud(&$variables) {
+    $word_cloud_words = array();
+
+    if (array_key_exists('paragraph', $variables)) {
+      $paragraph = $variables['paragraph'];
+
+      if ($paragraph instanceof Drupal\paragraphs\Entity\Paragraph && $paragraph->hasField('field_webform')) {
+        $webform = $paragraph->get('field_webform')->first()->get('entity')->getTarget()->getValue();
+
+        if ($webform->hasSubmissions()) {
+          $webform_submissions = \Drupal::entityQuery('webform_submission')
+            ->condition('webform_id', $webform->id())
+            ->condition('webform_id', $webform->idexport())
+            ->condition('entity_id', $paragraph->id())
+            ->execute();
+
+          foreach ($webform_submissions as $sid) {
+            $submission = \Drupal\webform\Entity\WebformSubmission::load($sid);
+            $submission_data = $submission->getData();
+
+            if (array_key_exists('your_message', $submission_data)) {
+              foreach ($submission_data['your_message'] as $message) {
+                $safe_message = strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', trim($message)));
+
+                if (!array_key_exists($safe_message, $word_cloud_words)) {
+                  $word_cloud_words[$safe_message] = array('words' => $message, 'count' => 1);
+                } else {
+                  $word_cloud_words[$safe_message]['count']++;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    $variables['content']['words'] = $word_cloud_words;
+  }
+
+  /**
+   * Implements template_preprocess_webform_submission_data().
+   *
+   * Adds the Word Cloud info into the variables.
+   */
+  function aps_core_bootstrap_preprocess_webform(array &$variables) {
+    $webform_id = $variables['element']['#webform_id'];
+
+    if ($webform_id === "word_cloud") {
+      $word_cloud_words = array();
+
+      $webform = \Drupal\webform\Entity\Webform::load($webform_id);
+      $entity_id = preg_replace("/[^0-9]/", "", $variables['element']['#form_id']);
+
+      if ($webform->hasSubmissions()) {
+        $webform_submissions = \Drupal::entityQuery('webform_submission')
+          ->condition('webform_id', $webform->id())
+          ->condition('entity_id', $entity_id)
+          ->execute();
+
+        foreach ($webform_submissions as $sid) {
+          $submission = \Drupal\webform\Entity\WebformSubmission::load($sid);
+          $submission_data = $submission->getData();
+
+          if (array_key_exists('your_message', $submission_data)) {
+            foreach ($submission_data['your_message'] as $message) {
+              $safe_message = strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', trim($message)));
+
+              if (!array_key_exists($safe_message, $word_cloud_words)) {
+                $word_cloud_words[$safe_message] = array('words' => $message, 'count' => 1);
+              } else {
+                $word_cloud_words[$safe_message]['count']++;
+              }
+            }
+          }
+        }
+      }
+
+      $variables['content']['words'] = $word_cloud_words;
+    }
+  }
+
+  function aps_core_bootstrap_preprocess_poll_meter(&$variables) {
+    $poll = $variables['poll'];
+    $options = $poll->getOptions();
+
+    if (method_exists(\Drupal::service('poll_vote.storage'), 'getAllUserVotes')) {
+      $user_votes = \Drupal::service('poll_vote.storage')->getAllUserVotes($poll);
+      foreach ($user_votes as $id => $user_vote) {
+        $user_vote = (array) $user_vote;
+
+        if ((int) $user_vote['chid'] === array_search($variables['choice'], $options)) {
+          $variables['is_current_selection'] = TRUE;
+        }
+      }
+    } else {
+      $variables['is_current_selection'] = FALSE;
+    }
+  }
+
+  /**
+   * Implements hook_preprocess_block__BLOCK_ID().
+   *
+   * Adjusts the login block to match the login page
+   */
+  function aps_core_bootstrap_preprocess_block__user_login_block(&$variables) {
+    $variables['content']['user_login_form']['name']['#description'] = t('Enter your email address.');
+    $variables['content']['user_login_form']['pass']['#description'] = t('Enter the password that accompanies your email address.');
+
+    if (array_key_exists('create_account', $variables['content']['user_links']['#items'])) {
+      $variables['content']['user_links']['#items']['create_account']['#title'] = t('Not yet registered?');
+    }
+    if (array_key_exists('request_password', $variables['content']['user_links']['#items'])) {
+      $variables['content']['user_links']['#items']['request_password']['#title'] = t('Forgotten your password?');
+    }
+    $variables['content']['user_links']['#items'] = array_reverse($variables['content']['user_links']['#items']);
+  }
+
+  /**
+   * Implements template_preprocess_webform_submission_data().
+   *
+   * Adds the submission ID to the variables, since it's weird it doesn't have it by default.
+   */
+  function aps_core_bootstrap_preprocess_webform_submission_data(array &$variables) {
+    $webform_submission = $variables['webform_submission'];
+
+    if ($webform_submission instanceof Drupal\webform\Entity\WebformSubmission) {
+      $variables['elements']['sid'] = $webform_submission->id();
+      $webform = $webform_submission->getWebform();
+
+      // Custom action to retrieve the image file dimensions so it can be used in the Twig
+      if ($webform->id() === "social_wall") {
+        foreach ($webform->getElementsInitialized() as $webform_element) {
+          if ($webform_element['#type'] === 'webform_image_file') {
+            if ($fid = $webform_submission->getElementData($webform_element['#webform_key'])) {
+              $file = \Drupal\file\Entity\File::load($fid);
+              $image_factory = \Drupal::service('image.factory')->get($file->getFileUri());
+
+              $variables['elements']['data'][$webform_element['#webform_key']]['#value']['#dimensions'] = array(
+                'width' => $image_factory->getToolkit()->getWidth(),
+                'height' => $image_factory->getToolkit()->getHeight(),
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Format an interval to show all existing components.
+   * If the interval doesn't have a time component (years, months, etc)
+   * That component won't be displayed.
+   *
+   * @param DateInterval $interval The interval
+   *
+   * @return string Formatted interval string.
+   */
+  function _format_date_interval(DateInterval $interval, $fragments) {
+    $result = array();
+    foreach ($fragments as $p => $frag) {
+      if (property_exists($interval, $p)) {
+        $result[] = "<div class='date-fragment {$p}'><span>" . str_pad($interval->{$p}, 2, '0', STR_PAD_LEFT) . "</span>" . \Drupal::translation()->formatPlural($interval->{$p}, $frag[0], $frag[1]) . "</div>";
+      }
+    }
+
+    return implode('', $result);
+  }

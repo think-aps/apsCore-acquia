@@ -1,0 +1,42 @@
+uuid: 8ae34858-b247-43f0-9267-04a5aa543b4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.file_browser
+    - field.field.paragraph.tile_poster.field_tile_button_label
+    - field.field.paragraph.tile_poster.field_tile_media
+    - paragraphs.paragraphs_type.tile_poster
+  module:
+    - entity_browser
+id: paragraph.tile_poster.default
+targetEntityType: paragraph
+bundle: tile_poster
+mode: default
+content:
+  field_tile_button_label:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tile_media:
+    type: entity_browser_entity_reference
+    weight: 1
+    region: content
+    settings:
+      entity_browser: file_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: true
+      open: true
+      field_widget_display_settings:
+        view_mode: default
+      selection_mode: selection_append
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

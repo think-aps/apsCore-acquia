@@ -1,0 +1,52 @@
+uuid: 15e54c35-370c-4eae-9e4a-87986dbaeae2
+langcode: en
+status: true
+dependencies:
+  module:
+    - dashboards
+    - node
+label: Landing
+name: landing
+group: 'Page, Core'
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c7bd8499-03a6-479f-897f-c3df97e2524f
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      landing_page: landing_page
+  request_path_exclusion:
+    id: request_path_exclusion
+    negate: true
+    uuid: 02914b77-c23f-4993-8438-a2fd4352b8d6
+    context_mapping: {  }
+    pages: "/node/*/edit\r\n/node/add/*\r\n/admin/*"
+reactions:
+  blocks:
+    id: blocks
+    uuid: 8251adbf-3f06-445f-b1ab-5b67b55f77c3
+    blocks:
+      d5d5e24f-090c-46fe-af54-9809dcf2c0f4:
+        uuid: d5d5e24f-090c-46fe-af54-9809dcf2c0f4
+        id: 'dashboards_block:dashboard:view_embed'
+        label: 'Promoted Events'
+        provider: dashboards
+        label_display: '0'
+        region: featured_top
+        weight: '0'
+        custom_id: dashboards_block_dashboard_view_embed
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: landing
+        context_mapping: {  }
+        view: 'aps_event_list:promoted'
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

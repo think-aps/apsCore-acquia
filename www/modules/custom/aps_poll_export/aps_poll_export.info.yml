@@ -1,0 +1,7 @@
+name: aps - Poll Export
+description: Overwrites Poll Export display to render each result
+type: module
+package: 'APS'
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: '1.0.3'

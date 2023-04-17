@@ -1,0 +1,13 @@
+aps_segment.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    aps_segment_job_number:
+      type: string
+    aps_segment_api_auth:
+      type: string
+    aps_segment_write_key:
+      type: string
+    aps_segment_endpoint:
+      type: string
+

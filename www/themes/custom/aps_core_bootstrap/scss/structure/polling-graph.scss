@@ -1,0 +1,126 @@
+/**
+/* Polling Graphs
+/* ----------------------------------------------------------------------------- */
+body.polling-graph {
+  #page {
+    @extend .bg-secondary;
+
+    header,
+    footer {
+      display: none;
+    }
+
+    #main-wrapper {
+      display: flex;
+      align-items: center;
+
+      section {
+        #block-system-main-block {
+          @include rounded-edges($rounded-edges);
+          @include drop-shadow;
+
+          @extend .mb-0;
+          @extend .p-5;
+
+          background: $white;
+
+          h3 {
+            @extend .font-weight-bold;
+
+            color: $secondary-shade;
+          }
+
+          .choices {
+            .choice {
+              @extend .mb-3;
+
+              .choice-label {
+                @extend .p-2;
+                @extend .font-weight-bold;
+
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+                font-size: $h4-font-size;
+                color: $secondary-shade;
+              }
+
+              .choice-bar {
+                @include rounded-edges(calc(#{$rounded-edges} * 2));
+
+                border: solid 2px $white;
+                background: $gray-100;
+                overflow: hidden;
+
+                .bar {
+                  @extend .bg-primary;
+                  @extend .py-2;
+
+                  @include rounded-edges(calc(#{$rounded-edges} * 2));
+
+                  overflow: hidden;
+                  width: 0%;
+                  min-width: 2.5rem;
+                  display: flex;
+                  justify-content: flex-end;
+                  min-height: 2rem;
+
+                  .percentage {
+                    @extend .px-2;
+
+                    opacity: 0;
+                    color: $white;
+                  }
+                }
+              }
+
+              &.correct {
+                .choice-label {
+                  &:after {
+                    font-size: 135%;
+                    content: '\2713';
+                    color: $green;
+                    line-height: 1rem;
+
+                    @extend .px-3;
+                  }
+                }
+
+                .choice-bar {
+                  @extend .highlighted-item;
+                }
+              }
+            }
+          }
+        }
+
+        .polling-controls-block {
+          position: fixed;
+          bottom: 0;
+          left: 50%;
+          -moz-transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+
+          #polling-refresh,
+          #polling-animate,
+          #polling-answer {
+            @extend .mb-3;
+            @extend .mx-2;
+
+            display: inline-flex;
+            min-width: 10rem;
+            justify-content: flex-start;
+
+            span {
+              @extend .font-weight-bold;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+aps_theo_embed_field.settings_form:
+  title: THEOplayer embed field
+  description: Configure THEOplayer embed field.
+  parent: system.admin_config_system
+  route_name: aps_theo_embed_field.settings_form
+  weight: 10

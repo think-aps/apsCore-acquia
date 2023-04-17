@@ -1,0 +1,15 @@
+uuid: 7f245011-0590-4c2e-947a-a476fbc22a40
+langcode: en
+status: true
+dependencies:
+  module:
+    - flag
+    - webform
+id: chairperson
+label: Chairperson
+weight: -8
+is_admin: null
+permissions:
+  - 'flag answered'
+  - 'view any webform submission'
+  - 'view own webform submission'

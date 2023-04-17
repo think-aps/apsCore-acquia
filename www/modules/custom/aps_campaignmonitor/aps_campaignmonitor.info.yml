@@ -1,0 +1,8 @@
+name: aps - Campaign Monitor
+type: module
+description: 'Connects the Campaign Monitor account to Drupal instances'
+package: 'APS'
+core: 8.x
+core_version_requirement: ^8 || ^9
+version: '1.0.3'
+configure: aps_campaignmonitor.client

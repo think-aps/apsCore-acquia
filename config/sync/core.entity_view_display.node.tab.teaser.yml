@@ -1,0 +1,28 @@
+uuid: 90c1d3d4-bfed-4bf3-8f32-303cdd0a7472
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tab.field_content_access
+    - field.field.node.tab.field_media_icon
+    - field.field.node.tab.field_paragraph_content
+    - field.field.node.tab.field_title
+    - node.type.tab
+  module:
+    - user
+id: node.tab.teaser
+targetEntityType: node
+bundle: tab
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_access: true
+  field_media_icon: true
+  field_paragraph_content: true
+  field_title: true

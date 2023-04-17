@@ -1,0 +1,115 @@
+/**
+/* General body content
+/* ----------------------------------------------------------------------------- */
+#page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .featured-top {
+    background-image: url("../images/BasicPage-BG.svg"), linear-gradient(to bottom, $secondary-shade, $secondary-dark);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    @extend .mb-3;
+
+    aside {
+      .view {
+        &.view-aps-page-header {
+          .view-content {
+            > div {
+              display: flex;
+              flex-flow: column;
+              justify-content: center;
+              align-items: center;
+
+              h2 {
+                color: $white;
+                margin-bottom: 0;
+                text-transform: uppercase;
+                padding-bottom: 0;
+                text-align: center;
+
+                @extend h1;
+
+                font-size: $h2-font-size;
+
+                &:after {
+                  display: none;
+                }
+              }
+
+              svg,
+              img {
+                @include change-color($primary-shade, 1);
+                height: 3.5rem;
+                width: auto;
+
+                @extend .mb-2;
+              }
+            }
+          }
+        }
+      }
+
+      .block {
+        &.block-block-content {
+          display: flex;
+          flex-flow: column-reverse;
+          justify-content: center;
+          align-items: center;
+
+          h2 {
+            color: $white;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            padding-bottom: 0;
+            text-align: center;
+
+            @extend h1;
+
+            font-size: $h2-font-size;
+
+            &:after {
+              display: none;
+            }
+          }
+
+          svg,
+          img {
+            @include change-color($primary-shade, 1);
+            height: 3.5rem;
+            width: auto;
+
+            @extend .mb-2;
+          }
+        }
+      }
+    }
+  }
+
+  #main-wrapper {
+    flex: 1;
+
+    main#content {
+      section {
+
+      }
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  #page {
+    .featured-top {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+}

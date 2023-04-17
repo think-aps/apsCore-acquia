@@ -1,0 +1,22 @@
+/**
+/* Splash
+/* ----------------------------------------------------------------------------- */
+.node--type-splash {
+  .fullscreen-video-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    overflow: hidden;
+    background: $primary-shade;
+  }
+  .fullscreen-video-container video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100%;
+  }
+}
+

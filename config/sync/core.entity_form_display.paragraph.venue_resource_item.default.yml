@@ -1,0 +1,43 @@
+uuid: 201b7e70-fa73-4567-a9c1-6c9e07d66510
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.venue_resource_item.field_vri_file
+    - field.field.paragraph.venue_resource_item.field_vri_text
+    - field.field.paragraph.venue_resource_item.field_vri_title
+    - paragraphs.paragraphs_type.venue_resource_item
+  module:
+    - file
+    - text
+id: paragraph.venue_resource_item.default
+targetEntityType: paragraph
+bundle: venue_resource_item
+mode: default
+content:
+  field_vri_file:
+    type: file_generic
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_vri_text:
+    type: text_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_vri_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,47 @@
+uuid: adcd4906-f2be-45c9-a518-7c7d814a97e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.splash.field_splash_duration
+    - field.field.node.splash.field_splash_redirect
+    - field.field.node.splash.field_splash_video
+    - node.type.splash
+  module:
+    - iframe
+    - user
+id: node.splash.default
+targetEntityType: node
+bundle: splash
+mode: default
+content:
+  field_splash_duration:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_splash_video:
+    type: iframe_only
+    label: hidden
+    settings:
+      url: ''
+      title: ''
+      headerlevel: '3'
+      class: ''
+      frameborder: '0'
+      scrolling: ''
+      transparency: '0'
+      allowfullscreen: '0'
+      tokensupport: '0'
+      width: ''
+      height: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_splash_redirect: true
+  links: true

@@ -1,0 +1,10 @@
+aps_addevent:
+  version: 1.x
+  css:
+    theme:
+      css/aps_addevent.css: {}
+  js:
+    js/aps_addevent.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

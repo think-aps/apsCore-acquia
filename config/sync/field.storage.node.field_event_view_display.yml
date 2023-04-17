@@ -1,0 +1,26 @@
+uuid: 946ade97-650d-4490-9e3c-375c3bedc2ba
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - view_mode_switch
+id: node.field_event_view_display
+field_name: field_event_view_display
+entity_type: node
+type: view_mode_switch
+settings:
+  origin_view_modes:
+    default: default
+    full: full
+    search_index: search_index
+    search_result: search_result
+    teaser: teaser
+    token: token
+module: view_mode_switch
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

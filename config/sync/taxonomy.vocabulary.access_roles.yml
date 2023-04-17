@@ -1,0 +1,8 @@
+uuid: 59cd98b2-8c1f-418a-a9ae-b0405c3453a1
+langcode: en
+status: true
+dependencies: {  }
+name: 'Access Roles'
+vid: access_roles
+description: 'Roles for permission by term module'
+weight: 0

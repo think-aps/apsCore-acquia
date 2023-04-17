@@ -1,0 +1,18 @@
+uuid: e6404eb3-40c8-4906-a1be-bfb21dc048c5
+langcode: en
+status: false
+dependencies: {  }
+id: master
+label: Master
+description: ''
+weight: 2
+folder: ../config/split/master
+module:
+  shield: 0
+theme: {  }
+blacklist:
+  - shield.settings
+graylist:
+  - shield.settings
+graylist_dependents: true
+graylist_skip_equal: true

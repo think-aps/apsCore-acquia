@@ -1,0 +1,24 @@
+uuid: ea45388a-8cf8-4d94-a403-700db16233f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ha_floating_element
+    - paragraphs.paragraphs_type.hotspot_area
+  module:
+    - text
+id: paragraph.hotspot_area.field_ha_floating_element
+field_name: field_ha_floating_element
+entity_type: paragraph
+bundle: hotspot_area
+label: 'Floating element'
+description: 'If not empty, a click on the hotspot area will make this floating element appear floating on top of the image. To close it, press ESC or click outside the floating element.'
+required: false
+translatable: false
+default_value:
+  -
+    value: '<div></div>'
+    format: code
+default_value_callback: ''
+settings: {  }
+field_type: text_long

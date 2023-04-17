@@ -1,0 +1,141 @@
+uuid: 826955d5-ae87-4774-8963-56752cbafdef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_content_access
+    - field.field.node.page.field_media_icon
+    - field.field.node.page.field_paragraph_content
+    - field.field.node.page.field_popup
+    - node.type.page
+  module:
+    - dashboards
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Page Edit'
+          context_mapping: {  }
+          custom_classes: edit-button
+        components:
+          4d333f7d-a6e9-4cc2-bc10-0456567e525c:
+            uuid: 4d333f7d-a6e9-4cc2-bc10-0456567e525c
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Embed a view'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'edit_button:embed'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Page Content'
+          context_mapping: {  }
+          custom_classes: page-content
+        components:
+          6c8a5f20-78f8-400f-ade7-e39b6100d71c:
+            uuid: 6c8a5f20-78f8-400f-ade7-e39b6100d71c
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_paragraph_content'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Popup
+          context_mapping: {  }
+          custom_id: ''
+          custom_classes: ''
+          custom_class_choose: {  }
+          custom_styles: ''
+          custom_data_attributes: ''
+          regions:
+            content:
+              region_id: ''
+              region_class_choose: {  }
+              region_classes: ''
+              region_styles: ''
+              region_data: ''
+        components:
+          026d40b8-f001-4e77-ba11-ef55e94911b0:
+            uuid: 026d40b8-f001-4e77-ba11-ef55e94911b0
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_popup'
+              label: Popup
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  field_media_icon:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_paragraph_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_popup:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_content_access: true
+  flag_bookmark: true
+  links: true

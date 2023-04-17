@@ -1,0 +1,72 @@
+<?php
+
+  /**
+   * @file
+   * Contains aps_theo_embed_field.module..
+   */
+
+  use Drupal\Core\Routing\RouteMatchInterface;
+
+  /**
+   * Implements hook_help().
+   */
+  function aps_theo_embed_field_help($route_name, RouteMatchInterface $route_match) {
+    switch ($route_name) {
+      // Main module help for the aps_theo_embed_field module.
+      case 'help.page.aps_theo_embed_field':
+        $output = '';
+        $output .= '<h3>' . t('About') . '</h3>';
+        $output .= '<p>' . t('Defines a Theo video field type and display the Theo video as embed.') . '</p>';
+        $output .= '<h3>' . t('To configure') . '</h3>';
+        $output .= '<p>' . t('Install module "Theo Embed Field"') . '</p>';
+        $output .= '<p>' . t('Add your Theo Player Portal License to Admin Theo embed field settings admin/config/system/aps-theo-embed-field') . '</p>';
+        $output .= '<h3>' . t('To use') . '</h3>';
+        $output .= '<p>' . t('Add this field to your content type Eg:- Admin Menu >> structure >> Content types >> Article >> Manage fields') . '</p>';
+        $output .= '<p>' . t('Add a new field in Theo Media >> Theo embed field.') . '</p>';
+        $output .= '<p>' . t('Select how you want to embed your Theo Video from manage display (iframe or Javascript) and Save')  . '</p>';
+        $output .= '<p>' . t('Select your display options from the Javascript version which currently are:') . '</p>';
+        $output .= '<ul>';
+        $output .= '<li>' . t('Hide Control Bar') . '</li>';
+        $output .= '<li>' . t('Hide play back speed, from settings') . '</li>';
+        $output .= '<li>' . t('Hide progress bar') . '</li>';
+        $output .= '<li>' . t('Hide Settings (Gear cog icon)') . '</li>';
+        $output .= '<li>' . t('Hide full frame') . '</li>';
+        $output .= '<li>' . t('Set colour option for large play back button') . '</li>';
+        $output .= '</ul>';
+        $output .= '<p>' . t('Select your display options from the iframe version which currently are:') . '</p>';
+        $output .= '<ul>';
+        $output .= '<li>' . t('Select display size') . '</li>';
+        $output .= '</ul>';
+        $output .= '<h3>' . t('Add Content') . '</h3>';
+        $output .= '<p>' . t('Add your Theo video key to the first field labeled "Theo portal Video Key"') . '</p>';
+        $output .= '<p>' . t('Add a full url including https//: i.e. "https://thinkaps.com/posterimage.png" image to the second field labeled "Theo Poster Image url
+" for your poster image (optional) or upload image to /sites/default/files/ eg /sites/default/files/2021-09/poster.png (optional)') . '</p>';
+        return $output;
+
+      default:
+    }
+  }
+
+  /**
+   * Implements hook_theme().
+   */
+
+  function aps_theo_embed_field_theme($existing, $type, $theme, $path) {
+    return [
+      'theojs' => [
+        'variables' => [
+          'library' => NULL,
+          'thumbnail' => NULL,
+          'size' => NULL,
+          'license' => NULL,
+          'num' => NULL,
+          'src' => NULL,
+          'autoplay' => NULL,
+          'live' => NULL,
+          'controls' => NULL,
+          'colour' => NULL,
+		  'image' => NULL,
+        ],
+      ],
+    ];
+  }

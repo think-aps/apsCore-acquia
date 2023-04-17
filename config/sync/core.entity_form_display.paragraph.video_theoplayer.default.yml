@@ -1,0 +1,25 @@
+uuid: 92d46b62-5ecc-470c-8959-0738fb31ffea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_theoplayer.field_video_theoplayer
+    - paragraphs.paragraphs_type.video_theoplayer
+  module:
+    - aps_theo_embed_field
+id: paragraph.video_theoplayer.default
+targetEntityType: paragraph
+bundle: video_theoplayer
+mode: default
+content:
+  field_video_theoplayer:
+    type: theojs
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

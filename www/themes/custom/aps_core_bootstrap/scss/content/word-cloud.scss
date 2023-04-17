@@ -1,0 +1,77 @@
+/**
+/* Word cloud
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--webform {
+  div[id*="webform-submission-word-cloud"] {
+    form {
+      table {
+        border-collapse: collapse;
+        margin-bottom: 0;
+
+        * {
+          border-width: 0;
+        }
+
+        thead {
+          display: none;
+
+          tr {
+
+            th,
+            td {
+            }
+          }
+        }
+        tbody {
+          tr {
+            td {
+              background: transparent;
+              --bs-table-accent-bg: transparent;
+              padding-left: 0;
+              padding-right: 0;
+
+              &[class^="webform-multiple"] {
+                display: none;
+              }
+
+              fieldset {
+                @extend .m-0;
+              }
+            }
+          }
+        }
+      }
+
+      fieldset {
+        &[id^="edit-your-message"] {
+          display: flex;
+          flex-flow: row;
+          align-items: center;
+          gap: 1rem;
+
+          .webform-multiple-table-responsive {
+            flex: 1;
+          }
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      .tabledrag-toggle-weight-wrapper {
+        display: none;
+      }
+
+      .webform-multiple-add {
+        fieldset {
+          display: none;
+        }
+      }
+    }
+
+    .word-cloud-wrapper {
+
+    }
+  }
+}

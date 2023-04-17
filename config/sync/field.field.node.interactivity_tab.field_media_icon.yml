@@ -1,0 +1,29 @@
+uuid: 67fa800a-996e-4d44-b06e-915d77dbae1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_icon
+    - media.type.icon
+    - node.type.interactivity_tab
+id: node.interactivity_tab.field_media_icon
+field_name: field_media_icon
+entity_type: node
+bundle: interactivity_tab
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,9 @@
+name: aps - Segment HTTP API
+description: Custom Segment HTTP APS data capture for Discovr Analytics
+type: module
+package: 'APS'
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:node
+version: '1.0.3'

@@ -1,0 +1,20 @@
+uuid: 419f92e3-8891-46d0-a509-e5cca5e2d71c
+langcode: en
+status: true
+dependencies:
+  theme:
+    - aps_core_bootstrap
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: aps_core_bootstrap_local_actions
+theme: aps_core_bootstrap
+region: content
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

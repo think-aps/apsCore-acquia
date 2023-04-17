@@ -1,0 +1,19 @@
+uuid: 684a2939-b27a-40ff-a416-a6b885a2f0e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - iframe
+    - node
+id: node.field_splash_video
+field_name: field_splash_video
+entity_type: node
+type: iframe
+settings: {  }
+module: iframe
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

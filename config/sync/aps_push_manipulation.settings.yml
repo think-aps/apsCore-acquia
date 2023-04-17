@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: bV35dsgojgduEN5YJF7T0QlYujEqkKLUA_8YukL85Cg
+app_id: XpNHYw
+app_key: 'XpNHYw.IsAEKg:jX0onaOm9EmsVlOE0ffkCNmBuIi5hLXu6fjV9Fi8R8s'
+visibility_flag: ably_visibility
+visibility_selector: '.navtabs-main article.@type.@type--type-@bundle.@type--id-@id'
+entity_flag: ably_mover
+entity_selector: ''
+highlight_flag: ably_highlight
+highlight_selector: 'body.path-@type.@type--type-@bundle.page-@type-@id .webinar-interaction .layout__region--second .quicktabs-wrapper'
+tab_flag: ably_tab
+tab_selector: '.navtabs-main article.@type.@type--type-@bundle.@type--id-@id'
+poll_flag: ably_poll
+poll_selector: '.webinar-interaction .layout__region--second .quicktabs-wrapper form.@type-view-form-@id'
+alert_flag: ably_highlight
+alert_type: tabs
+alert_selector: article.@type.@type--type-@bundle.@type--id-@id

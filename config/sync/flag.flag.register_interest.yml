@@ -1,0 +1,30 @@
+uuid: da6c60cf-4769-4a32-9535-e206b211611e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: register_interest
+label: 'Register Interest'
+bundles:
+  - event
+entity_type: node
+global: false
+flag_short: 'Register interest'
+flag_long: ''
+flag_message: ''
+unflag_short: Registered
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

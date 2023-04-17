@@ -1,0 +1,71 @@
+uuid: 6c586215-d9dd-43bb-83d6-073ad1695f6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_event_list
+  module:
+    - node
+    - user
+    - views
+label: Welcome
+name: welcome
+group: 'Page, Core'
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: a1ce6a88-07ba-45da-9a53-77c7dc909bdb
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      welcome_page: welcome_page
+  request_path_exclusion:
+    id: request_path_exclusion
+    negate: true
+    uuid: d06eb844-26d1-4988-b619-2b7bc9073dd2
+    context_mapping: {  }
+    pages: "/node/*/edit\r\n/node/add/*\r\n/admin/*"
+reactions:
+  blocks:
+    id: blocks
+    uuid: 3c809c9a-303b-45e7-88a7-405935cb9515
+    blocks:
+      cbbc79f5-4596-4d46-b594-96fb6cb80fb4:
+        uuid: cbbc79f5-4596-4d46-b594-96fb6cb80fb4
+        id: user_login_block
+        label: Login
+        provider: user
+        label_display: visible
+        region: featured_top
+        weight: '1'
+        custom_id: user_login_block
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: welcome
+        context_mapping: {  }
+        third_party_settings: {  }
+      8539b66a-1467-4693-8731-63a68f92459e:
+        uuid: 8539b66a-1467-4693-8731-63a68f92459e
+        id: 'views_block:aps_event_list-welcome'
+        label: ''
+        provider: views
+        label_display: '0'
+        region: featured_top
+        weight: '0'
+        custom_id: views_block_aps_event_list_welcome
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: welcome
+        context_mapping: {  }
+        views_label: ''
+        items_per_page: none
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

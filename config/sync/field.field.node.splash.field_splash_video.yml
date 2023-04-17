@@ -1,0 +1,31 @@
+uuid: 4e798294-efd3-4dfe-8d73-dc7383cb9060
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_splash_video
+    - node.type.splash
+  module:
+    - iframe
+id: node.splash.field_splash_video
+field_name: field_splash_video
+entity_type: node
+bundle: splash
+label: Video
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: null
+  headerlevel: '3'
+  class: ''
+  frameborder: '0'
+  scrolling: 'no'
+  transparency: '0'
+  allowfullscreen: '0'
+  tokensupport: '0'
+  width: null
+  height: null
+field_type: iframe

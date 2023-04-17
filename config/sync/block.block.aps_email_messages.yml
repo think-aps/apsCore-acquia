@@ -1,0 +1,22 @@
+uuid: 9818e076-b406-4a1c-8494-6cc926a40138
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - aps_email
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: aps_email_messages
+theme: aps_email
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

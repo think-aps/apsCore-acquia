@@ -1,0 +1,75 @@
+/**
+/* Flag buttons
+/* ----------------------------------------------------------------------------- */
+.flag {
+  position: relative;
+
+  a {
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .btn-arrow-right;
+
+    & ~ p {
+      &.js-flag-message {
+        display: none;
+      }
+    }
+  }
+
+  &.action-flag {
+    a {
+      background: $primary-shade;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: $primary-dark;
+      }
+    }
+
+    .ajax-progress {
+      background-color: $primary-shade;
+    }
+  }
+
+  &.action-unflag {
+    a {
+      background: $secondary-shade;
+
+      &:after {
+        background: url("../images/icons/tick.svg") center right no-repeat transparent;
+        background-size: contain;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: $secondary-dark;
+      }
+    }
+
+    .ajax-progress {
+      background-color: $secondary-shade;
+    }
+  }
+
+  .ajax-progress {
+    @include rounded-edges(calc(#{$rounded-edges} * 0.65));
+
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url("../images/ajax.gif") center center repeat-x transparent;
+    background-blend-mode: hard-light;
+    background-size: cover;
+    padding: 0;
+    opacity: 0.25;
+
+    .throbber {
+      display: none;
+    }
+  }
+}

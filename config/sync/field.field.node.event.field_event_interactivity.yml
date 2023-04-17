@@ -1,0 +1,29 @@
+uuid: 2599011b-9477-4bf4-8f46-dcd61be44e44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_interactivity
+    - node.type.event
+    - node.type.interactivity_tab
+id: node.event.field_event_interactivity
+field_name: field_event_interactivity
+entity_type: node
+bundle: event
+label: 'Engagement Panel'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      interactivity_tab: interactivity_tab
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: interactivity_tab
+field_type: entity_reference

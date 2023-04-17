@@ -1,0 +1,18 @@
+uuid: 69f19cc5-c9b9-4cc3-83eb-90c0beb3da22
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.free
+  module:
+    - crop
+name: free_crop
+label: 'Free Crop'
+effects:
+  5d352d64-58f6-4564-9d04-784c3181aa8b:
+    uuid: 5d352d64-58f6-4564-9d04-784c3181aa8b
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: free
+      automatic_crop_provider: null

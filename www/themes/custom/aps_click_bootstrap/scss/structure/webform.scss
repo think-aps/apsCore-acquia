@@ -1,0 +1,52 @@
+/**
+/* Webform
+/* ----------------------------------------------------------------------------- */
+form.webform-submission-form {
+  legend,
+  label {
+  }
+
+  .webform-type-checkboxes,
+  .webform-type-radios {
+    .form-check {
+      input {
+        &.form-checkbox,
+        &.form-radio {
+        }
+
+        & + label {
+          &:hover,
+          &:focus,
+          &:active {
+          }
+        }
+
+        &:checked {
+          & + label {
+            &:hover,
+            &:focus,
+            &:active {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    &.js-form-wrapper {
+      .ajax-progress {
+        .throbber {
+        }
+      }
+    }
+
+    .btn,
+    button {
+      @extend .btn-arrow-right;
+
+      width: 100%;
+      max-width: none;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+uuid: 17c989d6-d72a-4f53-b6cd-5e884cfbc645
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.access_roles
+id: taxonomy_vocabulary_access_roles
+entity_type_id: taxonomy_vocabulary
+entity_id: access_roles
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

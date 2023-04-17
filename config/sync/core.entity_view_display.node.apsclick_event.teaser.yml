@@ -1,0 +1,36 @@
+uuid: 69720256-e675-494b-8b42-a217a812d8c2
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.apsclick_event.field_content_access
+    - field.field.node.apsclick_event.field_event_date
+    - field.field.node.apsclick_event.field_event_overview
+    - field.field.node.apsclick_event.field_event_tabs
+    - field.field.node.apsclick_event.field_grid
+    - field.field.node.apsclick_event.field_grid_offset
+    - field.field.node.apsclick_event.field_media_icon
+    - field.field.node.apsclick_event.field_popup
+    - node.type.apsclick_event
+  module:
+    - user
+id: node.apsclick_event.teaser
+targetEntityType: node
+bundle: apsclick_event
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_access: true
+  field_event_date: true
+  field_event_overview: true
+  field_event_tabs: true
+  field_grid: true
+  field_grid_offset: true
+  field_media_icon: true
+  field_popup: true

@@ -1,0 +1,32 @@
+uuid: 5ac2c85e-9ba0-4fb4-bc8d-4fe2515e5a64
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full_screen
+    - core.entity_view_mode.node.multicast
+    - core.entity_view_mode.node.on_demand
+    - core.entity_view_mode.node.webinar
+    - field.storage.node.field_event_view_display
+    - node.type.event
+  module:
+    - view_mode_switch
+id: node.event.field_event_view_display
+field_name: field_event_view_display
+entity_type: node
+bundle: event
+label: 'Display Mode'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: webinar
+default_value_callback: ''
+settings:
+  allowed_view_modes:
+    full_screen: full_screen
+    multicast: multicast
+    on_demand: on_demand
+    webinar: webinar
+field_type: view_mode_switch

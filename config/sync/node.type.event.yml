@@ -1,0 +1,18 @@
+uuid: 4ea0d3f6-8115-4880-a0a3-cf7b8c55a6c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Webcast
+type: event
+description: 'Add a new event.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

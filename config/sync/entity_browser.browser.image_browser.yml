@@ -1,0 +1,42 @@
+uuid: ba35ec0f-dc66-49d4-b3f9-5bad673bf956
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_media_library
+  module:
+    - views
+name: image_browser
+label: 'Image Browser'
+display: modal
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select Image'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  e557f8c6-5012-4140-b4ce-51234635e722:
+    id: view
+    uuid: e557f8c6-5012-4140-b4ce-51234635e722
+    label: Library
+    weight: 1
+    settings:
+      submit_text: Select
+      auto_select: false
+      view: aps_media_library
+      view_display: image
+  fa62d047-6315-4a90-9322-d4d840024487:
+    id: media_image_upload
+    uuid: fa62d047-6315-4a90-9322-d4d840024487
+    label: Upload
+    weight: 2
+    settings:
+      submit_text: Upload
+      upload_location: 'public://'
+      multiple: '1'
+      extensions: 'png gif jpg jpeg svg'
+      media_type: images

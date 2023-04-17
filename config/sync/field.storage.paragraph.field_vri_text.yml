@@ -1,0 +1,20 @@
+uuid: 366c41ba-6ea7-4b0c-b2c9-28d86eb376f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_vri_text
+field_name: field_vri_text
+entity_type: paragraph
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

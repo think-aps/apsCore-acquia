@@ -1,0 +1,160 @@
+/**
+/* Social wall
+/* ----------------------------------------------------------------------------- */
+.paragraph--type--webform {
+  .social-wall-wrapper {
+    opacity: 0;
+    -webkit-transition: all 1s ease 0s;
+    -moz-transition: all 1s ease 0s;
+    -o-transition: all 1s ease 0s;
+    transition: all 1s ease 0s;
+
+    .social-wall-cards {
+      .social-wall-card-wrapper {
+        @include rounded-edges($rounded-edges);
+        @include drop-shadow;
+        border: solid 2px $primary-shade;
+
+        .social-wall-card {
+          .card-img-overlay {
+            button {
+              padding: 15px 20px;
+              border: 0;
+              background: none;
+
+              .hover-magnify {
+                display: none;
+              }
+
+              &:hover,
+              &:active,
+              &:focus {
+                .default-magnify {
+                  display: none;
+                }
+
+                .hover-magnify {
+                  display: block;
+                }
+              }
+            }
+          }
+
+          .card-img {
+            img {
+              width: 100%;
+              height: auto;
+              margin: 0;
+              padding: 0;
+            }
+          }
+
+          .card-body {
+            color: #ffffff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+
+            .card-comment {
+              margin-bottom: 0;
+            }
+
+            .post-info {
+              line-height: 2em;
+              font-size: $font-size-sm;
+
+              .card-name {
+                font-weight: lighter;
+                font-style: italic;
+              }
+            }
+
+            p {
+              margin-bottom: 2em;
+
+              &:last-child,
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+            }
+          }
+
+          &.text-only {
+            .card-body {
+              position: static;
+              text-align: center;
+              background: transparent;
+              color: $primary-shade;
+            }
+          }
+        }
+      }
+    }
+
+    &.sw-ready {
+      opacity: 1;
+    }
+  }
+}
+
+
+.social-wall-post-modal {
+  padding: 0!important;
+
+  .modal-dialog{
+    z-index: 1000;
+    min-height:100%;
+    max-width: 750px;
+    padding: 50px 0;
+    justify-content:center;
+
+    @include media-breakpoint-down(sm) {
+      margin:auto;
+    }
+  }
+  .modal-content{
+    border-radius: 0;
+    border:none;
+
+    .modal-body{
+      position:relative;
+
+      button.close{
+        position:absolute;
+        top:10px;
+        right:10px;
+        background-color: white;
+        opacity:1;
+
+        .hover-close {
+          display: none;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          .default-close{
+            display:none;
+          }
+          .hover-close{
+            display:block;
+          }
+        }
+      }
+
+      #socialPostModalImageContainer{
+        img{
+          width: 100%;
+          height:auto;
+        }
+      }
+    }
+
+    .modal-footer{
+      border:0;
+      padding-top:20px;
+      padding-bottom: 15px;
+    }
+  }
+}

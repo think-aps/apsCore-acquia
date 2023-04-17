@@ -1,0 +1,15 @@
+uuid: 1f095b78-f3ab-4d0a-bffc-bf08b8e6139c
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.approve
+  module:
+    - flag
+id: flag_action.approve_unflag
+label: 'Remove from chair visibility'
+type: webform_submission
+plugin: 'flag_action:approve_unflag'
+configuration:
+  flag_id: approve
+  flag_action: unflag

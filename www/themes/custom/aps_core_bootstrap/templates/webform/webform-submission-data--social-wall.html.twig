@@ -1,0 +1,120 @@
+{#
+/**
+ * @file
+ * Default theme implementation for webform submission data.
+ *
+ * Available variables:
+ * - webform_submission: The webform submission.
+ * - webform: The webform.
+ *
+ * @see template_preprocess_webform_submission_data()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if elements.data.photo['#value']['#value'] is not empty %}
+  {% set photo = elements.data.photo['#value'] %}
+  {% set img = drupal_image(photo['#value']) %}
+  {% set img_url = img['#uri'] | file_url %}
+  {% set thumbnail = drupal_image(img['#uri'], 'large') %}
+  {% set type = 'image' %}
+{% else %}
+  {% set type = 'text' %}
+{% endif %}
+
+{% if elements.data.comment['#value']['#markup'] != "{Empty}" %}
+  {% set comment = elements.data.comment['#value']['#markup'] %}
+{% endif %}
+
+{% if elements.data.name['#value']['#plain_text'] != "{Empty}" %}
+  {% set name = elements.data.name['#value']['#plain_text'] %}
+{% endif %}
+
+<div class="social-wall-card-wrapper col-12 col-md-6 col-lg-4 col-xl-3" id="social-wall-post-{{ elements.sid }}">
+  <div class="social-wall-card {{ type == 'text' ? 'text-only d-flex flex-column' }}">
+  {% if type == 'text' %}
+    <div class="card-body text-center">
+      {% if comment is defined and comment is not null %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="86" height="96" viewBox="0 0 86 96" class="quote-svg">
+          <text id="_" data-name="&quot;&quot;" font-size="80" font-family="Gotham-Bold, Gotham" font-weight="700"><tspan x="0" y="77">&quot;&quot;</tspan></text>
+        </svg>
+        <p class="card-comment">
+          {{ comment }}
+        </p>
+      {% endif %}
+      <div class="post-info mt-auto d-flex justify-content-between">
+        <span class="card-name">{{ name }}</span>
+        <div class="actions">
+          {{ elements.flag_like }}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="card-img-overlay text-right p-0">
+      <button type="button" data-sid="social-wall-post-{{ elements.sid }}" data-target="#socialPostModal" data-toggle="modal" data-name="{{ name }}" data-comment="{{ comment|striptags("<br><p>") }}" data-image="{{ img_url }}">
+        <svg class="default-magnify" data-name="Component 18 – 3" xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 40 40">
+          <g id="Group_272" data-name="Group 272" transform="translate(-1371 -287)">
+            <g id="Group_262" data-name="Group 262" transform="translate(943 -542)">
+              <g id="rectangle_outline" data-name="Rectangle 42" transform="translate(428 829)" fill="#fff" stroke="#e5007d" stroke-width="2">
+                <rect width="40" height="40" stroke="none"/>
+                <rect x="1" y="1" width="38" height="38" fill="none"/>
+              </g>
+            </g>
+          </g>
+          <g id="zoom-in" transform="translate(6.334 6.333)">
+            <g id="Group_269" data-name="Group 269">
+              <g id="Group_268" data-name="Group 268">
+                <path id="Path_1022" data-name="Path 1022" d="M26.513,22.686,22.686,18.86A11.915,11.915,0,0,0,24.6,12.3,12.3,12.3,0,1,0,12.3,24.6a11.915,11.915,0,0,0,6.56-1.913l3.827,3.827a2.706,2.706,0,0,0,3.827-3.827ZM12.3,21.866A9.567,9.567,0,1,1,21.866,12.3,9.508,9.508,0,0,1,12.3,21.866Z" fill="#e5007d"/>
+              </g>
+            </g>
+            <g id="Group_271" data-name="Group 271" transform="translate(5.467 5.467)">
+              <g id="Group_270" data-name="Group 270">
+                <path id="Path_1023" data-name="Path 1023" d="M114.7,107.867h-4.1v-4.1a1.291,1.291,0,0,0-1.367-1.367,1.369,1.369,0,0,0-1.367,1.367v4.1h-4.1a1.369,1.369,0,0,0-1.367,1.367,1.291,1.291,0,0,0,1.367,1.367h4.1v4.1a1.367,1.367,0,1,0,2.733,0v-4.1h4.1a1.291,1.291,0,0,0,1.367-1.367A1.37,1.37,0,0,0,114.7,107.867Z" transform="translate(-102.4 -102.4)" fill="#e5007d"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+        <svg class="hover-magnify" data-name="Component 18 – 2" xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 40 40">
+          <g id="Group_272" data-name="Group 272" transform="translate(-1371 -287)">
+            <g id="Group_262" data-name="Group 262" transform="translate(943 -542)">
+              <g id="rectangle_outline" data-name="Rectangle 42" transform="translate(428 829)" fill="#fff" stroke="#e5007d" stroke-width="2">
+                <rect width="40" height="40" stroke="none"/>
+                <rect x="1" y="1" width="38" height="38" fill="none"/>
+              </g>
+            </g>
+          </g>
+          <g id="zoom-in" transform="translate(6.334 6.333)">
+            <g id="Group_269" data-name="Group 269">
+              <g id="Group_268" data-name="Group 268">
+                <path id="Path_1022" data-name="Path 1022" d="M26.513,22.686,22.686,18.86A11.915,11.915,0,0,0,24.6,12.3,12.3,12.3,0,1,0,12.3,24.6a11.915,11.915,0,0,0,6.56-1.913l3.827,3.827a2.706,2.706,0,0,0,3.827-3.827ZM12.3,21.866A9.567,9.567,0,1,1,21.866,12.3,9.508,9.508,0,0,1,12.3,21.866Z" fill="#e5007d"/>
+                <circle id="Ellipse_38" data-name="Ellipse 38" cx="10.5" cy="10.5" r="10.5" transform="translate(1.666 1.666)" fill="#e5007d"/>
+              </g>
+            </g>
+            <g id="Group_271" data-name="Group 271" transform="translate(5.467 5.467)">
+              <g id="Group_270" data-name="Group 270">
+                <path id="Path_1023" data-name="Path 1023" d="M114.7,107.867h-4.1v-4.1a1.291,1.291,0,0,0-1.367-1.367,1.369,1.369,0,0,0-1.367,1.367v4.1h-4.1a1.369,1.369,0,0,0-1.367,1.367,1.291,1.291,0,0,0,1.367,1.367h4.1v4.1a1.367,1.367,0,1,0,2.733,0v-4.1h4.1a1.291,1.291,0,0,0,1.367-1.367A1.37,1.37,0,0,0,114.7,107.867Z" transform="translate(-102.4 -102.4)" fill="#fff"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+    <div class="card-img">
+      {{ thumbnail }}
+    </div>
+    <div class="card-body">
+      {% if comment is defined and comment is not null %}
+        <p class="card-comment">
+          {{ comment|length > 50 ? comment|truncate(50, true) ~ '...' : comment  }}
+        </p>
+      {% endif %}
+      <div class="post-info d-flex justify-content-between">
+        <span class="card-name">{{ name }}</span>
+        <div class= "actions">
+          {{ elements.flag_like }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+</div>

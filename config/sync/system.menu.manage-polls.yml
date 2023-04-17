@@ -1,0 +1,8 @@
+uuid: 3eca529a-3862-4d33-8359-e9b8b7c31dfd
+langcode: en
+status: true
+dependencies: {  }
+id: manage-polls
+label: 'Dashboard - Manage Polls'
+description: 'Dashboard - Menu to administer Polls'
+locked: false

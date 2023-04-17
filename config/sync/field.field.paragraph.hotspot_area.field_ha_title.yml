@@ -1,0 +1,19 @@
+uuid: 382402b7-7e92-4756-b3a1-ff1b2e62355c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ha_title
+    - paragraphs.paragraphs_type.hotspot_area
+id: paragraph.hotspot_area.field_ha_title
+field_name: field_ha_title
+entity_type: paragraph
+bundle: hotspot_area
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

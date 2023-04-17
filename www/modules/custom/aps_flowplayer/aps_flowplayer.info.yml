@@ -1,0 +1,9 @@
+name: aps - Flowplayer embed field
+type: module
+description: Defines a Flowplayer embed video field type
+package: 'APS'
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - drupal:field
+version: 1.0.1

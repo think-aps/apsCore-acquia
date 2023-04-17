@@ -1,0 +1,18 @@
+uuid: 88cdbd4b-a329-4fdd-9ec3-816d0237dc1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Venue Agenda'
+type: v_agenda
+description: ''
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

@@ -1,0 +1,11 @@
+api_key: ''
+client_id: ''
+all_users_list_id: ''
+flagged_entities: {}
+subscriber_flag: ''
+drupal_fallback: true
+mailing_keys:
+  0:
+    transactional_id: ''
+    message_key: all
+    method: equals

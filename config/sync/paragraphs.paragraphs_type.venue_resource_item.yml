@@ -1,0 +1,10 @@
+uuid: feae8b33-9715-42a9-8439-dddfcb0a4152
+langcode: en
+status: true
+dependencies: {  }
+id: venue_resource_item
+label: 'Venue Resource Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

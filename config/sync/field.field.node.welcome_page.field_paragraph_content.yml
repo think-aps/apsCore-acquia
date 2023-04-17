@@ -1,0 +1,107 @@
+uuid: 3edf26b7-eeea-4432-82d3-a228cdcb0cc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraph_content
+    - node.type.welcome_page
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.introduction
+    - paragraphs.paragraphs_type.list
+  module:
+    - entity_reference_revisions
+id: node.welcome_page.field_paragraph_content
+field_name: field_paragraph_content
+entity_type: node
+bundle: welcome_page
+label: Content
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      carousel: carousel
+      introduction: introduction
+      list: list
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: 26
+        enabled: false
+      carousel:
+        weight: 27
+        enabled: true
+      cookiepro:
+        weight: 28
+        enabled: false
+      hotspot_area:
+        weight: 29
+        enabled: false
+      hotspot_image:
+        weight: 30
+        enabled: false
+      image:
+        weight: 31
+        enabled: false
+      introduction:
+        weight: 32
+        enabled: true
+      list:
+        weight: 33
+        enabled: true
+      live_voting:
+        weight: 34
+        enabled: false
+      table:
+        weight: 35
+        enabled: false
+      text:
+        weight: 36
+        enabled: false
+      tile_file:
+        weight: 37
+        enabled: false
+      tile_link:
+        weight: 38
+        enabled: false
+      tile_poster:
+        weight: 39
+        enabled: false
+      tile_video:
+        weight: 40
+        enabled: false
+      v_agenda:
+        weight: 45
+        enabled: false
+      v_agenda_day:
+        weight: 46
+        enabled: false
+      v_agenda_item:
+        weight: 47
+        enabled: false
+      v_breakout_session:
+        weight: 48
+        enabled: false
+      v_resource_station:
+        weight: 49
+        enabled: false
+      venue_resource_item:
+        weight: 41
+        enabled: false
+      video_iframe:
+        weight: 42
+        enabled: false
+      video_on_demand:
+        weight: 43
+        enabled: false
+      video_theoplayer:
+        weight: 44
+        enabled: false
+      webform:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

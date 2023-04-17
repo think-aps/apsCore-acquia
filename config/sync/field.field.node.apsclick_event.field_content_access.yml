@@ -1,0 +1,33 @@
+uuid: bde549d2-05a6-4642-97aa-5db778faa3a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_access
+    - node.type.apsclick_event
+    - taxonomy.vocabulary.access_roles
+  content:
+    - 'taxonomy_term:access_roles:f0002d1b-1539-40f7-97c8-a052f5f4a550'
+id: node.apsclick_event.field_content_access
+field_name: field_content_access
+entity_type: node
+bundle: apsclick_event
+label: 'Content Access'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    target_uuid: f0002d1b-1539-40f7-97c8-a052f5f4a550
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      access_roles: access_roles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

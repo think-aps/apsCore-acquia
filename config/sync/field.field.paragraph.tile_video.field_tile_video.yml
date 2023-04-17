@@ -1,0 +1,25 @@
+uuid: 39cff270-ab8c-4850-9f8a-ccfc7c44e9db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tile_video
+    - paragraphs.paragraphs_type.tile_video
+  module:
+    - video_embed_field
+id: paragraph.tile_video.field_tile_video
+field_name: field_tile_video
+entity_type: paragraph
+bundle: tile_video
+label: Video
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    vimeo: vimeo
+    youtube: youtube
+    youtube_playlist: '0'
+field_type: video_embed_field

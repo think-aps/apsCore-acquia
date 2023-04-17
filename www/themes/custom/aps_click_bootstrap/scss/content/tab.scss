@@ -1,0 +1,23 @@
+/**
+/* Tab
+/* ----------------------------------------------------------------------------- */
+.node--type-tab {
+  .paragraph--type--list {
+    article {
+      &.node--type-faculty {
+        &:first-child,
+        &:first-of-type {
+          .faculty-wrapper {
+            .photo-spacer {
+              display: none;
+            }
+
+            .faculty-container {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

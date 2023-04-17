@@ -1,0 +1,15 @@
+uuid: 990c1635-cece-4bf4-958d-3f4d25a3856b
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.register_interest
+  module:
+    - flag
+id: flag_action.register_interest_flag
+label: 'Register your interest'
+type: node
+plugin: 'flag_action:register_interest_flag'
+configuration:
+  flag_id: register_interest
+  flag_action: flag

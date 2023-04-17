@@ -1,0 +1,116 @@
+/**
+/* Footer
+/* ----------------------------------------------------------------------------- */
+footer.site-footer {
+  .site-footer__logo {
+    display: none;
+
+    .region {
+      .navbar-brand {
+        img {
+        }
+      }
+    }
+  }
+
+  .site-footer__top {
+    .region {
+
+    }
+
+    .region-footer-first {
+
+    }
+
+    .region-footer-second {
+
+    }
+
+    nav.block-menu {
+      ul {
+        li {
+
+          > div {
+          }
+
+          a,
+          span {
+            &:hover,
+            &:focus,
+            &:active {
+            }
+          }
+
+          span {
+            &:after {
+            }
+          }
+
+          &:first-child,
+          &:first-of-type {
+            a.nav-link {
+            }
+          }
+        }
+      }
+
+      &.menu--header-menu {
+        ul {
+          li {
+            a,
+            span {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  footer.site-footer {
+    .site-footer__logo {
+      .navbar-brand {
+      }
+    }
+
+    .site-footer__top {
+      .region {
+
+      }
+
+      .region-footer-first {
+
+      }
+
+      nav.block-menu {
+        ul {
+          li {
+            a,
+            span {
+
+            }
+
+            &:last-child,
+            &:last-of-type {
+              a.nav-link {
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .site-footer__top {
+      .region-footer-first {
+      }
+
+      .region-footer-second {
+
+      }
+    }
+  }
+}

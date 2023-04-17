@@ -1,0 +1,58 @@
+uuid: 5078ac88-3f7c-4904-8990-e8aa03ec7469
+langcode: en
+status: true
+dependencies:
+  module:
+    - exclude_node_title
+    - fillpdf
+    - media
+    - paragraphs_type_permissions
+    - poll
+    - system
+    - view_unpublished
+_core:
+  default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
+id: anonymous
+label: 'Anonymous user'
+weight: -10
+is_admin: false
+permissions:
+  0: 'access content'
+  1: 'access polls'
+  2: 'cancel own vote'
+  3: 'publish own pdfs'
+  4: 'use exclude node title'
+  6: 'view media'
+  7: 'view paragraph content agenda'
+  8: 'view paragraph content carousel'
+  9: 'view paragraph content cookiepro'
+  10: 'view paragraph content faculty'
+  11: 'view paragraph content from_library'
+  12: 'view paragraph content hotspot_area'
+  13: 'view paragraph content hotspot_image'
+  14: 'view paragraph content image'
+  15: 'view paragraph content introduction'
+  16: 'view paragraph content list'
+  17: 'view paragraph content live_voting'
+  18: 'view paragraph content poll_group'
+  19: 'view paragraph content popup'
+  20: 'view paragraph content social_wall'
+  21: 'view paragraph content table'
+  22: 'view paragraph content text'
+  23: 'view paragraph content tile_file'
+  24: 'view paragraph content tile_link'
+  25: 'view paragraph content tile_poster'
+  26: 'view paragraph content tile_video'
+  27: 'view paragraph content v_agenda'
+  28: 'view paragraph content v_agenda_day'
+  29: 'view paragraph content v_agenda_item'
+  30: 'view paragraph content v_breakout_session'
+  31: 'view paragraph content v_resource_station'
+  32: 'view paragraph content venue_resource_item'
+  33: 'view paragraph content video_iframe'
+  34: 'view paragraph content video_on_demand'
+  35: 'view paragraph content video_theoplayer'
+  36: 'view paragraph content webform'
+  37: 'view paragraph content word_cloud'
+  38: 'view any unpublished tab content'
+  39: 'view paragraph content video_wowza'

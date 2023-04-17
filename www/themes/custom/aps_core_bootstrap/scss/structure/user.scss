@@ -1,0 +1,1026 @@
+/**
+/* Change this value to alter how many fields appear
+/* on the left column for the Registration form
+/* this doesn't work dynamically on it's own as it's
+/* built using CSS grid
+/* ----------------------------------------------------------------------------- */
+$registration-fields: 6;
+
+/**
+/* Anonymous user pages
+/* ----------------------------------------------------------------------------- */
+body.page-user-login,
+body.page-user-register,
+body.page-user-password,
+body.page-user-reset {
+  .apscore-user {
+    #page {
+      flex-flow: row-reverse;
+
+      > * {
+        flex: 1;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+        &.header {
+          background: url("../images/apsCore-BG.svg") center center no-repeat transparent;
+          background-size: cover;
+
+          .navbar {
+            align-self: center;
+            width: 100%;
+
+            .navbar-brand {
+              width: 100%;
+              text-align: center;
+
+              img {
+                min-width: 15rem;
+                width: 50%;
+                height: auto;
+              }
+            }
+          }
+        }
+
+        &.body-wrapper {
+          #main-wrapper {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            text-align: center;
+
+            .anonymous-form {
+              @include drop-shadow;
+              @include rounded-edges($rounded-edges);
+
+              width: auto;
+              display: inline-block;
+              text-align: left;
+              padding: 1.5rem 2rem;
+
+              .header {
+                text-align: center;
+
+                @extend .p-3;
+
+                .icon {
+                  @extend .mb-1;
+
+                  img,
+                  svg {
+                    @include change-color($primary-shade, 1);
+                    height: 2rem;
+                    width: auto;
+                  }
+                }
+
+                .title {
+                  color: $secondary-shade;
+                  font-size: $font-size-xl;
+                  text-transform: uppercase;
+
+                  @extend .font-weight-bold;
+                }
+
+                .info {
+                  text-align: center;
+                  max-width: 18rem;
+
+                  @extend .mt-3;
+                }
+              }
+
+              .form {
+                max-width: 20rem;
+
+                @extend .mb-3;
+
+                #block-page-title-block {
+                  display: none;
+                }
+
+                #user-pass {
+                  > p {
+                    display: none;
+                  }
+                }
+
+                .form-actions {
+                  margin-top: 1rem;
+                  max-width: 20rem;
+
+                  a,
+                  button {
+                    width: 100%;
+
+                    @extend .btn-arrow-right;
+                  }
+                }
+              }
+
+              .links {
+                a {
+                  color: $secondary-shade;
+                  display: list-item;
+                  list-style: none;
+                  font-style: italic;
+
+                  @extend .mb-2;
+                  @extend .font-weight-bold;
+
+                  &:last-of-type,
+                  &:last-child {
+                    @extend .mb-0;
+                  }
+                }
+              }
+            }
+          }
+
+          footer.site-footer {
+            background: transparent;
+            color: $secondary-shade;
+
+            @extend .py-4;
+
+            .site-footer__top {
+              border-bottom: none;
+
+              > * {
+                flex: 0 0 auto;
+                width: 50%;
+              }
+
+              nav.block-menu {
+                ul {
+                  flex-direction: row;
+                  justify-content: flex-end;
+
+                  li {
+                    @extend .px-2;
+
+                    a {
+                      color: $secondary-shade;
+                      text-align: left;
+
+                      &:hover,
+                      &:focus,
+                      &:active {
+                        color: $primary-shade;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Registration page
+/* ----------------------------------------------------------------------------- */
+body.page-user-register {
+  .apscore-user {
+    #page {
+      > * {
+        &.header {
+          .navbar {
+            .navbar-brand {
+              img {
+              }
+            }
+          }
+        }
+
+        &.body-wrapper {
+          #main-wrapper {
+            .anonymous-form {
+              margin-bottom: 2rem;
+              margin-top: 2rem;
+
+              .form {
+                max-width: calc((20rem * 2) + var(--bs-gutter-x));
+
+                form {
+                  display: grid;
+                  row-gap: 1rem;
+                  grid-template-columns: 1fr var(--bs-gutter-x) 1fr;
+                  grid-template-rows: repeat($registration-fields, calc((0.875rem * var(--bs-body-line-height)) + 2.5rem + 4px));
+                  grid-template-areas: registrationGrid($registration-fields);
+
+                  div.form-wrapper {
+                    @extend .mb-0;
+
+                    fieldset {
+                      @extend .mb-0;
+                    }
+
+                    // This loops through all the normal registration fields and puts them on the left hand side
+                    @for $i from 1 through $registration-fields {
+                      &:nth-of-type(#{$i}) {
+                        grid-area: l#{$i};
+                      }
+                    }
+                  }
+
+                  small {
+                    display: none;
+                  }
+
+                  #edit-account {
+                    grid-area: user;
+
+                    fieldset {
+                      &.form-type-email {
+                        @extend .mb-3;
+                      }
+                    }
+
+                    #edit-pass {
+                      * {
+                        &.password-parent {
+                          padding-top: calc((0.875rem * var(--bs-body-line-height)) + 0.25rem);
+                          display: flex;
+                          flex-flow: row;
+                          position: relative;
+                          max-width: none;
+
+                          @extend .mb-3;
+
+                          label {
+                            position: absolute;
+                            top: 0;
+                          }
+
+                          input {
+                            @include border-end-radius(0);
+
+                            width: 100%;
+                          }
+
+                          .password-strength__title,
+                          .password-strength__text {
+                            display: none;
+                          }
+
+                          .password-strength {
+                            @include border-end-radius(calc(#{$rounded-edges} * 0.4));
+
+                            max-width: 3.5rem;
+                            display: flex;
+                            align-items: center;
+                            background: $gray-500;
+                            padding: calc(var(--bs-gutter-x) * .25);
+
+                            .password-strength__meter {
+                              @include rounded-edges($rounded-edges);
+
+                              overflow: hidden;
+                              margin: 0;
+                              height: 1rem;
+                              width: 100%;
+                              background-color: $white;
+
+                              .password-strength__indicator {
+                                background-color: transparent;
+                                height: 100%;
+
+                                &.is-weak {
+                                  background-color: indianred;
+                                }
+
+                                &.is-fair {
+                                  background-color: gold;
+                                }
+
+                                &.is-good {
+                                  background-color: lightgreen;
+                                }
+
+                                &.is-strong {
+                                  background-color: limegreen;
+                                }
+
+                                &:after {
+                                  display: none;
+                                }
+                              }
+                            }
+                          }
+                        }
+
+                        &.confirm-parent {
+                          padding-top: calc((0.875rem * var(--bs-body-line-height)) + 0.25rem);
+                          display: flex;
+                          flex-flow: row;
+                          position: relative;
+                          max-width: none;
+
+                          label {
+                            position: absolute;
+                            top: 0;
+                          }
+
+                          input {
+                            @include border-end-radius(0);
+
+                            width: 100%;
+                          }
+
+                          .password-confirm-message {
+                            @include border-end-radius(calc(#{$rounded-edges} * 0.4));
+
+                            width: 55%;
+                            font-size: 0;
+                            max-width: 3.5rem;
+                            display: flex;
+                            align-items: center;
+                            background: $gray-500;
+                            padding: calc(var(--bs-gutter-x) * .25);
+                            justify-content: center;
+                            visibility: visible !important;
+
+                            &:before {
+                              display: none;
+                            }
+
+                            span {
+                              position: relative;
+                              display: block;
+                              width: 1.5rem;
+                              height: 100%;
+                              background-size: contain;
+                              background-position: center;
+                              background-repeat: no-repeat;
+
+                              &.error {
+                                @include knockout-image(0, 1);
+
+                                background-image: url("../images/icons/cross.svg");
+                              }
+
+                              &.ok {
+                                @include knockout-image(0, 1);
+
+                                background-image: url("../images/icons/tick.svg");
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    .password-suggestions {
+                      display: none !important;
+                    }
+                  }
+
+                  #captcha,
+                  .captcha {
+                    grid-area: r#{$registration-fields};
+                    border: none;
+
+                    @extend .m-0;
+
+                    .input-group {
+                      .input-group-text {
+                        @include border-start-radius(calc(#{$rounded-edges} * 0.4));
+                        @include border-end-radius(0);
+
+                        border-width: 2px;
+                      }
+                    }
+                  }
+
+                  .form-actions {
+                    max-width: none;
+                    grid-column: 1;
+                    margin-top: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Logged in user
+/* ----------------------------------------------------------------------------- */
+body[class*="page-user-"] {
+  &.user-logged-in {
+    #page {
+      overflow: hidden;
+    }
+
+    header.header {
+      margin-bottom: 0;
+    }
+
+    div.layout {
+      &.user-profile {
+        gap: 1rem;
+        flex-wrap: initial;
+        padding-bottom: 2rem;
+
+        .field {
+          @extend .mb-3;
+
+          .field__label {
+            @extend label;
+          }
+
+          .field__item {
+            @include rounded-edges(calc(#{$rounded-edges} * 0.4));
+
+            overflow: hidden;
+            border: solid 2px $gray-500;
+
+            @extend .p-2;
+            @extend .m-0;
+
+            &:hover {
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+
+      &.user-events {
+        position: relative;
+        background: $gray-100;
+
+        @extend .py-5;
+
+        &:before,
+        &:after {
+          content: "";
+          top: 0;
+          width: 50vw;
+          position: absolute;
+          height: 100%;
+          background: inherit;
+          z-index: 1;
+        }
+
+        &:before {
+          right: 100%;
+        }
+        &:after {
+          left: 100%;
+        }
+      }
+
+      div.layout__region {
+        h2 {
+          @extend h1;
+
+          font-size: $h2-font-size;
+        }
+
+        .view {
+          &.view-aps-event-list {
+            &.view-display-id-my_events {
+              .view-content {
+                .views-row {
+                  z-index: 5;
+                  position: relative;
+
+                  @extend .mb-3;
+                  @extend .col-lg-4;
+                  @extend .col-md-6;
+
+                  .event-wrapper {
+                    display: flex;
+                    flex-flow: column;
+                    height: 100%;
+                    overflow: hidden;
+                    background: $white;
+
+                    @include rounded-edges($rounded-edges);
+                    @include drop-shadow;
+
+                    .event-container {
+                      flex: 1;
+                      text-align: center;
+
+                      .event-banner {
+                        img {
+                          width: 100%;
+                          height: auto;
+                        }
+                      }
+
+                      .event-description {
+                        padding-left: 2rem;
+                        padding-right: 2rem;
+
+                        @extend .pt-3;
+
+                        .title {
+                          display: block;
+                          font-size: $font-size-lg;
+                          color: $secondary-shade;
+
+                          @extend .font-weight-bold;
+                          @extend .mb-3;
+
+                          .date {
+                            display: block;
+                          }
+                        }
+                      }
+                    }
+
+                    .event-links {
+                      .addevent-button {
+                        > a {
+                          max-width: none;
+                        }
+
+                        & ~ ul {
+                          width: calc(100% - (var(--bs-gutter-x) + 3rem * 2));
+                          left: calc((var(--bs-gutter-x) * .5) + 3rem);
+
+                          @extend .mt-2;
+                        }
+                      }
+
+                      .flag {
+                        margin-top: 0.5rem;
+
+                        a {
+                          max-width: none;
+                        }
+                      }
+
+                      .action-links {
+                        @extend .pt-4;
+                        @extend .px-5;
+                      }
+
+                      .view-node {
+                        @extend .pt-5;
+
+                        a {
+                          background: $secondary-shade;
+                          justify-content: center;
+                          align-items: center;
+                          border: none;
+                          height: 3.5rem;
+                          max-width: none;
+
+                          @include rounded-edges(0);
+
+                          &:hover,
+                          &:focus,
+                          &:active {
+                            background: $secondary-dark;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.view-edit-user {
+            @extend .mt-4;
+            @extend .pb-5;
+
+            .views-row {
+              display: flex;
+              flex-flow: row;
+
+              a {
+                width: fit-content;
+                min-width: 15rem;
+
+                & ~ a {
+                  margin-left: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    form {
+      #edit-pass {
+        fieldset {
+          &.password-parent {
+            padding-top: calc((0.875rem * var(--bs-body-line-height)) + 0.25rem);
+            display: flex;
+            flex-flow: row;
+            position: relative;
+            max-width: none;
+            gap: calc(var(--bs-gutter-x) * .5);
+
+            @extend .mb-3;
+
+            label {
+              position: absolute;
+              top: 0;
+            }
+
+            input {
+              width: 100%;
+            }
+
+            .password-strength__title,
+            .password-strength__text {
+              display: none;
+            }
+
+            .password-strength {
+              max-width: 2.5rem;
+
+              .password-strength__meter {
+                margin: 0;
+                height: 100%;
+                padding: 0.25rem;
+                background: transparent;
+
+                .password-strength__indicator {
+                  width: 100% !important;
+                  height: 100%;
+                  background: url("../images/icons/password_default.png") center center no-repeat transparent;
+                  background-size: cover;
+
+                  @extend .ratio;
+                  @extend .ratio-1x1;
+
+                  &.is-weak {
+                    background-image: url("../images/icons/password_is_weak.png");
+                  }
+
+                  &.is-fair {
+                    background-image: url("../images/icons/password_is_fair.png");
+                  }
+
+                  &.is-ok {
+                    background-image: url("../images/icons/password_is_ok.png");
+                  }
+
+                  &.is-good {
+                    background-image: url("../images/icons/password_is_good.png");
+                  }
+
+                  &.is-strong {
+                    background-image: url("../images/icons/password_is_strong.png");
+                  }
+
+                  &:after {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+
+          &.confirm-parent {
+            padding-top: calc((0.875rem * var(--bs-body-line-height)) + 0.25rem);
+            display: flex;
+            flex-flow: row;
+            position: relative;
+            max-width: none;
+            gap: calc(var(--bs-gutter-x) * .5);
+
+            label {
+              position: absolute;
+              top: 0;
+            }
+
+            input {
+              width: 100%;
+            }
+
+            .password-confirm-message {
+              font-size: 0;
+              max-width: 2.5rem;
+              padding: 0.25rem;
+
+              @extend .ratio;
+              @extend .ratio-1x1;
+
+              &:before {
+                display: none;
+              }
+
+              span {
+                position: relative;
+                display: block;
+                background: url("../images/icons/password_default.png") center center no-repeat transparent;
+                background-size: cover;
+
+                &.error {
+                  background-image: url("../images/icons/password_is_weak.png");
+                }
+
+                &.ok {
+                  background-image: url("../images/icons/password_is_strong.png");
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .password-suggestions {
+        display: none !important;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        a,
+        button {
+          & ~ a,
+          & ~ button {
+            @extend .btn;
+            @extend .btn-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Tablet
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(lg) {
+  body.page-user-register {
+    .apscore-user {
+      #page {
+        > * {
+          &.body-wrapper {
+            #main-wrapper {
+              .anonymous-form {
+                .form {
+                  form {
+                    display: block;
+
+                    div.form-wrapper {
+                      margin-bottom: 1rem !important;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(md) {
+  body.page-user-login,
+  body.page-user-register,
+  body.page-user-password,
+  body.page-user-reset {
+    .apscore-user {
+      #page {
+        flex-flow: column;
+
+        > * {
+          &.header {
+            flex: 0;
+
+            .navbar {
+              padding-top: 3rem;
+              padding-bottom: 3rem;
+
+              .navbar-brand {
+                img {
+                }
+              }
+            }
+          }
+
+          &.body-wrapper {
+            #main-wrapper {
+              display: block;
+
+              .anonymous-form {
+                @include drop-shadow(0, 0, 0, 0, rgba(0, 0, 0, 0));
+
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-left: calc(var(--bs-gutter-x) * .5);
+                padding-right: calc(var(--bs-gutter-x) * .5);
+
+                .header {
+                  .icon {}
+
+                  .title {}
+
+                  .info {
+                    max-width: none;
+                  }
+                }
+
+                .form {
+                  max-width: none;
+
+                  #block-page-title-block {}
+
+                  .form-actions {
+                    max-width: none;
+
+                    a,
+                    button {
+                      max-width: none;
+                    }
+                  }
+                }
+
+                .links {
+                  a {}
+                }
+              }
+            }
+
+            footer.site-footer {
+              .site-footer__top {
+                > * {
+                  flex: 0 0 auto;
+                  width: 100%;
+                }
+
+                nav.block-menu {
+                  ul {
+                    justify-content: center;
+
+                    li {
+                      a {
+                        &:hover,
+                        &:focus,
+                        &:active {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .user-logged-in.path-user {
+      #block-system-main-block {
+        article.profile {
+          .field {
+            .field__label {}
+
+            .field__item {}
+          }
+        }
+      }
+
+      #block-views-block-aps-my-events-my-events-block {
+        .view-content {
+          .views-row {
+            .views-field-field-event-image {
+            }
+
+            .views-field-link-flag {
+              a {
+              }
+
+              .flag {
+                a {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  body[class*="page-user-"] {
+    &.user-logged-in {
+      #page {
+      }
+
+      header.header {
+      }
+
+      div.layout {
+        &.user-profile {
+          flex-wrap: wrap;
+          gap: 0;
+
+          .field {
+            .field__label {
+            }
+
+            .field__item {
+
+            }
+          }
+        }
+
+        &.user-events {
+          &:before,
+          &:after {
+
+          }
+
+          &:before {
+          }
+          &:after {
+          }
+        }
+
+        div.layout__region {
+          .view {
+            &.view-aps-event-list {
+              &.view-display-id-my_events {
+                .view-content {
+                  .views-row {
+                    .event-wrapper {
+                      .event-container {
+                        .event-banner {
+                          img {
+
+                          }
+                        }
+
+                        .event-description {
+                          strong {
+                          }
+
+                          span {
+                          }
+                        }
+                      }
+
+                      .event-links {
+                        .addevent-button {
+
+                        }
+
+                        .flag {
+                        }
+
+                        .action-links {
+
+                        }
+
+                        .view-node {
+                          a {
+                            &:hover,
+                            &:focus,
+                            &:active {
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.view-edit-user {
+              .views-row {
+                flex-flow: column;
+
+                a {
+                  width: 100%;
+
+                  & ~ a {
+                    margin-left: 0;
+                    margin-top: 1rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

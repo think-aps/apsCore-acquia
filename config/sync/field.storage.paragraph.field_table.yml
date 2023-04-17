@@ -1,0 +1,19 @@
+uuid: 93554c7a-2f63-4920-8133-9220a04923c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - tablefield
+id: paragraph.field_table
+field_name: field_table
+entity_type: paragraph
+type: tablefield
+settings: {  }
+module: tablefield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

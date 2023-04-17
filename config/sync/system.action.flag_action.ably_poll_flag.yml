@@ -1,0 +1,15 @@
+uuid: feeebaa0-99e1-4635-9aae-69ae7ee255a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.ably_poll
+  module:
+    - flag
+id: flag_action.ably_poll_flag
+label: 'Flag this item'
+type: poll
+plugin: 'flag_action:ably_poll_flag'
+configuration:
+  flag_id: ably_poll
+  flag_action: flag

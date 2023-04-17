@@ -1,0 +1,48 @@
+uuid: b9511068-4d5c-474d-900c-4fe4253d53e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.aps_event_list
+  module:
+    - views
+label: 'Manage Questions'
+name: manage_questions
+group: Core
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    uuid: 3d2410d3-ab2d-4cbd-8e21-765ebf89475a
+    context_mapping: {  }
+    view_inclusion:
+      view-aps_ask_a_question-chairperson: view-aps_ask_a_question-chairperson
+      view-aps_ask_a_question-manage_questions: view-aps_ask_a_question-manage_questions
+reactions:
+  blocks:
+    id: blocks
+    uuid: 4a745d72-604e-4d9a-8a01-272f6de8a2d6
+    blocks:
+      d889eb71-71dc-410e-a7b9-676a7bfe20ce:
+        uuid: d889eb71-71dc-410e-a7b9-676a7bfe20ce
+        id: 'views_block:aps_event_list-question_extend'
+        label: ''
+        provider: views
+        label_display: '0'
+        region: highlighted
+        weight: '0'
+        custom_id: views_block_aps_event_list_question_extend
+        theme: aps_core_bootstrap
+        css_class: ''
+        unique: 0
+        context_id: manage_questions
+        context_mapping: {  }
+        views_label: ''
+        items_per_page: none
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: IGXEOM4wHQhsKaCjAxgt-leFoP9014Gb7CQ-M2tSe8w
+backend: local_service
+remote_protocol: https
+remote_endpoint: fillpdf.io/xmlrpc.php
+allowed_schemes: {  }
+template_scheme: public
+local_service_endpoint: 'http://host.docker.internal:8085'
+shell_locale: en_US.UTF-8

@@ -1,0 +1,4 @@
+aps_segment_job_number: ''
+aps_segment_api_auth: 'Basic aW5mb0BkaXNjb3ZyYW5hbHl0aWNzLmNvOlRoaW5rQXBzRGV2MTIzIQ=='
+aps_segment_write_key: 'hZAoGDuiSlG4iGtLOPk2MHBK3YIAmdqr'
+aps_segment_endpoint: 'https://api.segment.io/v1/'

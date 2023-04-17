@@ -1,0 +1,32 @@
+uuid: 0068a37e-a565-466d-aebe-702adf5799b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.tab.field_content_access
+    - field.field.node.tab.field_media_icon
+    - field.field.node.tab.field_paragraph_content
+    - field.field.node.tab.field_title
+    - node.type.tab
+  module:
+    - entity_reference_revisions
+    - user
+id: node.tab.default
+targetEntityType: node
+bundle: tab
+mode: default
+content:
+  field_paragraph_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_content_access: true
+  field_media_icon: true
+  field_title: true
+  links: true

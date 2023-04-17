@@ -1,0 +1,58 @@
+/**
+/* Tile
+/* ----------------------------------------------------------------------------- */
+.node--type-tile {
+  .node__content {
+    height: 100%;
+    @extend .mt-0;
+
+    .tile-thumbnail {
+      img {
+        width: 100%;
+        height: auto;
+
+        @extend .mb-3;
+      }
+    }
+
+    .tile-wrapper {
+      @include rounded-edges($rounded-edges);
+      @include drop-shadow;
+
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+
+      .tile-content {
+        text-align: center;
+        flex: 1;
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        @extend .py-3;
+
+        .title {
+          @extend .font-weight-bold;
+          @extend .pb-3;
+
+          color: $secondary-shade;
+          font-size: $font-size-lg;
+        }
+      }
+
+      .tile-link {
+        a {
+          @extend .mb-4;
+          @extend .btn-arrow-right;
+
+          text-align: left;
+          margin-left: 2rem;
+          margin-right: 2rem;
+          max-width: none;
+        }
+      }
+    }
+  }
+}
+

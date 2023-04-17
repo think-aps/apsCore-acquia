@@ -1,0 +1,3 @@
+administer theoplayer configuration:
+  title: 'Administer THEOplayer'
+  description: 'Allows users with this permission to administer THEOplayer controls.'

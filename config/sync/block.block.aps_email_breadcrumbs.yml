@@ -1,0 +1,22 @@
+uuid: 3c382af1-e910-499c-8cfb-1ae80210efcd
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - aps_email
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: aps_email_breadcrumbs
+theme: aps_email
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

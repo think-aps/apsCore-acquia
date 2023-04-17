@@ -1,0 +1,13 @@
+{
+    "name": "think-aps/aps_flowplayer",
+    "description": "A composer.json file for aps Flowplayer embed module",
+    "type": "drupal-custom-module",
+    "authors": [
+        {
+            "name": "APS Developer",
+            "email": "developer@thinkaps.com"
+        }
+    ],
+    "require": {
+    }
+}

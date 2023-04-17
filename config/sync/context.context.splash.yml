@@ -1,0 +1,53 @@
+uuid: 593aadbc-a581-411c-8b05-a2b0469b002a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+label: Splash
+name: splash
+group: Core
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 1c94327b-fc58-4493-b877-33894dd5d68d
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      splash: splash
+reactions:
+  regions:
+    id: regions
+    uuid: 96d96849-a1de-467d-bb1f-4e621b3dbb7f
+    regions:
+      seven: {  }
+      adminimal_theme: {  }
+      bootstrap_barrio: {  }
+      aps_click_bootstrap: {  }
+      aps_core_bootstrap:
+        - top_header
+        - header
+        - primary_menu
+        - secondary_menu
+        - page_top
+        - page_bottom
+        - live
+        - featured_top
+        - highlighted
+        - breadcrumb
+        - sidebar_first
+        - sidebar_second
+        - featured_bottom_first
+        - featured_bottom_second
+        - footer_logo
+        - footer_first
+        - footer_second
+        - footer_third
+        - footer_fourth
+      aps_email: {  }
+    saved: false
+weight: 0

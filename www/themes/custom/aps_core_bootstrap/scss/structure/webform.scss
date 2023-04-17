@@ -1,0 +1,88 @@
+/**
+/* Webform
+/* ----------------------------------------------------------------------------- */
+form.webform-submission-form {
+  legend,
+  label {
+    @extend label;
+  }
+
+  .webform-type-checkboxes,
+  .webform-type-radios {
+    .form-check {
+      @extend .mb-1;
+      @extend .p-0;
+
+      input {
+        &.form-checkbox,
+        &.form-radio {
+          display: none;
+        }
+
+        & + label {
+          @include rounded-edges($rounded-edges);
+
+          display: block;
+          cursor: pointer;
+          background-color: $gray-500;
+          border: 0;
+          margin: 0 auto;
+          color: $secondary-shade;
+          -webkit-transition: all 0.15s ease-in-out 0s;
+          -moz-transition: all 0.15s ease-in-out 0s;
+          -o-transition: all 0.15s ease-in-out 0s;
+          transition: all 0.15s ease-in-out 0s;
+
+          @extend .m-0;
+          @extend .py-2;
+          @extend .px-3;
+
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: darken($gray-500, 15%);
+          }
+        }
+
+        &:checked {
+          & + label {
+            background-color: $primary-shade;
+            color: $white;
+
+            &:hover,
+            &:focus,
+            &:active {
+              background-color: $primary-dark;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    &.js-form-wrapper {
+      position: relative;
+
+      .ajax-progress {
+        @include rounded-edges(calc(#{$rounded-edges} * 0.65));
+
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: url("../images/ajax.gif") center center repeat-x transparent;
+        background-blend-mode: hard-light;
+        background-size: cover;
+        padding: 0;
+        opacity: 0.25;
+
+        .throbber {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+uuid: 0a38c37b-a18f-4d07-b9d7-c8c41bbe35ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_table
+    - paragraphs.paragraphs_type.table
+  module:
+    - tablefield
+id: paragraph.table.field_table
+field_name: field_table
+entity_type: paragraph
+bundle: table
+label: Table
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    rebuild:
+      cols: '3'
+      rows: '6'
+    value:
+      0:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      1:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      2:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      3:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      4:
+        - ''
+        - ''
+        - ''
+        - ''
+        - ''
+      caption: ''
+    format: null
+    caption: ''
+default_value_callback: ''
+settings:
+  export: false
+  restrict_rebuild: true
+  restrict_import: true
+  lock_values: false
+  cell_processing: 0
+  empty_rules:
+    ignore_table_structure: false
+    ignore_table_header: false
+field_type: tablefield

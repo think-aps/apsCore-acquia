@@ -1,0 +1,100 @@
+uuid: dc0189b2-d0b0-4c75-911d-513bb2629863
+langcode: en
+status: true
+dependencies: {  }
+id: live
+admin_label: Live
+category: ''
+frontend: true
+weight: 5
+sections:
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'System Notifications'
+      context_mapping: {  }
+      custom_classes: ably-notifications
+    components:
+      8d477b14-ccce-4f00-a517-179f7d20b4a2:
+        uuid: 8d477b14-ccce-4f00-a517-179f7d20b4a2
+        region: content
+        configuration:
+          id: ably_system_notification
+          label: 'System Notifications'
+          label_display: visible
+          provider: aps_push_notifications
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Content Highlight'
+      context_mapping: {  }
+      custom_classes: ably-highlight
+    components:
+      ed23db0d-2b43-46c0-9362-d5f08686959b:
+        uuid: ed23db0d-2b43-46c0-9362-d5f08686959b
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Content Highlight'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'aps_content_highlight:embed'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Tab Opener'
+      context_mapping: {  }
+      custom_classes: ably-tabs
+    components:
+      9460d1b5-f4ae-42a0-b878-15ce97886af1:
+        uuid: 9460d1b5-f4ae-42a0-b878-15ce97886af1
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Tab Opener'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'aps_tab_opener:embed'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: 'Tab Visibility'
+      context_mapping: {  }
+      custom_id: ''
+      custom_classes: ably-visibility
+      custom_class_choose: {  }
+      custom_styles: ''
+      custom_data_attributes: ''
+      regions:
+        content:
+          region_id: ''
+          region_class_choose: {  }
+          region_classes: ''
+          region_styles: ''
+          region_data: ''
+    components:
+      dc6a3318-1969-4a4f-8045-75b0e0c9290a:
+        uuid: dc6a3318-1969-4a4f-8045-75b0e0c9290a
+        region: content
+        configuration:
+          id: 'dashboards_block:dashboard:view_embed'
+          label: 'Tab Visibility'
+          label_display: visible
+          provider: dashboards
+          context_mapping: {  }
+          view: 'aps_tab_visibility:embed'
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }

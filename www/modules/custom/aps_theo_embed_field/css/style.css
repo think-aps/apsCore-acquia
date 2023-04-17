@@ -1,0 +1,40 @@
+.theoplayer-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin-bottom: 40px !important;
+  padding-top: 50px !important;
+}
+
+.theoplayer-embed iframe,
+.theoplayer-embed object,
+.theoplayer-embed embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px !important;
+  padding-top: 50px !important;
+}
+
+.theoplayer-embed .video-js {
+  display: block;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #000;
+  position: relative;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  font-family: Arial,Helvetica,sans-serif;
+  margin-bottom: 50px !important;
+  padding-top: 50px !important;
+}

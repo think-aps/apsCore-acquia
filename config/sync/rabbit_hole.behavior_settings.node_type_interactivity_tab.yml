@@ -1,0 +1,14 @@
+uuid: 22e5b89e-6924-4d85-ba9a-a961add44ca4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.interactivity_tab
+id: node_type_interactivity_tab
+entity_type_id: node_type
+entity_id: interactivity_tab
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

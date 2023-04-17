@@ -1,0 +1,26 @@
+uuid: cc1b215b-ba9c-4842-84a8-0440ab06aaac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_welcome_text
+    - paragraphs.paragraphs_type.introduction
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.introduction.field_welcome_text
+field_name: field_welcome_text
+entity_type: paragraph
+bundle: introduction
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

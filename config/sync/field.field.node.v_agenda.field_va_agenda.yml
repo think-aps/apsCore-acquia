@@ -1,0 +1,98 @@
+uuid: 314b0c2f-3b72-4bc7-b074-6b3fb0224eee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_va_agenda
+    - node.type.v_agenda
+  module:
+    - entity_reference_revisions
+id: node.v_agenda.field_va_agenda
+field_name: field_va_agenda
+entity_type: node
+bundle: v_agenda
+label: Agenda
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: 25
+        enabled: false
+      ask_a_question:
+        weight: 26
+        enabled: false
+      breakout_link:
+        weight: 28
+        enabled: false
+      breakouts:
+        weight: 27
+        enabled: false
+      chairperson:
+        weight: 29
+        enabled: false
+      event_evaluation:
+        weight: 30
+        enabled: false
+      event_faculty:
+        weight: 31
+        enabled: false
+      event_faculty_member:
+        weight: 32
+        enabled: false
+      hotspot_area:
+        weight: 33
+        enabled: false
+      hotspot_image:
+        weight: 34
+        enabled: false
+      live_voting:
+        weight: 35
+        enabled: false
+      poster:
+        weight: 36
+        enabled: false
+      posters:
+        weight: 37
+        enabled: false
+      request_materials:
+        weight: 38
+        enabled: false
+      resource_item:
+        weight: 40
+        enabled: false
+      resources:
+        weight: 39
+        enabled: false
+      v_agenda:
+        weight: 42
+        enabled: true
+      v_agenda_day:
+        weight: 43
+        enabled: false
+      v_agenda_item:
+        weight: 44
+        enabled: false
+      v_breakout_session:
+        weight: 45
+        enabled: false
+      v_resource_station:
+        weight: 46
+        enabled: false
+      venue_resource_item:
+        weight: 41
+        enabled: false
+      webform:
+        weight: 47
+        enabled: false
+      welcome:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

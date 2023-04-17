@@ -1,0 +1,26 @@
+uuid: db387066-29e8-4f23-ad49-a23f0f52dc10
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_welcome_text
+    - paragraphs.paragraphs_type.agenda
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.agenda.field_welcome_text
+field_name: field_welcome_text
+entity_type: paragraph
+bundle: agenda
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

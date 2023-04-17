@@ -1,0 +1,22 @@
+uuid: 3c4b7099-c10e-4950-9952-5cb721096f1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.virtual_lobby
+id: node.virtual_lobby.promote
+field_name: promote
+entity_type: node
+bundle: virtual_lobby
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

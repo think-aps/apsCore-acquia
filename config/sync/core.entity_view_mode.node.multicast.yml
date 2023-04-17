@@ -1,0 +1,10 @@
+uuid: 711c51e7-ea04-4fa9-98d7-79fa698cdab0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.multicast
+label: Multicast
+targetEntityType: node
+cache: true

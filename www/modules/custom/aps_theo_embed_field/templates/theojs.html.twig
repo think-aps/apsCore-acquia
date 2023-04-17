@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Display the Theo embed video.
+ */
+#}
+{{ attach_library('seven/classy.file') }}
+<span{{ attributes }}>{{ icon }} {{ link }}</span>
+{# {{ file_url(image) }} #}
+{# {{ dump(image) }} #}
+
+
+<link rel="stylesheet" type="text/css" href="{{ library }}/ui.css" />
+
+<div class='theoplayer-embed'>
+  <script type="text/javascript" src="//www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+  <script type="text/javascript" src="{{ library }}/THEOplayer.js"></script>
+
+  <style>
+    {% if live %}
+    .vjs-progress-control, .vjs-play-control, .theoplayer-skin li[aria-label='Open the video speed settings menu'] {
+      display: none !important;
+    }
+    {% endif %}
+    {% if controls %}
+    .vjs-control-bar .video-js .vjs-play-control {
+      display: none !important;
+    }
+	.video-js .vjs-tech {
+      pointer-events: none;
+	}
+    {% endif %}
+    .theoplayer-skin .vjs-big-play-button {
+      color: {{ colour }};
+    }
+  </style>
+
+  <div class="theoplayer-container-{{ num }} video-js theoplayer-skin vjs-16-9"></div>
+  <script>
+    var element = document.querySelector(".theoplayer-container-{{ num }}");
+    var player = new THEOplayer.Player(element, {
+      libraryLocation: "{{ library }}",
+      license: "{{ license }}"
+    });
+
+    // Customized video player parameters
+    player.source = {
+      sources: [{
+        "src": "{{ src | raw }}",
+        "type": "application/x-mpegurl"
+      }],
+	  {% if thumbnail %}
+      poster: "{{ thumbnail | raw }}",
+	  {% elseif image %}
+	  poster: "{{ image }}",
+	  {% endif %}
+    };
+	player.autoplay = {{ autoplay }};
+	player.preload = 'auto';
+  </script>
+</div>

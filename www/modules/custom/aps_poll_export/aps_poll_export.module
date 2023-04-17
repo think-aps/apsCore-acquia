@@ -1,0 +1,31 @@
+<?php
+
+  /**
+   * Implements hook_views_data_export_row_alter.
+   */
+  function aps_segment_views_data_export_row_alter(&$row, \Drupal\views\ResultRow $result, \Drupal\views\ViewExecutable $view) {
+    if ($view->storage->id() == 'aps_poll' && $view->current_display == 'data_export') {
+      $poll = Drupal\poll\Entity\Poll::load((int) $row['id']->__toString());
+      $choice_id = (int) $row['choice_target_id']->__toString();
+      $choice = Drupal\poll\Entity\PollChoice::load($choice_id);
+
+      $options = $poll->getOptions();
+      $votes = $poll->getVotes();
+
+      $row['id'] = $options[$choice_id];
+      $row['choice_target_id'] = $votes[$choice_id];
+
+      // Test if the flag module exists to check if it is flagged as correct
+      if (class_exists(\Drupal\flag\Event\FlagEvents::class)) {
+        if ($flag = Drupal::service('flag')->getFlagById('correct_answer')) {
+          if ($flag->isFlagged($choice)) {
+            $row['field_poll_type'] = 'X';
+          } else {
+            $row['field_poll_type'] = '';
+          }
+        }
+      } else {
+        unset($row['field_poll_type']);
+      }
+    }
+  }

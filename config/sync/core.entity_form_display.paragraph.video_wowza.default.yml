@@ -1,0 +1,25 @@
+uuid: bed4c1d4-57ea-4173-8440-530d43d86e2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_wowza.field_wowza
+    - paragraphs.paragraphs_type.video_wowza
+  module:
+    - aps_flowplayer
+id: paragraph.video_wowza.default
+targetEntityType: paragraph
+bundle: video_wowza
+mode: default
+content:
+  field_wowza:
+    type: aps_flowplayer
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

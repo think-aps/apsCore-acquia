@@ -1,0 +1,25 @@
+uuid: 298111aa-c1fe-4a7f-b127-f6da1a2040a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_splash_duration
+    - node.type.splash
+id: node.splash.field_splash_duration
+field_name: field_splash_duration
+entity_type: node
+bundle: splash
+label: Duration
+description: 'How long in seconds do you want to stay on the page before it navigates to the associated page, the minimum recommended is 5'
+required: true
+translatable: false
+default_value:
+  -
+    value: 5
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

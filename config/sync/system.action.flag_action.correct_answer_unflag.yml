@@ -1,0 +1,15 @@
+uuid: 91de4809-7004-4bb9-8da6-9fd8ca83f0f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.correct_answer
+  module:
+    - flag
+id: flag_action.correct_answer_unflag
+label: Undo
+type: poll_choice
+plugin: 'flag_action:correct_answer_unflag'
+configuration:
+  flag_id: correct_answer
+  flag_action: unflag

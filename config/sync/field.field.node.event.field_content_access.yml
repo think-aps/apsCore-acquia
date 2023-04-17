@@ -1,0 +1,33 @@
+uuid: e3471729-3591-40d5-95bd-cadc894aafda
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_access
+    - node.type.event
+    - taxonomy.vocabulary.access_roles
+  content:
+    - 'taxonomy_term:access_roles:f0002d1b-1539-40f7-97c8-a052f5f4a550'
+id: node.event.field_content_access
+field_name: field_content_access
+entity_type: node
+bundle: event
+label: 'Content Access'
+description: 'Select which user roles can access the content.'
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: f0002d1b-1539-40f7-97c8-a052f5f4a550
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      access_roles: access_roles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 1e4c9c85-b502-4fc5-a8d2-4349059658ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - aps_flowplayer
+    - paragraphs
+id: paragraph.field_wowza
+field_name: field_wowza
+entity_type: paragraph
+type: aps_flowplayer
+settings:
+  max_length: 255
+module: aps_flowplayer
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

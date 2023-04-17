@@ -1,0 +1,25 @@
+uuid: ce5120d4-e197-425d-98f0-24c98960ac09
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+label: 'Editing Content'
+name: editing_content
+group: Edit
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  request_path:
+    id: request_path
+    negate: false
+    uuid: 935c4647-b7c0-46c4-987a-a42fe37f9eda
+    context_mapping: {  }
+    pages: '/node/*/edit'
+reactions:
+  body_class:
+    id: body_class
+    body_class: node-edit
+    saved: false
+weight: 0

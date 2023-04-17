@@ -1,0 +1,36 @@
+uuid: 77e5c424-8f35-4ca3-b951-2dd5ed67c4ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - context
+    - system
+id: click_path_wildcard
+label: 'Click Path Wildcard'
+weight: 0
+theme: aps_click_bootstrap
+admin_theme: adminimal_theme
+visibility:
+  context_all:
+    id: context_all
+    negate: null
+    values: ''
+  context:
+    id: context
+    negate: null
+    values: ''
+  user_status:
+    id: user_status
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    user_status:
+      viewing_profile: '0'
+      logged_viewing_profile: '0'
+      own_page_true: '0'
+      field_value: '0'
+    user_fields: uid
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/click/*'

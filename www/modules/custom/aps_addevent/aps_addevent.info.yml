@@ -1,0 +1,5 @@
+name: aps - AddEvent.com
+description: Defines an addevent.com field type for add to calendar button.
+type: module
+package: APS
+core_version_requirement: ^8 || ^9

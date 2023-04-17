@@ -1,0 +1,23 @@
+/**
+/* Field specific styling
+/* ----------------------------------------------------------------------------- */
+.paragraph {
+  & ~ .paragraph {
+    @extend .pt-3;
+  }
+}
+
+.node {
+  .field--type-image {
+    float: none;
+    margin: 0;
+
+    img {
+      margin: 0;
+    }
+  }
+
+  .field--type-entity-reference {
+    margin: 0;
+  }
+}

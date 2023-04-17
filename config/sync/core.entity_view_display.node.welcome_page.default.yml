@@ -1,0 +1,129 @@
+uuid: a6edb074-3747-4ee2-828a-c5a647e8d3db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.welcome_page.field_content_access
+    - field.field.node.welcome_page.field_paragraph_content
+    - field.field.node.welcome_page.field_popup
+    - node.type.welcome_page
+  module:
+    - dashboards
+    - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Page Edit'
+          context_mapping: {  }
+          custom_classes: edit-button
+        components:
+          c95aee9b-8c15-4c30-980b-a32cadcb0ac6:
+            uuid: c95aee9b-8c15-4c30-980b-a32cadcb0ac6
+            region: content
+            configuration:
+              id: 'dashboards_block:dashboard:view_embed'
+              label: 'Edit Button'
+              label_display: '0'
+              provider: dashboards
+              context_mapping: {  }
+              view: 'edit_button:embed'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: 'Page Content'
+          context_mapping: {  }
+          custom_classes: page-content
+        components:
+          3b27f690-e03e-46da-95cd-c8ed48f1c8e1:
+            uuid: 3b27f690-e03e-46da-95cd-c8ed48f1c8e1
+            region: content
+            configuration:
+              id: 'field_block:node:welcome_page:field_paragraph_content'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: Popup
+          context_mapping: {  }
+          custom_id: ''
+          custom_classes: ''
+          custom_class_choose: {  }
+          custom_styles: ''
+          custom_data_attributes: ''
+          regions:
+            content:
+              region_id: ''
+              region_class_choose: {  }
+              region_classes: ''
+              region_styles: ''
+              region_data: ''
+        components:
+          ade467b9-5db0-4674-bce4-0bf074eb0fb4:
+            uuid: ade467b9-5db0-4674-bce4-0bf074eb0fb4
+            region: content
+            configuration:
+              id: 'field_block:node:welcome_page:field_popup'
+              label: Popup
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.welcome_page.default
+targetEntityType: node
+bundle: welcome_page
+mode: default
+content:
+  field_paragraph_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_popup:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_content_access: true
+  links: true

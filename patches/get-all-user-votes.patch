@@ -1,0 +1,53 @@
+diff --git a/src/PollVoteStorage.php b/src/PollVoteStorage.php
+index ae8dc10a4..3fd4fe632 100644
+--- a/src/PollVoteStorage.php
++++ b/src/PollVoteStorage.php
+@@ -32,6 +32,13 @@ class PollVoteStorage implements PollVoteStorageInterface {
+    */
+   protected $currentUserVote = [];
+ 
++  /**
++   * All poll votes for the current user keyed by Poll ID and User ID.
++   *
++   * @var array[]
++   */
++  protected $currentUserAllVotes = [];
++
+   /**
+    * Constructs a new PollVoteStorage.
+    *
+@@ -157,6 +164,34 @@ class PollVoteStorage implements PollVoteStorageInterface {
+     return $this->currentUserVote[$key];
+   }
+ 
++	/**
++	 * {@inheritdoc}
++	 */
++	public function getAllUserVotes(PollInterface $poll) {
++		$uid = \Drupal::currentUser()->id();
++		$key = $poll->id() . ':' . $uid;
++		if (isset($this->currentUserAllVotes[$key])) {
++			return $this->currentUserAllVotes[$key];
++		}
++		$this->currentUserAllVotes[$key] = FALSE;
++		if ($uid || $poll->getAnonymousVoteAllow()) {
++			if ($uid) {
++				$query = $this->connection->query("SELECT * FROM {poll_vote} WHERE pid = :pid AND uid = :uid", array(
++					':pid' => $poll->id(),
++					':uid' => $uid
++				));
++			}
++			else {
++				$query = $this->connection->query("SELECT * FROM {poll_vote} WHERE pid = :pid AND hostname = :hostname AND uid = 0", array(
++					':pid' => $poll->id(),
++					':hostname' => \Drupal::request()->getClientIp()
++				));
++			}
++			$this->currentUserAllVotes[$key] = $query->fetchAll();
++		}
++		return $this->currentUserAllVotes[$key];
++	}
++
+   /**
+    * {@inheritdoc}
+    */

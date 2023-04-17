@@ -1,0 +1,10 @@
+uuid: e1bb412e-f5c0-4228-8e97-3ffe595fccd2
+langcode: en
+status: true
+dependencies: {  }
+id: tile_poster
+label: Poster
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

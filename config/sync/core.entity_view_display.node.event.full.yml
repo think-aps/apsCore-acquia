@@ -1,0 +1,44 @@
+uuid: d64f2d3f-ff7f-432c-a929-449018e50385
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.event.field_addevent_button
+    - field.field.node.event.field_content_access
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_image
+    - field.field.node.event.field_event_interactivity
+    - field.field.node.event.field_event_overview
+    - field.field.node.event.field_event_tabs
+    - field.field.node.event.field_event_video
+    - field.field.node.event.field_event_view_display
+    - field.field.node.event.field_live
+    - field.field.node.event.field_popup
+    - node.type.event
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.event.full
+targetEntityType: node
+bundle: event
+mode: full
+content: {  }
+hidden:
+  field_addevent_button: true
+  field_content_access: true
+  field_event_date: true
+  field_event_image: true
+  field_event_interactivity: true
+  field_event_overview: true
+  field_event_tabs: true
+  field_event_video: true
+  field_event_view_display: true
+  field_live: true
+  field_popup: true
+  flag_register_interest: true
+  links: true

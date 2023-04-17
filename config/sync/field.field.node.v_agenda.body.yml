@@ -1,0 +1,23 @@
+uuid: 22eb9e5f-7c71-4819-8cf3-ef5cea449ce1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.v_agenda
+  module:
+    - text
+id: node.v_agenda.body
+field_name: body
+entity_type: node
+bundle: v_agenda
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

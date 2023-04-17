@@ -1,0 +1,10 @@
+uuid: ec2ee39d-83b7-41aa-9fbd-02bb6192301d
+langcode: en
+status: true
+dependencies: {  }
+id: tile_link
+label: Link
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

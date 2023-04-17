@@ -1,0 +1,636 @@
+/**
+/* Editing content
+/* ----------------------------------------------------------------------------- */
+#main {
+  @extend .container;
+}
+
+.node-edit,
+.administrator-form {
+  padding-top: 1rem;
+
+  #page {
+    background-image: none;
+    background-color: $white;
+  }
+
+  fieldset legend,
+  label {
+    font-size: $font-size-base;
+    @extend .font-weight-bold;
+    color: $primary-shade;
+    vertical-align: middle;
+  }
+
+  .horizontal-tabs {
+      border: none;
+
+      ul.horizontal-tabs-list {
+        background: transparent;
+        border: none;
+
+        li {
+          background: transparent;
+          border: none;
+
+          a {
+            color: $dark-shade;
+            padding: 0.6em 2em;
+
+            .form-required {
+              &:after {
+                position: absolute;
+              }
+            }
+
+            &:after {
+              content: '';
+              display: block;
+              position: absolute;
+              width: 85%;
+              left: 7.5%;
+              bottom: 0;
+              height: 6px;
+              background-color: $gray-500;
+              @include rounded-edges($rounded-edges);
+              -webkit-transition: all 0.5s ease 0s;
+              -moz-transition: all 0.5s ease 0s;
+              -o-transition: all 0.5s ease 0s;
+              transition: all 0.5s ease 0s;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+              &:after {
+                background-color: $secondary-light;
+              }
+            }
+          }
+
+          &.selected {
+            a {
+              &:after {
+                background-color: $primary-shade;
+              }
+            }
+          }
+        }
+      }
+
+      div.horizontal-tabs-panes {
+        details.horizontal-tabs-pane {
+          padding: 0;
+          margin-bottom: 2rem;
+
+          @include border-bottom-radius($rounded-edges);
+          @include drop-shadow(0, 14px, 10px, -10px, rgba($secondary-shade, 0.15));
+
+          summary {
+
+          }
+
+          .details-wrapper {
+          }
+        }
+      }
+    }
+
+  .vertical-tabs {
+    background: transparent;
+    border: none;
+    justify-content: end;
+
+    ul.vertical-tabs__menu {
+      border: none;
+
+      li {
+        background: transparent;
+        border: none;
+        @extend .pb-2;
+
+        a {
+          color: $dark-shade;
+          position: relative;
+          padding: 0.6em 0;
+          text-align: right;
+
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 85%;
+            left: 15%;
+            top: 100%;
+            height: 6px;
+            background-color: $gray-500;
+            @include rounded-edges($rounded-edges);
+            -webkit-transition: all 0.5s ease 0s;
+            -moz-transition: all 0.5s ease 0s;
+            -o-transition: all 0.5s ease 0s;
+            transition: all 0.5s ease 0s;
+          }
+
+          &:hover,
+          &:active,
+          &:focus {
+            text-decoration: none;
+            outline: unset;
+
+            strong {
+              text-decoration: none;
+            }
+
+            &:after {
+              background-color: $secondary-light;
+            }
+          }
+        }
+
+        &.is-selected {
+          a {
+            &:after {
+              background-color: $primary-shade;
+            }
+          }
+        }
+      }
+    }
+
+    div.vertical-tabs__panes {
+      padding: 0 0 0 2em;
+
+      > details {
+        @include rounded-edges($rounded-edges);
+        @include drop-shadow;
+
+        .details-wrapper {
+          @extend .p-3
+        }
+      }
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .field--type-string {
+    input {
+    }
+  }
+
+  .field--type-text-with-summary,
+  .field--type-text-long {
+    textarea,
+    textarea ~ div[class^="cke"] {
+    }
+  }
+
+  .field--type-daterange {
+    fieldset {
+      legend {
+        display: none;
+      }
+
+      .fieldset-wrapper {
+        > div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 1rem;
+
+          > fieldset,
+          > div {
+            flex-grow: 1;
+
+            input {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .field--type-image {
+    .image-widget {
+      display: flex;
+      flex-flow: row;
+      gap: 1rem;
+
+      &:after {
+        display: none;
+      }
+
+      .image-preview {
+        @extend .p-0;
+      }
+
+      .image-widget-data {
+        details.image-data__crop-wrapper {
+          border: none;
+
+          summary {
+          }
+
+          > div.details-wrapper {
+            padding-right: 0;
+
+            fieldset {
+              .vertical-tabs {
+                .vertical-tabs__panes {
+                  padding-right: 0;
+                  width: auto;
+
+                  .cropper-container {
+                    margin: 0 auto;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        button {
+          float: right;
+        }
+      }
+    }
+
+    &.field--widget-image-image {
+      .image-widget-data {
+        display: flex;
+        gap: calc(var(--bs-gutter-x) * .5);
+        align-items: center;
+      }
+    }
+
+    &.field--widget-image-crop {
+
+    }
+
+    img {
+      @extend .mb-0;
+    }
+  }
+
+  .field--type-entity-reference,
+  .field--type-entity-reference-revisions {
+    .tabledrag-toggle-weight-wrapper {
+      display: none;
+    }
+
+    table,
+    .table {
+      thead {
+        > tr {
+          border-width: 0 0 2px 0;
+
+          > th,
+          > td {
+            border-width: 0;
+
+            &:last-child,
+            &:last-of-type {
+              text-align: right;
+            }
+          }
+        }
+      }
+
+      tbody {
+        > tr {
+          border-width: 1px 0;
+
+          > td {
+            border-width: 0;
+            vertical-align: middle;
+
+            &.ief-tabledrag-handle {
+              width: 1px;
+
+              a {
+                height: auto;
+                margin-left: 0;
+                margin-right: 0.25em;
+
+                .handle {
+                  width: 28px;
+                  height: 30px;
+                  background-size: cover;
+                  background-position: center;
+                  margin: 0;
+                  padding: 0;
+                }
+              }
+
+              abbr[title] {
+                text-decoration: none;
+                color: red;
+              }
+            }
+
+            > div.field {
+              margin-bottom: 0;
+            }
+
+            > div.ief-entity-operations {
+              display: flex;
+              flex-flow: row;
+              justify-content: flex-end;
+
+              @extend .mb-0;
+            }
+
+            &:not([class]) {
+              text-align: right;
+            }
+          }
+
+          &.ief-row-form {
+            td {
+              .ief-form {
+                text-align: left;
+                margin: 1em 2em;
+                padding: 1.25em;
+                @include rounded-edges($rounded-edges);
+                @include drop-shadow;
+
+                > .js-form-wrapper {
+                  @extend .mb-0;
+                }
+
+                .field--type-entity-reference,
+                .field--type-entity-reference-revisions {
+
+                }
+
+                div[id*="-actions"] {
+                  &:not(div[id*="paragraph-content-actions"]) {
+                    display: flex;
+                    gap: calc(var(--bs-gutter-x) * .5);
+
+                    @extend .mb-0;
+
+                    .form-type-select {
+                      @extend .mb-0;
+
+                      margin-right: 1rem;
+                    }
+                  }
+                }
+
+                fieldset {
+                  legend {
+                  }
+                }
+              }
+            }
+          }
+
+          &:nth-of-type(even),
+          &:nth-of-type(odd),
+          &:hover,
+          &:focus {
+            td {
+              --bs-table-accent-bg: $white;
+              background: $white;
+            }
+          }
+        }
+      }
+    }
+
+    fieldset{
+      &.ief-form {
+        @include rounded-edges($rounded-edges);
+        @include drop-shadow;
+
+        @extend .p-3;
+
+        > div.fieldset-wrapper {
+
+        }
+      }
+
+      .fieldset-wrapper {
+        > .checkbox {
+          > * {
+            @extend .mb-0;
+          }
+        }
+      }
+    }
+
+    details {
+      @extend .m-0;
+      border: none;
+
+      summary {
+        display: none;
+      }
+
+      > .details-wrapper {
+        @extend .px-2;
+        @extend .py-4;
+      }
+    }
+
+    &.field--widget-entity-browser-entity-reference {
+      .entities-list {
+        @extend .mt-3;
+
+        .rendered-entity {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          > div {
+            margin-right: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .paragraph-type-top {
+      border-top: solid 1px $gray-500;
+      border-bottom: solid 1px $gray-500;
+      align-items: center;
+
+      @extend .py-2;
+
+      .paragraph-type-title {
+        font-size: $font-size-base;
+        color: $primary-shade;
+
+        @extend .font-weight-bold;
+        @extend .mb-0;
+      }
+    }
+
+    .paragraphs-dropbutton-wrapper {
+      display: flex;
+      gap: calc(var(--bs-gutter-x) * .5);
+    }
+  }
+
+  fieldset[id^="edit-group"] {
+    legend {
+      span {
+        font-size: $font-size-lg;
+        @extend .font-weight-bold;
+        color: $dark-shade;
+      }
+    }
+
+    .fieldset-wrapper {
+
+    }
+  }
+
+  button[value^="Create"],
+  button[value="Save"],
+  button[type="submit"] {
+    @extend .btn;
+    background-color: $green;
+    border-color: $green;
+    color: $white;
+    height: auto;
+    line-height: 1.2;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($green, 15%);
+      border-color: darken($green, 15%);
+      color: $white;
+    }
+  }
+
+  button[value="Edit"] {
+    @extend .btn;
+    background-color: $yellow;
+    border-color: $yellow;
+    color: $white;
+    height: auto;
+    line-height: 1.2;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($yellow, 15%);
+      border-color: darken($yellow, 15%);
+      color: $white;
+    }
+  }
+
+  button[value="Cancel"],
+  button[value="Remove"],
+  a.button--danger {
+    @extend .btn;
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+    height: auto;
+    line-height: 1.2;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($red, 15%);
+      border-color: darken($red, 15%);
+      color: $white;
+    }
+  }
+
+  .ck {
+    &.ck-editor__main {
+      .ck-editor__editable_inline {
+        min-height: 20rem;
+
+        > * {
+          &:first-child,
+          &:first-of-type {
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    flex-flow: row;
+    gap: calc(var(--bs-gutter-x) * .5);
+  }
+
+  div[id*="-actions"] {
+    button {
+      display: inline-flex;
+      height: auto;
+      border: none;
+      line-height: 1.2;
+
+      & ~ button {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+form {
+  &[class^="entity-browser"] {
+    nav {
+      &.eb-tabs {
+        li {
+          a {
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+        }
+
+        .is-active,
+        .active {
+          color: $primary-shade;
+          border-bottom-color: $primary-shade;
+        }
+      }
+    }
+  }
+}
+
+.inline-edit-button {
+  text-align: right;
+
+  a {
+    @include rounded-edges(calc(#{$rounded-edges} * 0.75));
+
+    color: darken($yellow, 12%);
+    display: inline-block;
+    padding: 6px 12px 6px 36px;
+    border: solid 2px $yellow;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: $font-size-base;
+    background: url("../images/icons/edit.svg") left center no-repeat lighten($yellow, 37%);
+    background-size: 50% 50%;
+    margin-bottom: 1rem;
+    height: auto;
+
+    @extend .font-weight-bold;
+  }
+}
+
+/**
+/* Mobile breakpoint
+/* ----------------------------------------------------------------------------- */
+@include media-breakpoint-down(sm) {
+  .inline-edit-button {
+    display: none;
+
+    a {
+
+    }
+  }
+}

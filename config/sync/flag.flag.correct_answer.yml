@@ -1,0 +1,28 @@
+uuid: 37e4505a-acd5-48f0-8e76-0cb9978219fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - poll
+id: correct_answer
+label: 'Correct Answer'
+bundles: {  }
+entity_type: poll_choice
+global: true
+flag_short: 'Mark as Correct'
+flag_long: ''
+flag_message: ''
+unflag_short: Undo
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:poll_choice'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: false
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions: {  }
+linkTypeConfig: {  }

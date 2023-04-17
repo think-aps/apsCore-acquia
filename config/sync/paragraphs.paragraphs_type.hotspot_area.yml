@@ -1,0 +1,10 @@
+uuid: 46734c6a-c4c5-4c16-ba8a-75e6ad4ef7d2
+langcode: en
+status: true
+dependencies: {  }
+id: hotspot_area
+label: 'Hotspot area'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

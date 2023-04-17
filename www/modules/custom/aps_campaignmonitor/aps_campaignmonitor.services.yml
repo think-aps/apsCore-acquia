@@ -1,0 +1,6 @@
+services:
+  aps_campaignmonitor.event_subscriber:
+    class: Drupal\aps_campaignmonitor\EventSubscriber\EventSubscriber
+    tags:
+      - { name: event_subscriber }
+

@@ -1,0 +1,23 @@
+uuid: d343e389-d3f2-43b9-a195-d21a55e874ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grid
+    - node.type.apsclick_event
+  module:
+    - options
+id: node.apsclick_event.field_grid
+field_name: field_grid
+entity_type: node
+bundle: apsclick_event
+label: 'Grid Rows'
+description: 'By default each button will be full width, you can alter how many rows you wish to appear as a side-by-side grid above'
+required: true
+translatable: false
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

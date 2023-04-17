@@ -1,0 +1,83 @@
+uuid: 9cdf1b5a-29bb-4539-9ad9-60592f759480
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0f4ec104-52aa-4f87-b2f6-f0a7b45ad7a9'
+  module:
+    - block_content
+label: 'Polling Graphs'
+name: polling_graphs
+group: Polling
+description: ''
+requireAllConditions: true
+disabled: false
+conditions:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    uuid: 1f8c4a35-1870-4a53-90ff-467344e3f41a
+    context_mapping: {  }
+    view_inclusion:
+      view-aps_poll_graph-graph: view-aps_poll_graph-graph
+      view-aps_poll_graph-word_cloud: view-aps_poll_graph-word_cloud
+reactions:
+  body_class:
+    id: body_class
+    body_class: polling-graph
+    saved: false
+  regions:
+    id: regions
+    uuid: 240c2284-aec7-4f8d-81ad-dab1581fdd86
+    regions:
+      seven: {  }
+      adminimal_theme: {  }
+      bootstrap_barrio: {  }
+      aps_core_bootstrap:
+        - background_image
+        - top_header
+        - header
+        - primary_menu
+        - secondary_menu
+        - page_top
+        - page_bottom
+        - live
+        - featured_top
+        - highlighted
+        - breadcrumb
+        - sidebar_first
+        - sidebar_second
+        - featured_bottom_first
+        - featured_bottom_second
+        - footer_logo
+        - footer_first
+        - footer_second
+        - footer_third
+        - footer_fourth
+      aps_email: {  }
+    saved: false
+  blocks:
+    id: blocks
+    uuid: f3e222d5-3c2f-4395-a04c-50e96dea8a07
+    blocks:
+      3f0cadce-1b9d-40c0-b4a0-07844e670cdd:
+        uuid: 3f0cadce-1b9d-40c0-b4a0-07844e670cdd
+        id: 'block_content:0f4ec104-52aa-4f87-b2f6-f0a7b45ad7a9'
+        label: 'Polling Controls'
+        provider: block_content
+        label_display: '0'
+        region: content
+        weight: '0'
+        custom_id: polling_controls
+        theme: aps_core_bootstrap
+        css_class: polling-controls-block
+        unique: 1
+        context_id: polling_graphs
+        context_mapping: {  }
+        status: true
+        info: ''
+        view_mode: full
+        third_party_settings: {  }
+    include_default_blocks: 0
+    saved: false
+weight: 0

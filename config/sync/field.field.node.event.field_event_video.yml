@@ -1,0 +1,110 @@
+uuid: dbce2cc3-9265-47d3-9080-2489b5c279fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_video
+    - node.type.event
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.tile_link
+    - paragraphs.paragraphs_type.video_iframe
+    - paragraphs.paragraphs_type.video_on_demand
+    - paragraphs.paragraphs_type.video_theoplayer
+    - paragraphs.paragraphs_type.video_wowza
+  module:
+    - entity_reference_revisions
+id: node.event.field_event_video
+field_name: field_event_video
+entity_type: node
+bundle: event
+label: 'Video Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tile_link: tile_link
+      video_iframe: video_iframe
+      video_theoplayer: video_theoplayer
+      video_on_demand: video_on_demand
+      image: image
+      video_wowza: video_wowza
+    negate: 0
+    target_bundles_drag_drop:
+      agenda:
+        weight: -49
+        enabled: false
+      carousel:
+        weight: 26
+        enabled: false
+      cookiepro:
+        weight: 27
+        enabled: false
+      hotspot_area:
+        weight: -47
+        enabled: false
+      hotspot_image:
+        weight: -46
+        enabled: false
+      image:
+        weight: -35
+        enabled: true
+      introduction:
+        weight: 31
+        enabled: false
+      list:
+        weight: 32
+        enabled: false
+      live_voting:
+        weight: -45
+        enabled: false
+      poll_group:
+        weight: 34
+        enabled: false
+      popup:
+        weight: 35
+        enabled: false
+      table:
+        weight: 36
+        enabled: false
+      text:
+        weight: 37
+        enabled: false
+      tile_file:
+        weight: -43
+        enabled: false
+      tile_link:
+        weight: -42
+        enabled: true
+      tile_poster:
+        weight: -41
+        enabled: false
+      tile_video:
+        weight: -40
+        enabled: false
+      v_resource_station:
+        weight: -30
+        enabled: false
+      venue_resource_item:
+        weight: -39
+        enabled: false
+      video_iframe:
+        weight: -38
+        enabled: true
+      video_on_demand:
+        weight: -36
+        enabled: true
+      video_theoplayer:
+        weight: -37
+        enabled: true
+      video_wowza:
+        weight: 47
+        enabled: true
+      webform:
+        weight: -29
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,40 @@
+name: aps Click Bootstrap theme
+type: theme
+description: "aps Click Bootstrap Barrio SASS SubTheme."
+# version: VERSION
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+base theme: aps_core_bootstrap
+
+libraries:
+  - aps_click_bootstrap/global-styling
+
+libraries-override:
+  bootstrap_barrio/global-styling: false
+
+regions:
+  top_header: "Top header"
+  header: "Header"
+  primary_menu: "Primary menu"
+  secondary_menu: "Secondary menu"
+  page_top: "Page top"
+  page_bottom: "Page bottom"
+  live: "Live bar"
+  featured_top: "Featured top"
+  highlighted: "Highlighted"
+  breadcrumb: "Breadcrumb"
+  content: "Content"
+  sidebar_first: "Sidebar first"
+  sidebar_second: "Sidebar second"
+  featured_bottom_first: "Featured bottom first"
+  featured_bottom_second: "Featured bottom second"
+  footer_logo: "Footer logo"
+  footer_first: "Footer first"
+  footer_second: "Footer second"
+  footer_third: "Footer third"
+  footer_fourth: "Footer fourth"
+
+# Information added by Drupal.org packaging script on 2022-08-14
+version: '5.0.6'
+project: 'aps_click_bootstrap'
+datestamp: 1660517237

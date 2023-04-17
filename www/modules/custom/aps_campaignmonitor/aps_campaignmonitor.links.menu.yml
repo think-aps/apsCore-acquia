@@ -1,0 +1,5 @@
+aps_campaignmonitor.client:
+  title: 'Campaign Monitor API'
+  route_name: aps_campaignmonitor.client
+  description: 'Configure integration settings'
+  parent: system.admin_config_system

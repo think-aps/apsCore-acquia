@@ -1,0 +1,21 @@
+uuid: 9e1b8f8c-17a9-447e-bcd5-4e21721e3c94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_addevent_button
+    - node.type.event
+  module:
+    - aps_addevent
+id: node.event.field_addevent_button
+field_name: field_addevent_button
+entity_type: node
+bundle: event
+label: 'Calendar Reminder'
+description: 'Leave blank if not required.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: ApsAddEvent

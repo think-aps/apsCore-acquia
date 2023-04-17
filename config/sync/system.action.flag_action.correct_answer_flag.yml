@@ -1,0 +1,15 @@
+uuid: f88a13b5-43e4-4323-a5b3-e1c1399be317
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.correct_answer
+  module:
+    - flag
+id: flag_action.correct_answer_flag
+label: 'Mark as Correct'
+type: poll_choice
+plugin: 'flag_action:correct_answer_flag'
+configuration:
+  flag_id: correct_answer
+  flag_action: flag

@@ -1,0 +1,19 @@
+uuid: aad66b96-ffbe-49e3-96ef-9b2c6f9d33f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - image_effects
+name: icon
+label: Icon
+effects:
+  b8885b0a-f453-42de-be96-8e08fa8bb416:
+    uuid: b8885b0a-f453-42de-be96-8e08fa8bb416
+    id: image_effects_scale_and_smart_crop
+    weight: 1
+    data:
+      width: '40'
+      height: '40'
+      upscale: false
+      simulate: false
+      algorithm: entropy_slice

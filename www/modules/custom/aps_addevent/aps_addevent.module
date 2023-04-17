@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_page_attachments.
+ */
+function aps_addevent_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'aps_addevent/aps_addevent';
+}

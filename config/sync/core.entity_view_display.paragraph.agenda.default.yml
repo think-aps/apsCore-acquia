@@ -1,0 +1,82 @@
+uuid: ee0e08f1-a03a-4c25-85e9-c62ece024b9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.agenda.field_agenda_times
+    - field.field.paragraph.agenda.field_image
+    - field.field.paragraph.agenda.field_name
+    - field.field.paragraph.agenda.field_timezone
+    - field.field.paragraph.agenda.field_title
+    - field.field.paragraph.agenda.field_welcome_text
+    - image.style.tile
+    - paragraphs.paragraphs_type.agenda
+  module:
+    - smart_date
+    - svg_image
+    - text
+id: paragraph.agenda.default
+targetEntityType: paragraph
+bundle: agenda
+mode: default
+content:
+  field_agenda_times:
+    type: smartdate_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+      format: agenda_time
+      force_chronological: false
+      add_classes: false
+      time_wrapper: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: tile
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_timezone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_welcome_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }
